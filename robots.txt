@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sjcode.de/sitemap.xml
