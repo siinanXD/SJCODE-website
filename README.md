@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/29700354/README.md)
-# sjcode.de — Codewerk
+# sjcode.de — SJCODE
 
 Website von **Sinan Kahraman** — Softwareentwicklung & AI Engineering aus Euskirchen.
 
