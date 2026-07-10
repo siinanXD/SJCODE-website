@@ -1,38 +1,44 @@
-[README.md](https://github.com/user-attachments/files/29700354/README.md)
 # sjcode.de — SJCODE
 
-Website von **Sinan Kahraman** — Softwareentwicklung & AI Engineering aus Euskirchen.
+Website von SJCODE – Softwareentwicklung & AI Engineering für den Mittelstand.
+Gebaut mit **Next.js 15** (App Router, TypeScript), exportiert als statische
+Seite und gehostet auf Netlify.
 
-🌐 **Live:** [sjcode.de](https://sjcode.de)
+## Stack
 
-## Seiten
+- **Next.js 15 / React 19** mit `output: 'export'` – jede Route wird zu einer
+  eigenen HTML-Datei (`leistungen.html`, `referenz.html`, …), dadurch bleiben
+  die öffentlichen URLs stabil
+- **TypeScript**, ein zentrales Stylesheet (`app/globals.css`) mit
+  Design-Tokens als CSS Custom Properties
+- **Geist** (variabler Font), selbst gehostet – keine Anfragen an Google Fonts
+- Kontaktformular als Client-Komponente, Versand über Formspree
+- Mobiles Menü als `<details>`/`<summary>` – funktioniert auch ohne JavaScript
+- Scroll-Animationen über CSS `animation-timeline` (progressive enhancement)
 
-| Datei | Inhalt |
-|---|---|
-| `index.html` | Startseite |
-| `leistungen.html` | Leistungen (Websites, KI-Automatisierung, Software, E-Mail-Automatisierung) |
-| `referenz.html` | Referenzen |
-| `kontakt.html` | Kontakt — 4-Schritte-Anfrageformular + Calendly |
-| `impressum.html` | Impressum |
-| `datenschutz.html` | Datenschutzerklärung |
+## Entwicklung
 
-## Tech
-
-- Statische, eigenständige HTML-Dateien — kein Build-Schritt, kein Framework-Setup nötig
-- Formular-Backend: [Formspree](https://formspree.io)
-- Terminbuchung: [Calendly](https://calendly.com/sjcode)
-- Analytics: [Umami](https://umami.is) (cookielos, DSGVO-freundlich)
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # statischer Export nach ./out
+```
 
 ## Deployment
 
-Gehostet auf Vercel/Netlify. Jeder Push auf `main` deployt automatisch.
+Netlify baut automatisch bei jedem Push auf `main` (siehe `netlify.toml`:
+Build-Command `npm run build`, Publish-Verzeichnis `out`).
 
-Lokal ansehen: Dateien einfach im Browser öffnen — es gibt keine Abhängigkeiten.
+## Struktur
 
-## Änderungen
+```
+app/          Routen (page.tsx je Seite) + globals.css + layout.tsx
+components/   Header, Footer, CookieBanner, StickyCta, KontaktForm
+public/       Fonts, Bilder, robots.txt, sitemap.xml, favicon, OG-Image
+```
 
-Die Dateien sind gebündelte Exporte (Fonts, Bilder und Skripte inline). Änderungen an Inhalt oder Design erfolgen im Design-Projekt und werden als neuer Export committet — nicht direkt in den HTML-Dateien editieren.
+## SEO
 
----
-
-© Sinan Kahraman · [GitHub](https://github.com/siinanxd) · [LinkedIn](https://www.linkedin.com/in/kahraman-sinan/)
+Meta-/OG-Tags und Canonical-URLs pro Seite über die Next.js Metadata API,
+Schema.org-Markup (JSON-LD) auf der Startseite, `robots.txt` + `sitemap.xml`
+in `public/`. Impressum und Datenschutz stehen auf `noindex`.
