@@ -23,6 +23,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de">
       <body>
+        {/* React hebt die Preloads in den <head>; die Schrift ist so schon
+            beim ersten Paint da statt erst nach dem CSS-Parsing. */}
+        <link
+          rel="preload"
+          href="/fonts/geist-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/geist-latin-ext.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {children}
         {/* Umami: cookieloses, datenschutzfreundliches Analytics (siehe Datenschutzerklärung) */}
         <Script

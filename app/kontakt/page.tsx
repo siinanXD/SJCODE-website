@@ -21,6 +21,7 @@ export default function KontaktPage() {
   return (
     <>
       <Header active="kontakt" />
+      <main>
 
       <section className="kontakt-grid container">
         <div className="rise rise-1">
@@ -49,6 +50,7 @@ export default function KontaktPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <CookieBanner />
     </>

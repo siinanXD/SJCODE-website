@@ -68,6 +68,7 @@ export default function LeistungenPage() {
   return (
     <>
       <Header active="leistungen" />
+      <main>
 
       <section className="page-head container">
         <h1 className="rise rise-2">Womit ich Ihnen helfen kann</h1>
@@ -113,6 +114,7 @@ export default function LeistungenPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCta />
       <CookieBanner />

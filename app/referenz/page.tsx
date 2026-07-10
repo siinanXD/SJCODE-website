@@ -53,6 +53,7 @@ export default function ReferenzPage() {
   return (
     <>
       <Header active="referenz" />
+      <main>
 
       <section className="page-head container" style={{ paddingBottom: 50 }}>
         <p className="eyebrow rise rise-1">Referenzprojekt · läuft produktiv</p>
@@ -164,6 +165,7 @@ export default function ReferenzPage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCta />
       <CookieBanner />

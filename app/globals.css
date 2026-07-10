@@ -41,7 +41,7 @@
   --surface: #2a2620;
   --ink: #ede7dc;
   --muted: #a69e8f;
-  --faint: #7e776b;
+  --faint: #908a7c;
   --line: rgba(237, 231, 220, 0.16);
   --line-soft: rgba(237, 231, 220, 0.09);
   --accent: rgb(221, 115, 72);
@@ -252,7 +252,7 @@ textarea::placeholder {
 
 .announcement {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: #e07f58; /* aufgehellt: >=4.5:1 Kontrast auf dem Soft-Hintergrund (WCAG AA) */
   font-size: 12.5px;
   font-weight: 500;
   text-align: center;

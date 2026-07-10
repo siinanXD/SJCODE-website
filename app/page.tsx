@@ -124,6 +124,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
       <Header active="start" />
+      <main>
 
       <section id="hero" className="hero container">
         <div className="portrait rise rise-1">
@@ -292,6 +293,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      </main>
       <Footer />
       <StickyCta watch="#hero" />
       <CookieBanner />
