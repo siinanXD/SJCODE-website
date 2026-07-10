@@ -1444,3 +1444,50 @@ body:has(#mobilemenu[open]) {
 .cookie-actions .necessary:hover {
   border-color: var(--ink);
 }
+
+/* --------------------- Leistungen: Beispiele aus dem Alltag --------------- */
+
+.example-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+  gap: 18px;
+}
+.example-card {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  padding: 28px;
+}
+.example-card .who {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #e07f58;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 14px;
+}
+.example-card h3 {
+  margin: 0 0 14px;
+  font-size: 18.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.before-after {
+  display: grid;
+  gap: 10px;
+}
+.before-after p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.before-after .after {
+  color: var(--ink);
+}
+.before-after strong {
+  font-weight: 600;
+  color: var(--accent);
+}

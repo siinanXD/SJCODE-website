@@ -7,7 +7,7 @@ import StickyCta from '@/components/StickyCta';
 export const metadata: Metadata = {
   title: 'Leistungen – SJCODE · Softwareentwicklung & AI Engineering',
   description:
-    'Webseiten-Entwicklung, AI-Projekte & Automatisierung, individuelle Softwarelösungen und E-Mail-Automatisierung – Leistungen von SJCODE für den Mittelstand.',
+    'Webseiten-Entwicklung, AI-Projekte & Automatisierung, individuelle Softwarelösungen und E-Mail-Automatisierung – mit konkreten Beispielen für Handwerk, Dienstleister, Selbständige und kleine Unternehmen.',
   alternates: { canonical: 'https://sjcode.de/leistungen.html' },
   openGraph: {
     title: 'Leistungen – SJCODE',
@@ -64,6 +64,45 @@ const SERVICES = [
   },
 ];
 
+const EXAMPLES = [
+  {
+    who: 'Handwerk & Dienstleister',
+    title: 'Das volle Postfach',
+    before: '45 Minuten täglich Mails sortieren – wichtige Anfragen gehen zwischen Werbung und Rechnungen unter.',
+    after: 'Anfragen, Aufträge und Belege sind automatisch vorsortiert, für Standardfragen liegt ein Antwortentwurf bereit. Sie geben nur noch frei.',
+  },
+  {
+    who: 'Handwerk',
+    title: 'Angebote am Feierabend',
+    before: 'Nach der Baustelle Aufmaße abtippen und Angebote in Word zusammenbauen – der Kunde wartet tagelang.',
+    after: 'Eckdaten eingeben, fertiges Angebot als PDF im eigenen Design – noch am selben Tag beim Kunden.',
+  },
+  {
+    who: 'Dienstleister & Praxen',
+    title: 'Geplatzte Termine',
+    before: 'Kunden vergessen Termine, das Team telefoniert hinterher – jede Lücke kostet bares Geld.',
+    after: 'Bestätigung und Erinnerung gehen automatisch raus. Spürbar weniger Ausfälle, kein Hinterhertelefonieren.',
+  },
+  {
+    who: 'Selbständige',
+    title: 'Belege fürs Steuerbüro',
+    before: 'Am Monatsende Rechnungen aus Mails, Downloads und Handyfotos zusammensuchen.',
+    after: 'Belege werden automatisch erkannt, einheitlich benannt und gebündelt ans Steuerbüro übergeben.',
+  },
+  {
+    who: 'Kleine & mittlere Unternehmen',
+    title: 'Wissen steckt in Köpfen',
+    before: 'Neue Mitarbeiter fragen dreimal täglich nach Preislisten, Abläufen und alten Angeboten.',
+    after: 'Ein interner Assistent beantwortet Fragen direkt aus Ihren eigenen Unterlagen – sofort, rund um die Uhr.',
+  },
+  {
+    who: 'Privatpersonen & Vereine',
+    title: 'Der eigene Auftritt',
+    before: 'Eine Baukasten-Seite, die keiner findet – oder noch gar kein Auftritt im Netz.',
+    after: 'Eine schnelle, moderne Website für Ihr Projekt, Ihren Verein oder Ihre Bewerbung – zum fairen Festpreis.',
+  },
+];
+
 export default function LeistungenPage() {
   return (
     <>
@@ -92,6 +131,36 @@ export default function LeistungenPage() {
             </ul>
           </div>
         ))}
+      </section>
+
+      <section id="beispiele" className="section">
+        <div className="container">
+          <div className="reveal" style={{ marginBottom: 44 }}>
+            <h2 className="section-title" style={{ marginBottom: 14 }}>
+              Beispiele aus dem Alltag
+            </h2>
+            <p style={{ margin: 0, maxWidth: 620, fontSize: 16.5, lineHeight: 1.7, color: 'var(--muted)' }}>
+              Für Handwerksbetriebe, Dienstleister, Selbständige, kleine und mittlere Unternehmen
+              – und auch Privatpersonen. So sieht das konkret aus:
+            </p>
+          </div>
+          <div className="example-grid reveal">
+            {EXAMPLES.map((e) => (
+              <div key={e.title} className="example-card">
+                <span className="who">{e.who}</span>
+                <h3>{e.title}</h3>
+                <div className="before-after">
+                  <p>
+                    <strong>Vorher:</strong> {e.before}
+                  </p>
+                  <p className="after">
+                    <strong>Nachher:</strong> {e.after}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section cta-band">
