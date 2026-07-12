@@ -1,44 +1,42 @@
 # sjcode.de — SJCODE
 
-Website von SJCODE – Softwareentwicklung & AI Engineering für den Mittelstand.
-Gebaut mit **Next.js 15** (App Router, TypeScript), exportiert als statische
-Seite und gehostet auf Netlify.
+Website of SJCODE — software development & AI engineering for small and mid-sized businesses.
+Built with **Next.js 15** (App Router, TypeScript), exported as a static site and hosted on Netlify.
 
 ## Stack
 
-- **Next.js 15 / React 19** mit `output: 'export'` – jede Route wird zu einer
-  eigenen HTML-Datei (`leistungen.html`, `referenz.html`, …), dadurch bleiben
-  die öffentlichen URLs stabil
-- **TypeScript**, ein zentrales Stylesheet (`app/globals.css`) mit
-  Design-Tokens als CSS Custom Properties
-- **Geist** (variabler Font), selbst gehostet – keine Anfragen an Google Fonts
-- Kontaktformular als Client-Komponente, Versand über Formspree
-- Mobiles Menü als `<details>`/`<summary>` – funktioniert auch ohne JavaScript
-- Scroll-Animationen über CSS `animation-timeline` (progressive enhancement)
+- **Next.js 15 / React 19** with `output: 'export'` — every route becomes its own
+  HTML file (`leistungen.html`, `referenz.html`, …), which keeps the public URLs stable
+- **TypeScript**, a single central stylesheet (`app/globals.css`) with
+  design tokens as CSS custom properties
+- **Geist** (variable font), self-hosted — no requests to Google Fonts
+- Contact form as a client component, submission via Formspree
+- Mobile menu built with `<details>`/`<summary>` — works without JavaScript
+- Scroll animations via CSS `animation-timeline` (progressive enhancement)
 
-## Entwicklung
+## Development
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # statischer Export nach ./out
+npm run build    # static export to ./out
 ```
 
 ## Deployment
 
-Netlify baut automatisch bei jedem Push auf `main` (siehe `netlify.toml`:
-Build-Command `npm run build`, Publish-Verzeichnis `out`).
+Netlify builds automatically on every push to `main` (see `netlify.toml`:
+build command `npm run build`, publish directory `out`).
 
-## Struktur
+## Structure
 
 ```
-app/          Routen (page.tsx je Seite) + globals.css + layout.tsx
+app/          Routes (page.tsx per page) + globals.css + layout.tsx
 components/   Header, Footer, CookieBanner, StickyCta, KontaktForm
-public/       Fonts, Bilder, robots.txt, sitemap.xml, favicon, OG-Image
+public/       Fonts, images, robots.txt, sitemap.xml, favicon, OG image
 ```
 
 ## SEO
 
-Meta-/OG-Tags und Canonical-URLs pro Seite über die Next.js Metadata API,
-Schema.org-Markup (JSON-LD) auf der Startseite, `robots.txt` + `sitemap.xml`
-in `public/`. Impressum und Datenschutz stehen auf `noindex`.
+Meta/OG tags and canonical URLs per page via the Next.js Metadata API,
+Schema.org markup (JSON-LD) on the home page, `robots.txt` + `sitemap.xml`
+in `public/`. Legal pages (Impressum, Datenschutz) are set to `noindex`.
