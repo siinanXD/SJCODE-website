@@ -1,3 +1,5 @@
+import ThemeToggle from './ThemeToggle';
+
 const NAV_ITEMS = [
   { href: '/index.html', label: 'Start', key: 'start' },
   { href: '/leistungen.html', label: 'Leistungen', key: 'leistungen' },
@@ -40,6 +42,7 @@ export default function Header({ active }: { active: NavKey }) {
             <p>Persönliche Antwort in 24 h · Erstgespräch kostenlos</p>
           </div>
         </details>
+        <ThemeToggle />
         {active === 'kontakt' ? (
           <a
             className="header-cta btn-outline"

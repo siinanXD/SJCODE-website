@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import Reviews from '@/components/Reviews';
+import Faq from '@/components/Faq';
 
 export const metadata: Metadata = {
   title: 'SJCODE – Sinan · Softwareentwicklung & AI Engineering für den Mittelstand',
@@ -272,6 +273,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Faq />
 
       <Reviews />
 
