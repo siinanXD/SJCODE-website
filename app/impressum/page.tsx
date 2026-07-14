@@ -14,7 +14,7 @@ export default function ImpressumPage() {
     <>
       <Header active="none" />
 
-      <main className="legal container">
+      <main id="main" tabIndex={-1} className="legal container">
         <h1>Impressum</h1>
         <div className="legal-body">
           <p>

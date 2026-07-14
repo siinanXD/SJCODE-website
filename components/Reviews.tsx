@@ -42,7 +42,7 @@ const REVIEWS: Review[] = [];
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(Math.min(5, Math.max(0, rating)));
   return (
-    <span className="stars" aria-label={`${full} von 5 Sternen`}>
+    <span className="stars" role="img" aria-label={`${full} von 5 Sternen`}>
       {Array.from({ length: 5 }, (_, i) => (
         <span key={i} className={i < full ? 'star on' : 'star'} aria-hidden="true">
           ★
@@ -98,7 +98,7 @@ export default function Reviews() {
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            Auf Google bewerten ↗
+            Auf Google bewerten ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
         </div>
       </div>

@@ -104,8 +104,8 @@ export default function KontaktForm() {
 
   if (submitted) {
     return (
-      <div className="success-card">
-        <div className="check">✓</div>
+      <div className="success-card" role="status">
+        <div className="check" aria-hidden="true">✓</div>
         <h2>Danke für Ihre Anfrage!</h2>
         <p>Ich melde mich innerhalb von 24 Stunden persönlich bei Ihnen.</p>
         <button type="button" onClick={reset}>
@@ -117,7 +117,7 @@ export default function KontaktForm() {
 
   return (
     <form className="wizard" onSubmit={handleSubmit}>
-      <div className="wizard-progress">
+      <div className="wizard-progress" aria-live="polite">
         <div className="row">
           <span className="step-label">Schritt {step} von 4</span>
           <span className="hint">{STEP_HINTS[step]}</span>
@@ -246,7 +246,7 @@ export default function KontaktForm() {
             {sending ? 'Wird gesendet …' : 'Anfrage senden'}
           </button>
           {error && (
-            <p className="error">
+            <p className="error" role="alert">
               Senden fehlgeschlagen – bitte erneut versuchen oder direkt an{' '}
               <a href="mailto:kontakt@sjcode.de">kontakt@sjcode.de</a> schreiben.
             </p>

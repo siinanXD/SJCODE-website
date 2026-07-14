@@ -47,7 +47,7 @@ export default function Header({ active }: { active: NavKey }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Termin buchen ↗
+            Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
         ) : (
           <a className="header-cta btn-primary" href="/kontakt.html">

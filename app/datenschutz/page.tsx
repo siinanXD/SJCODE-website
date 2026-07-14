@@ -14,7 +14,7 @@ export default function DatenschutzPage() {
     <>
       <Header active="none" />
 
-      <main className="legal container">
+      <main id="main" tabIndex={-1} className="legal container">
         <h1>
           Datenschutz&shy;erklärung
         </h1>

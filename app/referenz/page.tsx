@@ -53,7 +53,7 @@ export default function ReferenzPage() {
   return (
     <>
       <Header active="referenz" />
-      <main>
+      <main id="main" tabIndex={-1}>
 
       <section className="page-head container" style={{ paddingBottom: 50 }}>
         <p className="eyebrow rise rise-1">Referenzprojekt · läuft produktiv</p>
