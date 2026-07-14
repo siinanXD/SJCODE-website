@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import StickyCta from '@/components/StickyCta';
+import Reviews from '@/components/Reviews';
 
 export const metadata: Metadata = {
   title: 'Referenz: Booking Email Check – SJCODE',
@@ -153,6 +153,8 @@ export default function ReferenzPage() {
         </div>
       </section>
 
+      <Reviews />
+
       <section className="section cta-band">
         <div className="container reveal">
           <h2>Ähnliches Problem in Ihrem Betrieb?</h2>
@@ -167,7 +169,6 @@ export default function ReferenzPage() {
 
       </main>
       <Footer />
-      <StickyCta />
       <CookieBanner />
     </>
   );

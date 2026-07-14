@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import StickyCta from '@/components/StickyCta';
 
 export const metadata: Metadata = {
   title: 'Leistungen – SJCODE · Softwareentwicklung & AI Engineering',
@@ -185,7 +184,6 @@ export default function LeistungenPage() {
 
       </main>
       <Footer />
-      <StickyCta />
       <CookieBanner />
     </>
   );
