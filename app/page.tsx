@@ -3,7 +3,6 @@ import { Fragment } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import StickyCta from '@/components/StickyCta';
 
 export const metadata: Metadata = {
   title: 'SJCODE – Sinan · Softwareentwicklung & AI Engineering für den Mittelstand',
@@ -295,7 +294,6 @@ export default function HomePage() {
 
       </main>
       <Footer />
-      <StickyCta watch="#hero" />
       <CookieBanner />
     </>
   );

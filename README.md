@@ -31,7 +31,7 @@ build command `npm run build`, publish directory `out`).
 
 ```
 app/          Routes (page.tsx per page) + globals.css + layout.tsx
-components/   Header, Footer, CookieBanner, StickyCta, KontaktForm
+components/   Header, Footer, CookieBanner, KontaktForm
 public/       Fonts, images, robots.txt, sitemap.xml, favicon, OG image
 ```
 
