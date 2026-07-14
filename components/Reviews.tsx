@@ -18,8 +18,8 @@
  * └─────────────────────────────────────────────────────────────────────────┘
  */
 
-// TODO: Hier deinen echten Google-Bewertungslink einsetzen (siehe Anleitung oben).
-const GOOGLE_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=DEINE_PLACE_ID';
+// Google-Bewertungslink des SJCODE-Unternehmensprofils.
+const GOOGLE_REVIEW_URL = 'https://g.page/r/CZdmOonQJkltEBM/review';
 
 type Review = {
   name: string;
@@ -28,15 +28,16 @@ type Review = {
   date?: string; // optional, z. B. "Juni 2026"
 };
 
-// Trage hier deine echten Bewertungen ein. Die Beispiele bitte ersetzen/löschen.
-const REVIEWS: Review[] = [
-  {
-    name: 'Beispiel Kunde',
-    rating: 5,
-    text: 'Ersetze diesen Text durch eine echte Bewertung. Bis dahin dient dieser Block nur als Vorlage – Name, Sterne und Text kannst du frei anpassen.',
-    date: 'Beispiel',
-  },
-];
+// Trage hier deine echten Google-Bewertungen ein. Solange die Liste leer ist,
+// wird nur der „Auf Google bewerten“-Button angezeigt (keine Rezensionen).
+// Vorlage für einen Eintrag (Block kopieren, Kommentarzeichen entfernen, anpassen):
+//   {
+//     name: 'Max Mustermann',
+//     rating: 5,           // 1 bis 5 Sterne
+//     text: 'Sehr zufrieden – schnelle Umsetzung und top Ergebnis.',
+//     date: 'Juni 2026',   // optional
+//   },
+const REVIEWS: Review[] = [];
 
 function Stars({ rating }: { rating: number }) {
   const full = Math.round(Math.min(5, Math.max(0, rating)));
