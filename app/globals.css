@@ -1381,6 +1381,37 @@ body:has(#mobilemenu[open]) {
 .wizard-nav .next:hover {
   opacity: 0.88;
 }
+.wizard-nav .next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Optionaler Zusatz an einem Label */
+.label-optional {
+  font-weight: 400;
+  color: var(--faint);
+  font-size: 13px;
+}
+
+/* Inline-Feldfehler (z. B. ungültige E-Mail) */
+.field-error {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--accent);
+}
+.wizard input[aria-invalid='true'] {
+  border-color: var(--accent);
+}
+
+/* Honeypot – für Menschen unsichtbar, aber im DOM (Bot-Falle). */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 .success-card {
   background: var(--surface);
