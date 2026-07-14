@@ -633,6 +633,68 @@ body:has(#mobilemenu[open]) {
   color: var(--muted);
 }
 
+/* ------------------------------ Bewertungen ------------------------------- */
+
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--muted);
+}
+.reviews-summary strong {
+  color: var(--ink);
+}
+
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  white-space: nowrap;
+}
+.stars .star {
+  color: var(--line);
+  font-size: 16px;
+  line-height: 1;
+}
+.stars .star.on {
+  color: var(--accent);
+}
+
+.review-card {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 28px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.review-card blockquote {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.review-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: auto;
+}
+.review-author {
+  font-weight: 600;
+  font-size: 15px;
+}
+.review-date {
+  font-size: 13.5px;
+  color: var(--faint);
+}
+
+.reviews-cta {
+  margin-top: 36px;
+}
+
 /* ------------------------------- Workflow --------------------------------- */
 
 .workflow {

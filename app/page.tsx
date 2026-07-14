@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import Reviews from '@/components/Reviews';
 
 export const metadata: Metadata = {
   title: 'SJCODE – Sinan · Softwareentwicklung & AI Engineering für den Mittelstand',
@@ -271,6 +272,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Reviews />
 
       <section className="section cta-band">
         <div className="container reveal">
