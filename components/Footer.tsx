@@ -11,14 +11,14 @@ export default function Footer({ active = 'none' }: { active?: 'impressum' | 'da
             Datenschutz
           </a>
           <a href="https://github.com/siinanxd" target="_blank" rel="noopener noreferrer">
-            GitHub
+            GitHub<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
           <a
             href="https://www.linkedin.com/in/kahraman-sinan/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            LinkedIn
+            LinkedIn<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
         </nav>
       </div>

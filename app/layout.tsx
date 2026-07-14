@@ -23,6 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="de">
       <body>
+        <a href="#main" className="skip-link">
+          Zum Inhalt springen
+        </a>
         {/* React hebt die Preloads in den <head>; die Schrift ist so schon
             beim ersten Paint da statt erst nach dem CSS-Parsing. */}
         <link

@@ -124,7 +124,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
       <Header active="start" />
-      <main>
+      <main id="main" tabIndex={-1}>
 
       <section id="hero" className="hero container">
         <div className="portrait rise rise-1">
@@ -154,7 +154,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            Kostenloses Erstgespräch ↗
+            Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
         </div>
         <p className="subline rise rise-5">
@@ -289,7 +289,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="btn btn-outline"
             >
-              Termin buchen ↗
+              Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
             </a>
           </div>
         </div>

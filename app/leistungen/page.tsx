@@ -106,7 +106,7 @@ export default function LeistungenPage() {
   return (
     <>
       <Header active="leistungen" />
-      <main>
+      <main id="main" tabIndex={-1}>
 
       <section className="page-head container">
         <h1 className="rise rise-2">Womit ich Ihnen helfen kann</h1>

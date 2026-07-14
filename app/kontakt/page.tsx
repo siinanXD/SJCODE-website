@@ -21,7 +21,7 @@ export default function KontaktPage() {
   return (
     <>
       <Header active="kontakt" />
-      <main>
+      <main id="main" tabIndex={-1}>
 
       <section className="kontakt-grid container">
         <div className="rise rise-1">
@@ -41,7 +41,7 @@ export default function KontaktPage() {
               className="link-accent"
               style={{ fontSize: 15.5 }}
             >
-              Termin buchen ↗
+              Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
             </a>
           </div>
         </div>
