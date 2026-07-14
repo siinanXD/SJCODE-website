@@ -1,8 +1,10 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mojorgeb';
+const DRAFT_KEY = 'sjcode-form-draft';
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const CHIP_OPTIONS = [
   'Website',
@@ -46,10 +48,62 @@ export default function KontaktForm() {
   const [budget, setBudget] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [msg, setMsg] = useState('');
+  const [botField, setBotField] = useState(''); // Honeypot – für Menschen unsichtbar
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const didMount = useRef(false);
+  const draftLoaded = useRef(false);
+
+  // Entwurf laden (nur die Auswahl, keine persönlichen Daten).
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (raw) {
+        const d = JSON.parse(raw);
+        if (Array.isArray(d.topics)) setTopics(d.topics);
+        if (typeof d.situation === 'string') setSituation(d.situation);
+        if (typeof d.timeline === 'string') setTimeline(d.timeline);
+        if (typeof d.budget === 'string') setBudget(d.budget);
+      }
+    } catch {
+      /* localStorage evtl. blockiert – dann eben ohne Entwurf */
+    }
+    draftLoaded.current = true;
+  }, []);
+
+  // Entwurf speichern, sobald sich die Auswahl ändert.
+  useEffect(() => {
+    if (!draftLoaded.current) return;
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ topics, situation, timeline, budget }));
+    } catch {
+      /* ignorieren */
+    }
+  }, [topics, situation, timeline, budget]);
+
+  // Beim Schrittwechsel den Fokus auf die neue Überschrift setzen
+  // (nicht beim ersten Rendern – sonst würde die Seite unerwartet springen).
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    headingRef.current?.focus();
+  }, [step]);
+
+  const clearDraft = () => {
+    try {
+      localStorage.removeItem(DRAFT_KEY);
+    } catch {
+      /* ignorieren */
+    }
+  };
 
   const toggleTopic = (label: string) =>
     setTopics((prev) =>
@@ -60,6 +114,7 @@ export default function KontaktForm() {
     setter(current === label ? '' : label);
 
   const summary = [topics.join(', '), situation, timeline, budget].filter(Boolean).join(' · ');
+  const step1Incomplete = step === 1 && topics.length === 0;
 
   const reset = () => {
     setStep(1);
@@ -69,13 +124,25 @@ export default function KontaktForm() {
     setBudget('');
     setName('');
     setEmail('');
+    setPhone('');
     setMsg('');
+    setEmailError(false);
     setSubmitted(false);
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (sending || submitted) return;
+    // Honeypot: von einem Bot ausgefüllt – still tun, als wäre alles gut.
+    if (botField) {
+      setSubmitted(true);
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      setEmailError(true);
+      document.getElementById('email')?.focus();
+      return;
+    }
     setSending(true);
     setError(false);
     try {
@@ -85,6 +152,7 @@ export default function KontaktForm() {
         body: JSON.stringify({
           name,
           email,
+          telefon: phone || '–',
           nachricht: msg,
           themen: topics.join(', ') || '–',
           ausgangslage: situation || '–',
@@ -94,6 +162,7 @@ export default function KontaktForm() {
         }),
       });
       if (!res.ok) throw new Error('send failed');
+      clearDraft();
       setSubmitted(true);
     } catch {
       setError(true);
@@ -117,6 +186,19 @@ export default function KontaktForm() {
 
   return (
     <form className="wizard" onSubmit={handleSubmit}>
+      {/* Honeypot gegen Spam-Bots – für Menschen ausgeblendet, nicht fokussierbar. */}
+      <div className="hp-field" aria-hidden="true">
+        <label htmlFor="company-website">Bitte dieses Feld leer lassen</label>
+        <input
+          id="company-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botField}
+          onChange={(e) => setBotField(e.target.value)}
+        />
+      </div>
+
       <div className="wizard-progress" aria-live="polite">
         <div className="row">
           <span className="step-label">Schritt {step} von 4</span>
@@ -130,8 +212,8 @@ export default function KontaktForm() {
       {step === 1 && (
         <div style={{ display: 'grid', gap: 14 }}>
           <div style={{ display: 'grid', gap: 4 }}>
-            <h2>Worum geht es?</h2>
-            <p className="field-hint">Mehrfachauswahl möglich – einfach antippen.</p>
+            <h2 ref={headingRef} tabIndex={-1}>Worum geht es?</h2>
+            <p className="field-hint">Mehrfachauswahl möglich – bitte mindestens eine Option antippen.</p>
           </div>
           <div className="pill-row">
             {CHIP_OPTIONS.map((label) => (
@@ -150,7 +232,7 @@ export default function KontaktForm() {
         <div style={{ display: 'grid', gap: 22 }}>
           <div style={{ display: 'grid', gap: 12 }}>
             <div style={{ display: 'grid', gap: 4 }}>
-              <h2>Wo stehen Sie gerade?</h2>
+              <h2 ref={headingRef} tabIndex={-1}>Wo stehen Sie gerade?</h2>
               <p className="field-hint">Ihre Ausgangslage – eine Auswahl genügt.</p>
             </div>
             <div className="pill-row">
@@ -183,7 +265,7 @@ export default function KontaktForm() {
       {step === 3 && (
         <div style={{ display: 'grid', gap: 14 }}>
           <div style={{ display: 'grid', gap: 4 }}>
-            <h2>Gibt es einen Budgetrahmen?</h2>
+            <h2 ref={headingRef} tabIndex={-1}>Gibt es einen Budgetrahmen?</h2>
             <p className="field-hint">
               Keine Festlegung – hilft mir nur, direkt einen passenden Vorschlag zu machen.
             </p>
@@ -203,6 +285,7 @@ export default function KontaktForm() {
 
       {step === 4 && (
         <div style={{ display: 'grid', gap: 18 }}>
+          <h2 ref={headingRef} tabIndex={-1} className="sr-only">Ihre Kontaktdaten</h2>
           {summary && (
             <div className="summary-box">
               Ihre Auswahl: <strong>{summary}</strong>
@@ -237,9 +320,32 @@ export default function KontaktForm() {
               type="email"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (emailError) setEmailError(false);
+              }}
               placeholder="name@firma.de"
               autoComplete="email"
+              aria-invalid={emailError}
+              aria-describedby={emailError ? 'email-error' : undefined}
+            />
+            {emailError && (
+              <p id="email-error" className="field-error" role="alert">
+                Bitte eine gültige E-Mail-Adresse eingeben (z. B. name@firma.de).
+              </p>
+            )}
+          </div>
+          <div style={{ display: 'grid', gap: 8 }}>
+            <label htmlFor="phone">
+              Telefon <span className="label-optional">(optional, falls Rückruf gewünscht)</span>
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Für einen kurzen Rückruf"
+              autoComplete="tel"
             />
           </div>
           <button type="submit" className="submit" disabled={sending}>
@@ -265,7 +371,13 @@ export default function KontaktForm() {
           </button>
         )}
         {step < 4 && (
-          <button type="button" className="next" onClick={() => setStep((s) => Math.min(4, s + 1))}>
+          <button
+            type="button"
+            className="next"
+            onClick={() => setStep((s) => Math.min(4, s + 1))}
+            disabled={step1Incomplete}
+            title={step1Incomplete ? 'Bitte mindestens eine Option wählen' : undefined}
+          >
             Weiter →
           </button>
         )}
