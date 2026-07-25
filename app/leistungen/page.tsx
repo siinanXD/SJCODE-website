@@ -21,6 +21,7 @@ const SERVICES = [
     id: 'web',
     num: '01',
     title: 'Webseiten-Entwicklung',
+    serviceType: 'Webentwicklung',
     text: 'Moderne, schnelle Websites, die Kunden überzeugen und in Suchmaschinen gefunden werden – ohne Baukasten-Kompromisse.',
     points: [
       'React / Next.js – performant und pflegeleicht',
@@ -32,6 +33,7 @@ const SERVICES = [
     id: 'ai',
     num: '02',
     title: 'AI-Projekte & Automatisierung',
+    serviceType: 'KI-Entwicklung & Automatisierung',
     text: 'KI-Lösungen, die wiederkehrende Arbeit übernehmen – produktionsreif statt Experiment.',
     points: [
       'E-Mail-Verarbeitung mit LLMs',
@@ -43,6 +45,7 @@ const SERVICES = [
     id: 'software',
     num: '03',
     title: 'Individuelle Softwarelösungen',
+    serviceType: 'Individualsoftware',
     text: 'Wo Standardsoftware nicht passt: kleine, präzise Werkzeuge, die genau Ihre Lücke schließen.',
     points: [
       'Kleine Tools und Skripte für den Alltag',
@@ -54,6 +57,7 @@ const SERVICES = [
     id: 'email',
     num: '04',
     title: 'E-Mail- & Postfach-Automatisierung',
+    serviceType: 'E-Mail-Automatisierung',
     text: 'Ihr Postfach arbeitet vor – Sie behalten die Kontrolle. Kein Versand ohne Ihre Freigabe.',
     points: [
       'Intelligente Sortierung eingehender Mails',
@@ -62,6 +66,28 @@ const SERVICES = [
     ],
   },
 ];
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://sjcode.de/' },
+        { '@type': 'ListItem', position: 2, name: 'Leistungen', item: 'https://sjcode.de/leistungen.html' },
+      ],
+    },
+    ...SERVICES.map((s) => ({
+      '@type': 'Service',
+      name: s.title,
+      serviceType: s.serviceType,
+      description: s.text,
+      url: `https://sjcode.de/leistungen.html#${s.id}`,
+      provider: { '@id': 'https://sjcode.de/#business' },
+      areaServed: ['Euskirchen', 'Köln', 'DE'],
+    })),
+  ],
+};
 
 const EXAMPLES = [
   {
@@ -105,6 +131,10 @@ const EXAMPLES = [
 export default function LeistungenPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <Header active="leistungen" />
       <main id="main" tabIndex={-1}>
 
