@@ -49,9 +49,22 @@ const TECH = [
 
 const PIPELINE = ['Eingang', 'Klassifikation', 'Datenextraktion', 'Entwurf', 'Ihre Freigabe'];
 
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://sjcode.de/' },
+    { '@type': 'ListItem', position: 2, name: 'Referenz', item: 'https://sjcode.de/referenz.html' },
+  ],
+};
+
 export default function ReferenzPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <Header active="referenz" />
       <main id="main" tabIndex={-1}>
 

@@ -17,9 +17,22 @@ export const metadata: Metadata = {
   },
 };
 
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Start', item: 'https://sjcode.de/' },
+    { '@type': 'ListItem', position: 2, name: 'Kontakt', item: 'https://sjcode.de/kontakt.html' },
+  ],
+};
+
 export default function KontaktPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <Header active="kontakt" />
       <main id="main" tabIndex={-1}>
 

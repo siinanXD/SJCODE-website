@@ -22,8 +22,11 @@ export const metadata: Metadata = {
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
+  '@id': 'https://sjcode.de/#business',
   name: 'SJCODE',
   url: 'https://sjcode.de',
+  image: 'https://sjcode.de/og-image.png',
+  logo: 'https://sjcode.de/favicon.svg',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Mühlenstraße 44',
@@ -31,17 +34,28 @@ const JSON_LD = {
     postalCode: '53879',
     addressCountry: 'DE',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 50.66,
+    longitude: 6.79,
+  },
   description:
     'Softwareentwicklung & AI Engineering für kleine und mittlere Betriebe: Websites, KI-Automatisierung, individuelle Tools und E-Mail-Automatisierung.',
   founder: {
     '@type': 'Person',
     name: 'Sinan Kahraman',
+    image: 'https://sjcode.de/images/sinan-kahraman.webp',
     sameAs: ['https://github.com/siinanxd', 'https://www.linkedin.com/in/kahraman-sinan/'],
     jobTitle: 'Softwareentwickler & AI Engineer',
   },
-  areaServed: 'DE',
+  areaServed: ['Euskirchen', 'Köln', 'DE'],
   knowsLanguage: 'de',
   priceRange: '$$',
+  sameAs: [
+    'https://github.com/siinanxd',
+    'https://www.linkedin.com/in/kahraman-sinan/',
+    'https://g.page/r/CZdmOonQJkltEBM',
+  ],
   makesOffer: [
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Webseiten-Entwicklung' } },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI-Projekte & Automatisierung' } },
