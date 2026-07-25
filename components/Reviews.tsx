@@ -24,6 +24,8 @@
  * └─────────────────────────────────────────────────────────────────────────┘
  */
 
+import ReviewsCarousel, { Stars } from './ReviewsCarousel';
+
 // Google-Bewertungslink des SJCODE-Unternehmensprofils.
 const GOOGLE_REVIEW_URL = 'https://g.page/r/CZdmOonQJkltEBM/review';
 
@@ -123,19 +125,6 @@ const REVIEWS_SCHEMA =
       }
     : null;
 
-function Stars({ rating }: { rating: number }) {
-  const full = Math.round(Math.min(5, Math.max(0, rating)));
-  return (
-    <span className="stars" role="img" aria-label={`${full} von 5 Sternen`}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <span key={i} className={i < full ? 'star on' : 'star'} aria-hidden="true">
-          ★
-        </span>
-      ))}
-    </span>
-  );
-}
-
 export default function Reviews() {
   const count = TOTAL_COUNT;
   const average = AVERAGE;
@@ -166,17 +155,8 @@ export default function Reviews() {
         </div>
 
         {REVIEWS.length > 0 && (
-          <div className="card-grid reveal">
-            {REVIEWS.map((r, i) => (
-              <figure key={i} className="review-card">
-                <Stars rating={r.rating} />
-                <blockquote>{r.text}</blockquote>
-                <figcaption>
-                  <span className="review-author">{r.name}</span>
-                  {r.date && <span className="review-date">{r.date}</span>}
-                </figcaption>
-              </figure>
-            ))}
+          <div className="reveal">
+            <ReviewsCarousel reviews={REVIEWS} />
           </div>
         )}
 
