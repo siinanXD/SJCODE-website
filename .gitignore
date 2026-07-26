@@ -3,3 +3,12 @@ node_modules/
 out/
 next-env.d.ts
 *.tsbuildinfo
+
+# Zugangsdaten – niemals ins Repo. Google-Service-Account-Schluessel und
+# API-Keys gehoeren nach ~/.config/claude-seo/, nicht hierher.
+.env
+.env.*
+!.env.example
+service_account*.json
+google-api.json
+*credentials*.json

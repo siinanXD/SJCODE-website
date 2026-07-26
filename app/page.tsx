@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { openGraph } from '@/lib/og';
 import { Fragment } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -11,12 +12,12 @@ export const metadata: Metadata = {
   description:
     'Ich bin Sinan. Nach 10+ Jahren als Elektroniker für Betriebstechnik baue ich heute Software und KI-Lösungen, die kleinen und mittleren Betrieben Zeit sparen.',
   alternates: { canonical: 'https://sjcode.de/' },
-  openGraph: {
+  openGraph: openGraph({
     title: 'SJCODE – Software & KI, die Ihnen Zeit spart',
     description:
       '10+ Jahre Industriepraxis, heute AI Engineering: Websites, Automatisierung und individuelle Tools für den Mittelstand.',
     url: 'https://sjcode.de/',
-  },
+  }),
 };
 
 const JSON_LD = {
