@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { openGraph } from '@/lib/og';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -9,12 +10,12 @@ export const metadata: Metadata = {
   description:
     'Projekt anfragen bei SJCODE: vier kurze Schritte in unter zwei Minuten, persönliche Antwort innerhalb von 24 Stunden – oder direkt ein kostenloses Erstgespräch buchen.',
   alternates: { canonical: 'https://sjcode.de/kontakt.html' },
-  openGraph: {
+  openGraph: openGraph({
     title: 'Kontakt – SJCODE',
     description:
       'Projekt anfragen: vier kurze Schritte, persönliche Antwort innerhalb von 24 Stunden.',
     url: 'https://sjcode.de/kontakt.html',
-  },
+  }),
 };
 
 const JSON_LD = {

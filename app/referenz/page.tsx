@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { openGraph } from '@/lib/og';
 import { Fragment } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
   description:
     'Case Study: Booking Email Check – Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation, Datenextraktion und Antwortentwürfe mit menschlicher Freigabe.',
   alternates: { canonical: 'https://sjcode.de/referenz.html' },
-  openGraph: {
+  openGraph: openGraph({
     title: 'Referenz: Booking Email Check – SJCODE',
     description:
       'Plattform zur automatischen Verarbeitung von Buchungs-E-Mails – mit menschlicher Freigabe, läuft produktiv.',
     url: 'https://sjcode.de/referenz.html',
-  },
+  }),
 };
 
 const HIGHLIGHTS = [

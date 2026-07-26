@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { openGraph } from '@/lib/og';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -8,12 +9,12 @@ export const metadata: Metadata = {
   description:
     'Webseiten-Entwicklung, AI-Projekte & Automatisierung, individuelle Softwarelösungen und E-Mail-Automatisierung – mit konkreten Beispielen für Handwerk, Dienstleister, Selbständige und kleine Unternehmen.',
   alternates: { canonical: 'https://sjcode.de/leistungen.html' },
-  openGraph: {
+  openGraph: openGraph({
     title: 'Leistungen – SJCODE',
     description:
       'Webseiten-Entwicklung, AI-Projekte & Automatisierung, individuelle Softwarelösungen und E-Mail-Automatisierung für den Mittelstand.',
     url: 'https://sjcode.de/leistungen.html',
-  },
+  }),
 };
 
 const SERVICES = [

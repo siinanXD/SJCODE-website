@@ -1689,8 +1689,18 @@ body:has(#mobilemenu[open]) {
   align-items: center;
   justify-content: space-between;
 }
+.footer-nap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .site-footer .copyright {
   font-size: 13.5px;
+  color: var(--faint);
+}
+.site-footer address {
+  font-size: 13.5px;
+  font-style: normal;
   color: var(--faint);
 }
 .site-footer nav {
