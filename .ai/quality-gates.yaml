@@ -1,0 +1,34 @@
+# Quality Gates fuer SJCODE-website
+#
+# Die verbindliche Definition steht in
+# C:\Dev\AI-Workspace\AGENT-SYSTEM\config\quality-gates.yaml,
+# die projektspezifischen Befehle in config\projects.yaml.
+# Diese Datei ist die projektnahe Kopie zum Nachschlagen.
+#
+# Ein Gate ohne passendes Werkzeug ist `skipped`, nicht `failed`. Es wird
+# kein Werkzeug erzwungen, das dieses Projekt bisher nicht nutzt.
+
+version: 1
+
+always_active:
+  - no_secrets
+  - no_forbidden_paths
+  - no_disabled_tests
+  - no_unjustified_dependencies
+  - git_diff_check
+  - reuse_decision
+
+project_gates:
+  build_pass:
+    cmd:
+    - npm
+    - run
+    - build
+    requires: package.json
+    cwd: null
+
+erkannt_am: 2026-08-03
+erkannte_werkzeuge:
+  test_runner: keine
+  lint: keine
+  typecheck: keine

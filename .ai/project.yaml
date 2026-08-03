@@ -1,0 +1,41 @@
+_hinweis: Erzeugt von bootstrap_project.py aus dem tatsaechlich vorhandenen Bestand (Manifestdateien,
+  Lockfiles, Git). Nicht geraten. Was nicht ermittelbar war, steht unter 'offene_fragen'.
+_erzeugt_am: '2026-08-03'
+project:
+  name: SJCODE-website
+  path: C:\Dev\Repositories\SJCODE-website
+  status: active
+  branch: main
+  head: dcbdea4
+  remote: https://github.com/siinanXD/SJCODE-website.git
+technology:
+  frontend:
+  - next
+  - react
+  - typescript
+  infrastructure:
+  - netlify
+package_manager: npm
+tooling:
+  test_runner: []
+  lint: []
+  typecheck: []
+quality_gates:
+- build_pass
+agents:
+  global_agents_enabled: true
+  local_overrides_enabled: true
+policies:
+  reuse_before_build: required
+  research_before_code: required
+  security_review: required
+  license_review: required
+documentation:
+  source_of_truth:
+  - AGENTS.md
+  - .ai/context
+  - C:\Dev\Knowledge
+offene_fragen:
+- 'TODO: Dieses Projekt hat keinen erkennbaren Testlaeufer. Ist das gewollt?'
+_registry_hinweis: package.json kennt nur dev/build/start. Wer Tests oder Lint als Gate will, muss die
+  Scripts zuerst im Projekt anlegen.
