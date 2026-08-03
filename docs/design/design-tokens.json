@@ -1,0 +1,37 @@
+{
+  "_hinweis": "Automatisch aus den CSS-Custom-Properties des Projekts extrahiert am 2026-08-03. Die Quelle ist der Code, nicht diese Datei — bei Abweichung gewinnt das CSS. Nicht von Hand pflegen, sondern neu extrahieren.",
+  "_quellen": [
+    "app/globals.css"
+  ],
+  "_anzahl": 24,
+  "tokens": {
+    "/* ------------------------------- Design-Tokens --------------------------- */ :root": {
+      "--bg": "#211e19",
+      "--surface": "#2a2620",
+      "--ink": "#ede7dc",
+      "--muted": "#a69e8f",
+      "--faint": "#908a7c",
+      "--line": "rgba(237, 231, 220, 0.16)",
+      "--line-soft": "rgba(237, 231, 220, 0.09)",
+      "--accent": "rgb(221, 115, 72)",
+      "--accent-soft": "rgba(221, 115, 72, 0.14)",
+      "--accent-ink": "#231a13",
+      "--nav-bg": "rgba(33, 30, 25, 0.85)",
+      "--announce-ink": "#e07f58"
+    },
+    "/* Heller Modus – warme, kontrastgeprüfte Palette (WCAG AA). Der Akzent wird bewusst etwas dunkler, damit er auch als Textfarbe auf hellem Hintergrund ≥ 4.5:1 erreicht; Button-Text wird hell. */ :root[data-theme='light']": {
+      "--bg": "#f4efe7",
+      "--surface": "#ffffff",
+      "--ink": "#26221b",
+      "--muted": "#5f584c",
+      "--faint": "#726b5d",
+      "--line": "rgba(38, 34, 27, 0.16)",
+      "--line-soft": "rgba(38, 34, 27, 0.08)",
+      "--accent": "#b0501f",
+      "--accent-soft": "rgba(176, 80, 31, 0.12)",
+      "--accent-ink": "#fffaf4",
+      "--nav-bg": "rgba(244, 239, 231, 0.85)",
+      "--announce-ink": "#9a4419"
+    }
+  }
+}
