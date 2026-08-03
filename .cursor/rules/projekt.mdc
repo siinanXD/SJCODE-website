@@ -1,0 +1,18 @@
+---
+description: Projektregeln SJCODE-website
+alwaysApply: true
+---
+
+Die Projektbeschreibung steht in `AGENTS.md` im Wurzelverzeichnis. Lies sie,
+bevor du etwas aenderst. Sie ist die einzige Quelle — hier wird nichts
+wiederholt.
+
+Ausserdem verbindlich: `C:\Dev\AI-Workspace\shared-rules\AI_TOOL_RULES.md`
+
+Kurz und wichtig:
+
+- Keine Geheimnisse lesen, ausgeben oder committen (`.env`, `*.key`, `*.pem`,
+  `credentials*`, `secrets*`).
+- Keine Tests abschalten, um eine Pruefung gruen zu bekommen.
+- Keine neuen Abhaengigkeiten ohne Begruendung.
+- Nicht direkt auf `main` committen.
