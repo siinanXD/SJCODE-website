@@ -1,12 +1,12 @@
 _hinweis: Erzeugt von bootstrap_project.py aus dem tatsaechlich vorhandenen Bestand (Manifestdateien,
   Lockfiles, Git). Nicht geraten. Was nicht ermittelbar war, steht unter 'offene_fragen'.
-_erzeugt_am: '2026-08-03'
+_erzeugt_am: '2026-08-04'
+_hinweis_branch: 'Branch, HEAD und Arbeitsbaumzustand stehen hier bewusst NICHT. Sie sind dynamisch und
+  wuerden bei jedem Wechsel driften. Zur Laufzeit ermitteln: orchestration/git_state.py'
 project:
   name: SJCODE-website
   path: C:\Dev\Repositories\SJCODE-website
   status: active
-  branch: main
-  head: dcbdea4
   remote: https://github.com/siinanXD/SJCODE-website.git
 technology:
   frontend:
