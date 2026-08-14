@@ -167,64 +167,61 @@ export default function HomePage() {
       <main id="main" tabIndex={-1}>
 
       <section id="hero" className="hero">
-        <div className="hero-atmosphere" aria-hidden="true">
-          <div className="hero-orb hero-orb-a" />
-          <div className="hero-orb hero-orb-b" />
-          <div className="hero-gridline" />
+        <div className="hero-media" aria-hidden="true">
+          <img
+            src="/images/sinan-kahraman.webp"
+            alt=""
+            width={960}
+            height={1200}
+            fetchPriority="high"
+          />
+          <div className="hero-media-shade" />
         </div>
-        <div className="container hero-layout">
-          <div className="hero-copy">
-            <p className="hero-kicker rise rise-1">Software &amp; KI für den Mittelstand</p>
-            <h1 className="rise rise-2">
-              Hallo, ich bin Sinan.
-              <br />
-              Ich baue Software, die Ihnen Zeit spart.
-            </h1>
-            <p className="lede rise rise-3">
-              Über zehn Jahre als Elektroniker für Betriebstechnik, heute Softwareentwicklung und
-              AI Engineering – praxisnah, ohne Fachchinesisch.
-            </p>
-            <div className="actions rise rise-4">
-              <a href="/kontakt.html" className="btn btn-primary">
-                Projekt anfragen
-              </a>
-              <a
-                href="https://calendly.com/sjcode"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline"
-              >
-                Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-              </a>
-            </div>
-            <ul className="trust-row rise rise-5">
-              <li>
-                <strong>10+</strong>
-                Jahre Industrie
-              </li>
-              <li>
-                <strong>276+</strong>
-                automatisierte Tests
-              </li>
-              <li>
-                <strong>24 h</strong>
-                persönliche Antwort
-              </li>
-            </ul>
+        <div className="container hero-copy">
+          <p className="hero-brand rise rise-1">
+            SJCODE<span>.</span>
+          </p>
+          <h1 className="rise rise-2">
+            Software &amp; KI,
+            <br />
+            die Ihnen Zeit spart.
+          </h1>
+          <p className="lede rise rise-3">
+            Ich bin Sinan – zehn Jahre Betriebstechnik, heute Software und AI Engineering für den
+            Mittelstand. Praxisnah, ohne Fachchinesisch.
+          </p>
+          <div className="actions rise rise-4">
+            <a href="/kontakt.html" className="btn btn-primary">
+              Projekt anfragen
+            </a>
+            <a
+              href="https://calendly.com/sjcode"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+            >
+              Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+            </a>
           </div>
+        </div>
+      </section>
 
-          <div className="hero-visual rise rise-2">
-            <div className="portrait-stage">
-              <div className="portrait-glow" aria-hidden="true" />
-              <img
-                src="/images/sinan-kahraman.webp"
-                alt="Porträt von Sinan Kahraman"
-                width={220}
-                height={220}
-                fetchPriority="high"
-              />
-            </div>
-          </div>
+      <section className="trust-band" aria-label="Kurzprofil">
+        <div className="container">
+          <ul className="trust-row">
+            <li>
+              <strong>10+</strong>
+              Jahre Industrie
+            </li>
+            <li>
+              <strong>276+</strong>
+              automatisierte Tests
+            </li>
+            <li>
+              <strong>24 h</strong>
+              persönliche Antwort
+            </li>
+          </ul>
         </div>
       </section>
 
