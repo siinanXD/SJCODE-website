@@ -35,21 +35,6 @@ const GROUPS = [
   },
 ] as const;
 
-const MARQUEE = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Flask',
-  'LangGraph',
-  'OpenAI',
-  'MongoDB Atlas',
-  'Vector Search',
-  'Langfuse',
-  'GitHub Actions',
-  'RAG',
-  'SEO',
-];
-
 function SkillIcon({ name }: { name: (typeof GROUPS)[number]['icon'] }) {
   const common = {
     width: 22,
@@ -124,8 +109,6 @@ function SkillIcon({ name }: { name: (typeof GROUPS)[number]['icon'] }) {
 }
 
 export default function Skills() {
-  const loop = [...MARQUEE, ...MARQUEE];
-
   return (
     <section id="skills" className="section skills-section">
       <div className="container">
@@ -155,16 +138,6 @@ export default function Skills() {
                 ))}
               </ul>
             </article>
-          ))}
-        </div>
-      </div>
-
-      <div className="skill-marquee reveal" aria-hidden="true">
-        <div className="skill-marquee-track">
-          {loop.map((item, i) => (
-            <span key={`${item}-${i}`} className="skill-chip">
-              {item}
-            </span>
           ))}
         </div>
       </div>

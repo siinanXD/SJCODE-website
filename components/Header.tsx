@@ -3,7 +3,6 @@ import ThemeToggle from './ThemeToggle';
 const NAV_ITEMS = [
   { href: '/index.html', label: 'Start', key: 'start' },
   { href: '/leistungen.html', label: 'Leistungen', key: 'leistungen' },
-  { href: '/index.html#skills', label: 'Skills', key: 'skills' },
   { href: '/referenz.html', label: 'Referenz', key: 'referenz' },
   { href: '/kontakt.html', label: 'Kontakt', key: 'kontakt' },
 ] as const;

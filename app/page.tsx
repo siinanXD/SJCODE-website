@@ -7,7 +7,6 @@ import CookieBanner from '@/components/CookieBanner';
 import Reviews from '@/components/Reviews';
 import Faq from '@/components/Faq';
 import Skills from '@/components/Skills';
-import SoftLead from '@/components/SoftLead';
 import StickyLeadCta from '@/components/StickyLeadCta';
 import StatTicker from '@/components/StatTicker';
 import { SERVICE_ICONS } from '@/components/icons';
@@ -224,16 +223,10 @@ export default function HomePage() {
                 height={220}
                 fetchPriority="high"
               />
-              <span className="skill-float sf-1">Next.js</span>
-              <span className="skill-float sf-2">LangGraph</span>
-              <span className="skill-float sf-3">TypeScript</span>
-              <span className="skill-float sf-4">Human-in-the-Loop</span>
             </div>
           </div>
         </div>
       </section>
-
-      <SoftLead />
 
       <section className="section">
         <div className="container">
@@ -263,8 +256,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <Reviews />
 
       <Skills />
 
@@ -349,6 +340,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Reviews />
 
       <Faq />
 
