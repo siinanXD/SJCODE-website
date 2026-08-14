@@ -3,6 +3,7 @@ import { openGraph } from '@/lib/og';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import { SERVICE_ICONS } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'Leistungen – SJCODE · Softwareentwicklung & AI Engineering',
@@ -29,6 +30,7 @@ const SERVICES = [
       'SEO-Grundlagen, Meta-Tags, semantisches HTML',
       'Voll responsiv, mobile-first, Lighthouse > 90',
     ],
+    icon: 'web' as const,
   },
   {
     id: 'ai',
@@ -41,6 +43,7 @@ const SERVICES = [
       'RAG-Systeme und Chatbots auf Ihren Daten',
       'Workflow-Automatisierung entlang Ihrer Prozesse',
     ],
+    icon: 'ai' as const,
   },
   {
     id: 'software',
@@ -53,6 +56,7 @@ const SERVICES = [
       'Interne Apps für Ihr Team',
       'API-Integrationen zwischen Ihren Systemen',
     ],
+    icon: 'code' as const,
   },
   {
     id: 'email',
@@ -65,6 +69,7 @@ const SERVICES = [
       'Automatische Antwortentwürfe mit Human-in-the-Loop',
       'Multi-Account: Microsoft 365, Gmail, IMAP',
     ],
+    icon: 'mail' as const,
   },
 ];
 
@@ -149,9 +154,16 @@ export default function LeistungenPage() {
       </section>
 
       <section className="service-grid container">
-        {SERVICES.map((s) => (
+        {SERVICES.map((s) => {
+          const Icon = SERVICE_ICONS[s.icon];
+          return (
           <div key={s.id} id={s.id} className="service-card reveal">
-            <div className="num">{s.num}</div>
+            <div className="teaser-top">
+              <span className="teaser-icon">
+                <Icon />
+              </span>
+              <div className="num">{s.num}</div>
+            </div>
             <h2>{s.title}</h2>
             <p>{s.text}</p>
             <ul className="dash-list">
@@ -160,7 +172,8 @@ export default function LeistungenPage() {
               ))}
             </ul>
           </div>
-        ))}
+          );
+        })}
       </section>
 
       <section id="beispiele" className="section">

@@ -13,7 +13,12 @@
 - [Individuelle Softwarelösungen](https://sjcode.de/leistungen.html#software): Kleine Tools, interne Apps, API-Integrationen.
 - [E-Mail- & Postfach-Automatisierung](https://sjcode.de/leistungen.html#email): Sortierung und Antwortentwürfe – Versand nur nach menschlicher Freigabe.
 
-## Referenz
+## Skills
+
+- Industriepraxis: über zehn Jahre Elektroniker für Betriebstechnik.
+- Web & Cloud: React, Next.js, TypeScript, Flask, APIs.
+- AI Engineering: OpenAI, LangGraph, RAG, Langfuse, MongoDB Atlas.
+- Lieferung: GitHub Actions, automatisierte Tests, SEO, DSGVO.
 
 - [Booking Email Check](https://sjcode.de/referenz.html): Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation und Datenextraktion per LLM, Antwortentwürfe mit menschlicher Freigabe. Läuft produktiv.
 

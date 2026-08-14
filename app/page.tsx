@@ -6,6 +6,8 @@ import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import Reviews from '@/components/Reviews';
 import Faq from '@/components/Faq';
+import Skills from '@/components/Skills';
+import { SERVICE_ICONS } from '@/components/icons';
 
 export const metadata: Metadata = {
   title: 'SJCODE – Sinan · Softwareentwicklung & AI Engineering für den Mittelstand',
@@ -48,7 +50,23 @@ const JSON_LD = {
     image: 'https://sjcode.de/images/sinan-kahraman.webp',
     sameAs: ['https://github.com/siinanxd', 'https://www.linkedin.com/in/kahraman-sinan/'],
     jobTitle: 'Softwareentwickler & AI Engineer',
+    knowsAbout: [
+      'Webentwicklung',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'AI Engineering',
+      'LangGraph',
+      'Retrieval Augmented Generation',
+      'E-Mail-Automatisierung',
+    ],
   },
+  knowsAbout: [
+    'Softwareentwicklung',
+    'AI Engineering',
+    'Webseiten-Entwicklung',
+    'Workflow-Automatisierung',
+  ],
   areaServed: ['Euskirchen', 'Köln', 'DE'],
   knowsLanguage: 'de',
   priceRange: '$$',
@@ -71,24 +89,28 @@ const TEASERS = [
     href: '/leistungen.html#web',
     title: 'Webseiten-Entwicklung',
     text: 'Moderne, schnelle Websites mit React und Next.js – gefunden werden, überzeugen, pflegen können.',
+    icon: 'web' as const,
   },
   {
     num: '02',
     href: '/leistungen.html#ai',
     title: 'AI-Projekte & Automatisierung',
     text: 'E-Mail-Verarbeitung mit LLMs, RAG-Systeme, Chatbots und Workflow-Automatisierung.',
+    icon: 'ai' as const,
   },
   {
     num: '03',
     href: '/leistungen.html#software',
     title: 'Individuelle Softwarelösungen',
     text: 'Kleine Tools, Skripte, interne Apps und API-Integrationen – genau für Ihre Abläufe.',
+    icon: 'code' as const,
   },
   {
     num: '04',
     href: '/leistungen.html#email',
     title: 'E-Mail- & Postfach-Automatisierung',
     text: 'Intelligente Sortierung und Antwortentwürfe – Sie geben frei, nichts geht automatisch raus.',
+    icon: 'mail' as const,
   },
 ];
 
@@ -142,40 +164,70 @@ export default function HomePage() {
       <Header active="start" />
       <main id="main" tabIndex={-1}>
 
-      <section id="hero" className="hero container">
-        <div className="portrait rise rise-1">
-          <img
-            src="/images/sinan-kahraman.webp"
-            alt="Porträt von Sinan"
-            width={150}
-            height={150}
-          />
+      <section id="hero" className="hero">
+        <div className="hero-atmosphere" aria-hidden="true">
+          <div className="hero-orb hero-orb-a" />
+          <div className="hero-orb hero-orb-b" />
+          <div className="hero-gridline" />
         </div>
-        <h1 className="rise rise-2">
-          Hallo, ich bin Sinan.
-          <br />
-          Ich baue Software, die Ihnen Zeit spart.
-        </h1>
-        <p className="lede rise rise-3">
-          Über zehn Jahre als Elektroniker für Betriebstechnik, heute Softwareentwicklung und AI
-          Engineering.
-        </p>
-        <div className="actions rise rise-4">
-          <a href="/kontakt.html" className="btn btn-primary">
-            Projekt anfragen
-          </a>
-          <a
-            href="https://calendly.com/sjcode"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline"
-          >
-            Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-          </a>
+        <div className="container hero-layout">
+          <div className="hero-copy">
+            <p className="hero-kicker rise rise-1">Software &amp; KI für den Mittelstand</p>
+            <h1 className="rise rise-2">
+              Hallo, ich bin Sinan.
+              <br />
+              Ich baue Software, die Ihnen Zeit spart.
+            </h1>
+            <p className="lede rise rise-3">
+              Über zehn Jahre als Elektroniker für Betriebstechnik, heute Softwareentwicklung und
+              AI Engineering – praxisnah, ohne Fachchinesisch.
+            </p>
+            <div className="actions rise rise-4">
+              <a href="/kontakt.html" className="btn btn-primary">
+                Projekt anfragen
+              </a>
+              <a
+                href="https://calendly.com/sjcode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+              >
+                Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+              </a>
+            </div>
+            <ul className="trust-row rise rise-5">
+              <li>
+                <strong>10+</strong>
+                Jahre Industrie
+              </li>
+              <li>
+                <strong>276+</strong>
+                automatisierte Tests
+              </li>
+              <li>
+                <strong>24 h</strong>
+                persönliche Antwort
+              </li>
+            </ul>
+          </div>
+
+          <div className="hero-visual rise rise-2">
+            <div className="portrait-stage">
+              <div className="portrait-glow" aria-hidden="true" />
+              <img
+                src="/images/sinan-kahraman.webp"
+                alt="Porträt von Sinan Kahraman"
+                width={220}
+                height={220}
+                fetchPriority="high"
+              />
+              <span className="skill-float sf-1">Next.js</span>
+              <span className="skill-float sf-2">LangGraph</span>
+              <span className="skill-float sf-3">TypeScript</span>
+              <span className="skill-float sf-4">Human-in-the-Loop</span>
+            </div>
+          </div>
         </div>
-        <p className="subline rise rise-5">
-          10+ Jahre Industriepraxis · Weiterbildung AI Engineering &amp; Softwareentwicklung
-        </p>
       </section>
 
       <section className="section">
@@ -187,16 +239,27 @@ export default function HomePage() {
             </a>
           </div>
           <div className="card-grid reveal">
-            {TEASERS.map((t) => (
+            {TEASERS.map((t) => {
+              const Icon = SERVICE_ICONS[t.icon];
+              return (
               <a key={t.num} href={t.href} className="teaser-card">
-                <div className="num">{t.num}</div>
+                <div className="teaser-top">
+                  <span className="teaser-icon">
+                    <Icon />
+                  </span>
+                  <div className="num">{t.num}</div>
+                </div>
                 <h3>{t.title}</h3>
                 <p>{t.text}</p>
+                <span className="teaser-more">Mehr erfahren</span>
               </a>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
+
+      <Skills />
 
       <section className="section">
         <div className="container">
