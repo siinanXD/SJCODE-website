@@ -7,6 +7,9 @@ import CookieBanner from '@/components/CookieBanner';
 import Reviews from '@/components/Reviews';
 import Faq from '@/components/Faq';
 import Skills from '@/components/Skills';
+import SoftLead from '@/components/SoftLead';
+import StickyLeadCta from '@/components/StickyLeadCta';
+import StatTicker from '@/components/StatTicker';
 import { SERVICE_ICONS } from '@/components/icons';
 
 export const metadata: Metadata = {
@@ -230,6 +233,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SoftLead />
+
       <section className="section">
         <div className="container">
           <div className="section-head reveal">
@@ -258,6 +263,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <Reviews />
 
       <Skills />
 
@@ -316,18 +323,9 @@ export default function HomePage() {
             Betriebe mit hohem Buchungsaufkommen.
           </p>
           <div className="stats">
-            <div>
-              <strong>276+</strong>
-              <small>automatisierte Tests</small>
-            </div>
-            <div>
-              <strong>60+</strong>
-              <small>Releases in Produktion</small>
-            </div>
-            <div>
-              <strong>0</strong>
-              <small>Mails ohne menschliche Freigabe</small>
-            </div>
+            <StatTicker value={276} suffix="+" label="automatisierte Tests" />
+            <StatTicker value={60} suffix="+" label="Releases in Produktion" />
+            <StatTicker value={0} label="Mails ohne menschliche Freigabe" />
           </div>
           <a href="/referenz.html" className="link-accent" style={{ fontSize: 16 }}>
             Zur Case Study →
@@ -354,8 +352,6 @@ export default function HomePage() {
 
       <Faq />
 
-      <Reviews />
-
       <section className="section cta-band">
         <div className="container reveal">
           <h2>Erzählen Sie mir von Ihrem Projekt.</h2>
@@ -378,6 +374,7 @@ export default function HomePage() {
 
       </main>
       <Footer />
+      <StickyLeadCta />
       <CookieBanner />
     </>
   );
