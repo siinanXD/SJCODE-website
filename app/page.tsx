@@ -158,7 +158,7 @@ export default function HomePage() {
         </h1>
         <p className="lede rise rise-3">
           Über zehn Jahre als Elektroniker für Betriebstechnik, heute Softwareentwicklung und AI
-          Engineering.
+          Engineering für AI-gestützte Prozessautomatisierung.
         </p>
         <div className="actions rise rise-4">
           <a href="/kontakt.html" className="btn btn-primary">
