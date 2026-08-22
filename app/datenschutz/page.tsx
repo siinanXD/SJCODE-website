@@ -5,6 +5,8 @@ import CookieBanner from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung – SJCODE',
+  description:
+    'Datenschutzhinweise von SJCODE zu Kontaktformular, Hosting, Terminbuchung und datenschutzfreundlicher Reichweitenmessung.',
   robots: { index: false },
   alternates: { canonical: 'https://sjcode.de/datenschutz.html' },
 };
