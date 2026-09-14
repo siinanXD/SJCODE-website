@@ -1,5 +1,7 @@
 # sjcode.de — SJCODE
 
+Impressum und Datenschutz: <https://sjcode.de/impressum.html> · <https://sjcode.de/datenschutz.html>
+
 Website von SJCODE — Softwareentwicklung & AI Engineering für kleine und mittlere Betriebe.
 Gebaut mit **Next.js 15** (App Router, TypeScript), als statische Seite exportiert und auf Netlify gehostet.
 

@@ -39,6 +39,7 @@ const JSON_LD = {
       image: `${SITE.url}/og-image.png`,
       logo: `${SITE.url}/favicon.svg`,
       email: SITE.email,
+      telephone: SITE.phoneIntl,
       address: {
         '@type': 'PostalAddress',
         streetAddress: SITE.street,
@@ -187,7 +188,7 @@ export default function HomePage() {
               <span>für Handwerk, Dienstleister &amp; KMU</span>
             </p>
             <h1 className="rise rise-2">
-              Weniger Handarbeit im Betrieb.
+              Weniger Handarbeit im Betrieb.{' '}
               <br />
               Software, die Ihnen jeden Tag Zeit spart.
             </h1>
@@ -202,6 +203,8 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
+                data-umami-event="erstgespraech"
+                data-umami-event-ort="hero"
               >
                 Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
               </a>
@@ -209,6 +212,22 @@ export default function HomePage() {
                 Leistungen ansehen →
               </a>
             </div>
+            <p className="hero-contact rise rise-4">
+              Oder direkt:{' '}
+              <a href={SITE.phoneHref} data-umami-event="anruf" data-umami-event-ort="hero">
+                {SITE.phoneDisplay}
+              </a>{' '}
+              ·{' '}
+              <a
+                href={SITE.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-umami-event="whatsapp"
+                data-umami-event-ort="hero"
+              >
+                WhatsApp schreiben ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+              </a>
+            </p>
             <p className="subline rise rise-5">
               <span className="stars-inline" aria-hidden="true">
                 ★★★★★

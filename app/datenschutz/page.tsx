@@ -55,6 +55,15 @@ export default function DatenschutzPage() {
             Nutzung gelten die Datenschutzhinweise von Calendly.
           </p>
           <p>
+            <strong>4a. Kontakt per Telefon und WhatsApp</strong>
+            <br />
+            Wenn Sie mich anrufen oder über WhatsApp kontaktieren, verarbeite ich Ihre Angaben
+            (Rufnummer, Name, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage (Art. 6 Abs.
+            1 lit. b DSGVO). Bei WhatsApp (WhatsApp Ireland Ltd., Irland) gelten zusätzlich dessen
+            Datenschutzhinweise; Metadaten der Kommunikation können an Meta übermittelt werden.
+            Wenn Sie das nicht möchten, nutzen Sie bitte E-Mail oder das Anfrageformular.
+          </p>
+          <p>
             <strong>5. Reichweitenmessung (Umami)</strong>
             <br />
             Diese Website nutzt Umami Cloud (Umami Software, Inc.), einen datenschutzfreundlichen

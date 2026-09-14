@@ -8,6 +8,11 @@ export const SITE = {
   owner: 'Sinan Kahraman',
   url: 'https://sjcode.de',
   email: 'kontakt@sjcode.de',
+  /** Anzeigeformat, tel:-Link und WhatsApp-Link – alle drei aus derselben Nummer. */
+  phoneDisplay: '0152 5583 4196',
+  phoneIntl: '+49 152 5583 4196',
+  phoneHref: 'tel:+4915255834196',
+  whatsapp: 'https://wa.me/4915255834196?text=Hallo%20Sinan%2C%20ich%20habe%20eine%20Frage%20zu%20',
   calendly: 'https://calendly.com/sjcode',
   googleReviewUrl: 'https://g.page/r/CZdmOonQJkltEBM/review',
   googleProfileUrl: 'https://g.page/r/CZdmOonQJkltEBM',

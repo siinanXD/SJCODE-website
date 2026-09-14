@@ -58,7 +58,7 @@ export default function Header({ active }: { active: NavKey }) {
             Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
           </a>
         ) : (
-          <a className="header-cta btn-primary" href="/kontakt.html">
+          <a className="header-cta btn-primary" href="/kontakt.html" data-umami-event="projekt-anfragen" data-umami-event-ort="header">
             Projekt anfragen
           </a>
         )}

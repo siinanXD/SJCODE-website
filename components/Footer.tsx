@@ -43,6 +43,12 @@ export default function Footer({
           </nav>
           <nav aria-label="Kontakt und Profile">
             <h2>Kontakt</h2>
+            <a href={SITE.phoneHref} data-umami-event="anruf">
+              {SITE.phoneDisplay}
+            </a>
+            <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" data-umami-event="whatsapp">
+              WhatsApp ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+            </a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
             <a href={SITE.calendly} target="_blank" rel="noopener noreferrer">
               Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>

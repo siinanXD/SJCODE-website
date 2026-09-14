@@ -187,7 +187,18 @@ export default function KontaktForm() {
       });
       if (!res.ok) throw new Error('send failed');
       clearDraft();
-      setSubmitted(true);
+      // Conversion-Ereignis (Umami) und Weiterleitung auf die Danke-Seite –
+      // eine eigene URL lässt sich in Umami/Google Ads als Ziel messen.
+      try {
+        (window as unknown as { umami?: { track: (n: string, d?: object) => void } }).umami?.track(
+          'anfrage-gesendet',
+          { themen: topics.join(', ') || '–', paket: pkg || '–' },
+        );
+      } catch {
+        /* Tracking blockiert – egal */
+      }
+      window.location.assign('/danke.html');
+      return;
     } catch {
       setError(true);
     } finally {

@@ -23,7 +23,7 @@ export default function CtaBand({
           <h2>{title}</h2>
           <p>{text}</p>
           <div className="actions">
-            <a href={href} className="btn btn-primary">
+            <a href={href} className="btn btn-primary" data-umami-event="projekt-anfragen" data-umami-event-ort="cta-band">
               {primary}
             </a>
             <a
@@ -31,6 +31,8 @@ export default function CtaBand({
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"
+              data-umami-event="erstgespraech"
+              data-umami-event-ort="cta-band"
             >
               Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
             </a>

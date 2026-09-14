@@ -70,6 +70,20 @@ export default function KontaktPage() {
             </div>
             <ul className="contact-facts">
               <li>
+                <strong>Telefon</strong>
+                <span>
+                  <a href={SITE.phoneHref} data-umami-event="anruf">{SITE.phoneDisplay}</a> ·{' '}
+                  <a
+                    href={SITE.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-umami-event="whatsapp"
+                  >
+                    WhatsApp ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </a>
+                </span>
+              </li>
+              <li>
                 <strong>E-Mail</strong>
                 <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
               </li>
