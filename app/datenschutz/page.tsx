@@ -72,8 +72,9 @@ export default function DatenschutzPage() {
             zu erzeugen. Der Text wird von mir nicht gespeichert; OpenAI nutzt API-Daten nach
             eigenen Angaben nicht zum Training. Bitte fügen Sie keine echten personenbezogenen
             Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich einen gesalzenen Hash Ihrer
-            IP-Adresse mit einem Zähler; diese Einträge werden nach spätestens zwei Tagen
-            automatisch gelöscht, und die IP-Adresse ist daraus nicht wiederherstellbar. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
+            IP-Adresse mit einem Zähler; diese Einträge werden durch eine tägliche automatische
+            Bereinigung spätestens nach 72 Stunden gelöscht, und die IP-Adresse ist daraus nicht
+            wiederherstellbar. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
             der Demo (Art. 6 Abs. 1 lit. a DSGVO); die Beispiele funktionieren ohne Übermittlung.
           </p>
           <p>

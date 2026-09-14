@@ -55,6 +55,9 @@ Umgebungsvariablen in Netlify (Site configuration → Environment variables):
 | `DEMO_SALT` | Zufällige Zeichenkette als Salz für den IP-Hash. |
 
 Ohne Schlüssel antwortet die Demo mit „nicht verfügbar“; die Beispiele funktionieren immer.
+`netlify/functions/email-demo-cleanup.mts` läuft täglich um 03:00 UTC (Scheduled Function) und
+löscht Zähler, die älter als gestern sind – so gilt die Löschfrist aus der Datenschutzerklärung
+auch ohne weitere Demo-Aufrufe.
 Lokal testen: `npx netlify dev` (nutzt `.env` für die Variablen, niemals committen).
 
 ## Deployment

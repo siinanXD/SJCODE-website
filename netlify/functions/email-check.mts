@@ -10,8 +10,9 @@
  * Zähler liegen in Netlify Blobs (Store „email-demo“) und werden mit starker
  * Konsistenz und bedingten Schreibzugriffen (ETag) erhöht – parallele Anfragen
  * können das Limit nicht umgehen. IPs werden nur als gesalzener SHA-256-Hash
- * gespeichert; Einträge älter als zwei Tage werden beim ersten Aufruf eines
- * neuen Tages gelöscht.
+ * gespeichert; Einträge älter als gestern werden beim ersten Aufruf eines
+ * neuen Tages und zusätzlich täglich per geplanter Function
+ * (email-demo-cleanup.mts) gelöscht.
  *
  * Nötige Umgebungsvariablen (Netlify → Site configuration → Environment variables):
  *   OPENAI_API_KEY   – Schlüssel mit eigenem Spending-Limit im OpenAI-Konto!

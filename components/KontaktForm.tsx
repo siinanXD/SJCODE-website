@@ -12,8 +12,22 @@ const CHIP_OPTIONS = [
   'KI / Automatisierung',
   'Individuelle Software',
   'E-Mail-Automatisierung',
+  'Betreuung / Wartung',
   'Weiß ich noch nicht',
 ];
+
+/**
+ * URL-Wert (?thema=…) einer Option zuordnen: exakt, sonst über den Anfang
+ * („Betreuung“ → „Betreuung / Wartung“). Unbekannte Werte fallen auf
+ * „Weiß ich noch nicht“ zurück und landen als Hinweis in der Beschreibung.
+ */
+const matchTopic = (thema: string) => {
+  const t = thema.trim().toLowerCase();
+  return (
+    CHIP_OPTIONS.find((o) => o.toLowerCase() === t) ??
+    CHIP_OPTIONS.find((o) => o.toLowerCase().startsWith(t) || t.startsWith(o.toLowerCase()))
+  );
+};
 const SITUATION_OPTIONS = ['Neu starten', 'Bestehendes verbessern', 'Etwas Vorhandenes ersetzen'];
 const TIMELINE_OPTIONS = ['So schnell wie möglich', 'In 1–3 Monaten', 'Flexibel'];
 const BUDGET_OPTIONS = ['Bis 3.000 €', '3.000–10.000 €', 'Über 10.000 €', 'Noch unklar'];
@@ -82,7 +96,7 @@ export default function KontaktForm() {
       const params = new URLSearchParams(window.location.search);
       const thema = params.get('thema');
       if (thema) {
-        const match = CHIP_OPTIONS.find((o) => o.toLowerCase() === thema.toLowerCase());
+        const match = matchTopic(thema);
         setTopics(match ? [match] : ['Weiß ich noch nicht']);
         if (!match) setMsg((m) => m || `Thema: ${thema}\n`);
       }
