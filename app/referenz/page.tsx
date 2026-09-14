@@ -8,6 +8,7 @@ import StickyCta from '@/components/StickyCta';
 import InboxMock from '@/components/InboxMock';
 import Reviews from '@/components/Reviews';
 import CtaBand from '@/components/CtaBand';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Referenz: Booking Email Check – KI-E-Mail-Automatisierung in Produktion | SJCODE',
@@ -60,13 +61,7 @@ const RESULTS = [
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Referenz', item: `${SITE.url}/referenz.html` },
-      ],
-    },
+    breadcrumbJsonLd([{ name: 'Referenz', href: '/referenz.html' }]),
     {
       '@type': 'SoftwareApplication',
       name: 'Booking Email Check',
@@ -89,11 +84,7 @@ export default function ReferenzPage() {
       <Header active="referenz" />
       <main id="main" tabIndex={-1}>
         <section className="page-head container" style={{ paddingBottom: 50 }}>
-          <nav className="breadcrumb rise rise-1" aria-label="Brotkrumen">
-            <a href="/index.html">Start</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Referenz</span>
-          </nav>
+          <Breadcrumb items={[{ name: 'Referenz' }]} />
           <p className="eyebrow rise rise-1">Referenzprojekt · läuft produktiv</p>
           <h1 className="rise rise-2">Booking Email Check</h1>
           <p className="lede rise rise-3" style={{ maxWidth: 660 }}>

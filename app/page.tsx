@@ -173,7 +173,7 @@ const HOME_FAQS = [
 ];
 
 export default function HomePage() {
-  const rating = REVIEW_STATS.average.toFixed(1).replace('.', ',');
+  const rating = REVIEW_STATS.averageLabel;
   return (
     <>
       <script

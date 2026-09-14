@@ -77,7 +77,11 @@ export const RATINGS_ONLY = {
 const count = REVIEWS.length + RATINGS_ONLY.count;
 const sum = REVIEWS.reduce((s, r) => s + r.rating, 0) + RATINGS_ONLY.sum;
 
+const average = count > 0 ? sum / count : 0;
+
 export const REVIEW_STATS = {
   count,
-  average: count > 0 ? sum / count : 0,
+  average,
+  /** Anzeige im deutschen Format, z. B. „5,0“ */
+  averageLabel: average.toFixed(1).replace('.', ','),
 };

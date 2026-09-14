@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { SERVICES, serviceUrl } from '@/lib/services';
+import { SITE } from '@/lib/site';
 
 /**
  * Sitemap zur Build-Zeit erzeugen.
@@ -17,7 +18,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  const base = 'https://sjcode.de';
+  const base = SITE.url;
 
   const pages: { path: string; priority: number; changeFrequency: 'monthly' | 'weekly' }[] = [
     { path: '/', priority: 1.0, changeFrequency: 'weekly' },

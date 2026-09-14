@@ -7,6 +7,7 @@ import CookieBanner from '@/components/CookieBanner';
 import AutomationCheck from '@/components/AutomationCheck';
 import FaqList from '@/components/FaqList';
 import { REVIEW_STATS } from '@/components/reviewsData';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Automatisierungs-Check – Wie viel Zeit steckt in Ihrer Handarbeit? | SJCODE',
@@ -24,13 +25,7 @@ export const metadata: Metadata = {
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Automatisierungs-Check', item: `${SITE.url}/automatisierungs-check.html` },
-      ],
-    },
+    breadcrumbJsonLd([{ name: 'Automatisierungs-Check', href: '/automatisierungs-check.html' }]),
     {
       '@type': 'WebApplication',
       name: 'Automatisierungs-Check',
@@ -70,11 +65,7 @@ export default function AutomatisierungsCheckPage() {
       <main id="main" tabIndex={-1}>
         <section className="kontakt-grid container">
           <div className="rise rise-1">
-            <nav className="breadcrumb" aria-label="Brotkrumen">
-              <a href="/index.html">Start</a>
-              <span aria-hidden="true">/</span>
-              <span aria-current="page">Automatisierungs-Check</span>
-            </nav>
+            <Breadcrumb items={[{ name: 'Automatisierungs-Check' }]} animate={false} />
             <p className="eyebrow">Kostenlos · ohne Anmeldung</p>
             <h1>Wie viel Zeit steckt in Ihrer Handarbeit?</h1>
             <p className="lede">
@@ -91,7 +82,7 @@ export default function AutomatisierungsCheckPage() {
               <span className="stars-inline" aria-hidden="true">
                 ★★★★★
               </span>{' '}
-              {REVIEW_STATS.average.toFixed(1).replace('.', ',')} auf Google · {REVIEW_STATS.count}{' '}
+              {REVIEW_STATS.averageLabel} auf Google · {REVIEW_STATS.count}{' '}
               Bewertungen
             </p>
           </div>

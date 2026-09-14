@@ -1109,26 +1109,6 @@ body:has(#mobilemenu[open]) {
   color: var(--muted);
 }
 
-/* -------------------------------- CTA-Band -------------------------------- */
-
-.cta-band h2 {
-  margin: 0 0 14px;
-  font-size: clamp(26px, 3.4vw, 38px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  max-width: 620px;
-}
-.cta-band p {
-  margin: 0 0 30px;
-  font-size: 16px;
-  color: var(--muted);
-}
-.cta-band .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 /* ------------------- Referenz: Fenster-Mock & Pipeline -------------------- */
 
 .case-grid {

@@ -9,6 +9,7 @@ import StickyCta from '@/components/StickyCta';
 import PricingCards from '@/components/PricingCards';
 import FaqList from '@/components/FaqList';
 import CtaBand from '@/components/CtaBand';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Preise – Website ab 1.900 €, KI-Automatisierung ab 2.500 € | SJCODE',
@@ -25,11 +26,7 @@ export const metadata: Metadata = {
 
 const JSON_LD = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-    { '@type': 'ListItem', position: 2, name: 'Preise', item: `${SITE.url}/preise.html` },
-  ],
+  ...breadcrumbJsonLd([{ name: 'Preise', href: '/preise.html' }]),
 };
 
 const INCLUDED = [
@@ -51,11 +48,7 @@ export default function PreisePage() {
       <Header active="preise" />
       <main id="main" tabIndex={-1}>
         <section className="page-head container">
-          <nav className="breadcrumb rise rise-1" aria-label="Brotkrumen">
-            <a href="/index.html">Start</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Preise</span>
-          </nav>
+          <Breadcrumb items={[{ name: 'Preise' }]} />
           <p className="eyebrow rise rise-1">Preise</p>
           <h1 className="rise rise-2">Transparent statt Überraschung.</h1>
           <p className="lede rise rise-3">

@@ -4,7 +4,7 @@ import { REVIEW_STATS } from './reviewsData';
 /** Kennzahlen-Leiste unter dem Hero – echte, belegbare Zahlen. */
 export default function TrustBar() {
   const items = [
-    { big: `${REVIEW_STATS.average.toFixed(1).replace('.', ',')} ★`, small: `Google · ${REVIEW_STATS.count} Bewertungen` },
+    { big: `${REVIEW_STATS.averageLabel} ★`, small: `Google · ${REVIEW_STATS.count} Bewertungen` },
     { big: `${PROOF.yearsIndustry} Jahre`, small: 'Industriepraxis' },
     { big: PROOF.responseTime, small: 'persönliche Antwort' },
     { big: PROOF.testsInReference, small: 'automatisierte Tests im Referenzprojekt' },

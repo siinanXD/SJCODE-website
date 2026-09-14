@@ -71,9 +71,9 @@ export default function DatenschutzPage() {
             EU-Standardvertragsklauseln) übermittelt, um Kategorie, Daten und einen Antwortentwurf
             zu erzeugen. Der Text wird von mir nicht gespeichert; OpenAI nutzt API-Daten nach
             eigenen Angaben nicht zum Training. Bitte fügen Sie keine echten personenbezogenen
-            Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich für zwei Tage einen
-            gesalzenen Hash Ihrer IP-Adresse mit einem Zähler, aus dem die IP-Adresse nicht
-            wiederherstellbar ist. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
+            Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich einen gesalzenen Hash Ihrer
+            IP-Adresse mit einem Zähler; diese Einträge werden nach spätestens zwei Tagen
+            automatisch gelöscht, und die IP-Adresse ist daraus nicht wiederherstellbar. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
             der Demo (Art. 6 Abs. 1 lit. a DSGVO); die Beispiele funktionieren ohne Übermittlung.
           </p>
           <p>

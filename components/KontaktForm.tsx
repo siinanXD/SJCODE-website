@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
+import { track } from '@/lib/analytics';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mojorgeb';
 const DRAFT_KEY = 'sjcode-form-draft';
@@ -189,14 +190,7 @@ export default function KontaktForm() {
       clearDraft();
       // Conversion-Ereignis (Umami) und Weiterleitung auf die Danke-Seite –
       // eine eigene URL lässt sich in Umami/Google Ads als Ziel messen.
-      try {
-        (window as unknown as { umami?: { track: (n: string, d?: object) => void } }).umami?.track(
-          'anfrage-gesendet',
-          { themen: topics.join(', ') || '–', paket: pkg || '–' },
-        );
-      } catch {
-        /* Tracking blockiert – egal */
-      }
+      track('anfrage-gesendet', { themen: topics.join(', ') || '–', paket: pkg || '–' });
       window.location.assign('/danke.html');
       return;
     } catch {

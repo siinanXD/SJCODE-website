@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { DEMO_LIMITS, EXAMPLES, type EmailCheckResult } from '@/lib/emailCheck';
 import { SITE } from '@/lib/site';
+import { track } from '@/lib/analytics';
 
 const ENDPOINT = '/api/email-check';
 
@@ -46,11 +47,7 @@ export default function EmailDemo() {
       } else {
         setResult(data.result);
         setSource('live');
-        try {
-          (window as unknown as { umami?: { track: (n: string) => void } }).umami?.track('demo-live');
-        } catch {
-          /* Tracking blockiert – egal */
-        }
+        track('demo-live');
       }
     } catch {
       setError('Netzwerkfehler – bitte erneut versuchen.');

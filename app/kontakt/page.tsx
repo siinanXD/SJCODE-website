@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import KontaktForm from '@/components/KontaktForm';
 import { REVIEW_STATS } from '@/components/reviewsData';
+import { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Kontakt – Projekt anfragen, Antwort in 24 Stunden | SJCODE',
@@ -23,13 +24,7 @@ export const metadata: Metadata = {
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Kontakt', item: `${SITE.url}/kontakt.html` },
-      ],
-    },
+    breadcrumbJsonLd([{ name: 'Kontakt', href: '/kontakt.html' }]),
     {
       '@type': 'ContactPage',
       url: `${SITE.url}/kontakt.html`,
@@ -96,7 +91,7 @@ export default function KontaktPage() {
               <li>
                 <strong>Bewertungen</strong>
                 <span>
-                  {REVIEW_STATS.average.toFixed(1).replace('.', ',')} ★ · {REVIEW_STATS.count} auf
+                  {REVIEW_STATS.averageLabel} ★ · {REVIEW_STATS.count} auf
                   Google
                 </span>
               </li>

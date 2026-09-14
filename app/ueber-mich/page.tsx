@@ -7,6 +7,7 @@ import CookieBanner from '@/components/CookieBanner';
 import StickyCta from '@/components/StickyCta';
 import Reviews from '@/components/Reviews';
 import CtaBand from '@/components/CtaBand';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Über mich – Sinan Kahraman, Softwareentwickler & AI Engineer aus Euskirchen | SJCODE',
@@ -24,13 +25,7 @@ export const metadata: Metadata = {
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Über mich', item: `${SITE.url}/ueber-mich.html` },
-      ],
-    },
+    breadcrumbJsonLd([{ name: 'Über mich', href: '/ueber-mich.html' }]),
     {
       '@type': 'ProfilePage',
       mainEntity: {
@@ -123,11 +118,7 @@ export default function UeberMichPage() {
       <main id="main" tabIndex={-1}>
         <section className="about-hero container">
           <div className="about-text">
-            <nav className="breadcrumb rise rise-1" aria-label="Brotkrumen">
-              <a href="/index.html">Start</a>
-              <span aria-hidden="true">/</span>
-              <span aria-current="page">Über mich</span>
-            </nav>
+            <Breadcrumb items={[{ name: 'Über mich' }]} />
             <p className="eyebrow rise rise-1">Über mich</p>
             <h1 className="rise rise-2">Zehn Jahre Betriebstechnik. Dann kam die Software.</h1>
             <p className="lede rise rise-3">

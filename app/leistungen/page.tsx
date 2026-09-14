@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE } from '@/lib/site';
-import { SERVICES, serviceUrl } from '@/lib/services';
+import { SERVICES, getService, serviceUrl } from '@/lib/services';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -24,13 +25,7 @@ export const metadata: Metadata = {
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-        { '@type': 'ListItem', position: 2, name: 'Leistungen', item: `${SITE.url}/leistungen.html` },
-      ],
-    },
+    breadcrumbJsonLd([{ name: 'Leistungen', href: '/leistungen.html' }]),
     {
       '@type': 'ItemList',
       name: 'Leistungen von SJCODE',
@@ -44,48 +39,63 @@ const JSON_LD = {
   ],
 };
 
+/** Link zur Detailseite anhand des Slugs – bricht beim Build, wenn der Slug nicht existiert. */
+const svc = (slug: string) => {
+  const s = getService(slug);
+  if (!s) throw new Error(`Unbekannte Leistung: ${slug}`);
+  return serviceUrl(s);
+};
+
+/** Frühere Anker (#web, #ai, …) aus alten Links und Zitaten weiter bedienen. */
+const LEGACY_IDS: Record<string, string> = {
+  webseiten: 'web',
+  'ki-automatisierung': 'ai',
+  'individuelle-software': 'software',
+  'email-automatisierung': 'email',
+};
+
 const EXAMPLES = [
   {
     who: 'Handwerk & Dienstleister',
     title: 'Das volle Postfach',
     before: '45 Minuten täglich Mails sortieren – wichtige Anfragen gehen zwischen Werbung und Rechnungen unter.',
     after: 'Anfragen, Aufträge und Belege sind automatisch vorsortiert, für Standardfragen liegt ein Antwortentwurf bereit. Sie geben nur noch frei.',
-    href: '/leistungen/email-automatisierung.html',
+    href: svc('email-automatisierung'),
   },
   {
     who: 'Handwerk',
     title: 'Angebote am Feierabend',
     before: 'Nach der Baustelle Aufmaße abtippen und Angebote in Word zusammenbauen – der Kunde wartet tagelang.',
     after: 'Eckdaten eingeben, fertiges Angebot als PDF im eigenen Design – noch am selben Tag beim Kunden.',
-    href: '/leistungen/individuelle-software.html',
+    href: svc('individuelle-software'),
   },
   {
     who: 'Dienstleister & Praxen',
     title: 'Geplatzte Termine',
     before: 'Kunden vergessen Termine, das Team telefoniert hinterher – jede Lücke kostet bares Geld.',
     after: 'Bestätigung und Erinnerung gehen automatisch raus. Spürbar weniger Ausfälle, kein Hinterhertelefonieren.',
-    href: '/leistungen/ki-automatisierung.html',
+    href: svc('ki-automatisierung'),
   },
   {
     who: 'Selbständige',
     title: 'Belege fürs Steuerbüro',
     before: 'Am Monatsende Rechnungen aus Mails, Downloads und Handyfotos zusammensuchen.',
     after: 'Belege werden automatisch erkannt, einheitlich benannt und gebündelt ans Steuerbüro übergeben.',
-    href: '/leistungen/ki-automatisierung.html',
+    href: svc('ki-automatisierung'),
   },
   {
     who: 'Kleine & mittlere Unternehmen',
     title: 'Wissen steckt in Köpfen',
     before: 'Neue Mitarbeiter fragen dreimal täglich nach Preislisten, Abläufen und alten Angeboten.',
     after: 'Ein interner Assistent beantwortet Fragen direkt aus Ihren eigenen Unterlagen – sofort, rund um die Uhr.',
-    href: '/leistungen/ki-automatisierung.html',
+    href: svc('ki-automatisierung'),
   },
   {
     who: 'Privatpersonen & Vereine',
     title: 'Der eigene Auftritt',
     before: 'Eine Baukasten-Seite, die keiner findet – oder noch gar kein Auftritt im Netz.',
     after: 'Eine schnelle, moderne Website für Ihr Projekt, Ihren Verein oder Ihre Bewerbung – zum fairen Festpreis.',
-    href: '/leistungen/webseiten.html',
+    href: svc('webseiten'),
   },
 ];
 
@@ -99,11 +109,7 @@ export default function LeistungenPage() {
       <Header active="leistungen" />
       <main id="main" tabIndex={-1}>
         <section className="page-head container">
-          <nav className="breadcrumb rise rise-1" aria-label="Brotkrumen">
-            <a href="/index.html">Start</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Leistungen</span>
-          </nav>
+          <Breadcrumb items={[{ name: 'Leistungen' }]} />
           <h1 className="rise rise-2">Womit ich Ihnen helfen kann</h1>
           <p className="lede rise rise-3">
             Von der schnellen Website bis zur KI-gestützten Automatisierung – immer mit dem Ziel,
@@ -115,6 +121,7 @@ export default function LeistungenPage() {
         <section className="service-grid container">
           {SERVICES.map((s) => (
             <article key={s.slug} id={s.slug} className="service-card reveal">
+              {LEGACY_IDS[s.slug] && <span id={LEGACY_IDS[s.slug]} aria-hidden="true" />}
               <div className="num">{s.num}</div>
               <h2>
                 <a href={serviceUrl(s)}>{s.title}</a>

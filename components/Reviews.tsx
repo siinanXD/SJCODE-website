@@ -39,7 +39,7 @@ const REVIEWS_SCHEMA =
     : null;
 
 export default function Reviews({ withSchema = true }: { withSchema?: boolean }) {
-  const { count, average } = REVIEW_STATS;
+  const { count, average, averageLabel } = REVIEW_STATS;
 
   return (
     <section className="section reviews">
@@ -59,7 +59,7 @@ export default function Reviews({ withSchema = true }: { withSchema?: boolean })
             <div className="reviews-summary">
               <Stars rating={average} />
               <span>
-                <strong>{average.toFixed(1).replace('.', ',')}</strong> · {count}{' '}
+                <strong>{averageLabel}</strong> · {count}{' '}
                 {count === 1 ? 'Bewertung' : 'Bewertungen'} auf Google
               </span>
             </div>

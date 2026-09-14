@@ -3,17 +3,10 @@
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { QUESTIONS, evaluate, type CheckResult } from '@/lib/automationCheck';
 import { SITE } from '@/lib/site';
+import { track } from '@/lib/analytics';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mojorgeb';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const track = (name: string, data?: object) => {
-  try {
-    (window as unknown as { umami?: { track: (n: string, d?: object) => void } }).umami?.track(name, data);
-  } catch {
-    /* Tracking blockiert – egal */
-  }
-};
 
 /**
  * Sechs Fragen, eine Minute: Wie viel Zeit steckt in Handarbeit, und was

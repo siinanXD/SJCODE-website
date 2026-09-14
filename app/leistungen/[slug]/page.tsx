@@ -12,6 +12,7 @@ import CtaBand from '@/components/CtaBand';
 import Reviews from '@/components/Reviews';
 import EmailDemoSection from '@/components/EmailDemoSection';
 import AutomationCheck from '@/components/AutomationCheck';
+import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 /**
  * Eine Detailseite pro Leistung – eigene URL, eigener Titel, eigenes Schema.
@@ -47,14 +48,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Start', item: `${SITE.url}/` },
-          { '@type': 'ListItem', position: 2, name: 'Leistungen', item: `${SITE.url}/leistungen.html` },
-          { '@type': 'ListItem', position: 3, name: s.title, item: url },
-        ],
-      },
+      breadcrumbJsonLd([{ name: 'Leistungen', href: '/leistungen.html' }, { name: s.title, href: serviceUrl(s) }]),
       {
         '@type': 'Service',
         '@id': `${url}#service`,
@@ -101,13 +95,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       <Header active="leistungen" />
       <main id="main" tabIndex={-1}>
         <section className="service-hero container">
-          <nav className="breadcrumb rise rise-1" aria-label="Brotkrumen">
-            <a href="/index.html">Start</a>
-            <span aria-hidden="true">/</span>
-            <a href="/leistungen.html">Leistungen</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">{s.title}</span>
-          </nav>
+          <Breadcrumb items={[{ name: 'Leistungen', href: '/leistungen.html' }, { name: s.title }]} />
           <div className="service-hero-grid">
             <div>
               <p className="eyebrow rise rise-1">
