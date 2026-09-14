@@ -2949,3 +2949,138 @@ a.example-card {
   line-height: 1.65;
   white-space: pre-line;
 }
+
+/* ------------------------- Automatisierungs-Check ------------------------- */
+
+.check-teaser {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: clamp(28px, 4vw, 44px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.check-teaser:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+}
+.check-teaser h2 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.check-teaser p:last-child {
+  margin: 0;
+  max-width: 600px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.check-teaser .eyebrow {
+  margin-bottom: 10px;
+}
+
+.check-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .check-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.wizard.check .pill-row {
+  gap: 10px;
+}
+.wizard.check .pill {
+  color: var(--ink);
+}
+.wizard.check .pill.on {
+  color: var(--accent);
+}
+.check-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+.check-stats > div {
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.check-stats strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.check-stats small {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.potential-hoch {
+  color: var(--accent);
+}
+.check-text {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+.check-reco {
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.check-reco strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: var(--announce-ink);
+}
+.check-reco p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.check-mail {
+  display: grid;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+}
+.check-mail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.check-mail-row input {
+  flex: 1 1 200px;
+}
+.check-sent {
+  margin: 0;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 15px;
+  color: var(--ink);
+}
+.wizard.check .rv-more {
+  justify-self: start;
+  color: var(--muted);
+  font-weight: 500;
+}

@@ -13,6 +13,11 @@
 - [Individuelle Software](https://sjcode.de/leistungen/individuelle-software.html): Kleine Tools, interne Apps, API-Integrationen. Ab 1.500 € oder 95 €/Stunde.
 - [E-Mail-Automatisierung](https://sjcode.de/leistungen/email-automatisierung.html): Postfach sortieren, Daten extrahieren, Antwortentwürfe – Versand nur nach menschlicher Freigabe. Microsoft 365, Gmail, IMAP.
 
+## Kostenlose Werkzeuge
+
+- [Automatisierungs-Check](https://sjcode.de/automatisierungs-check.html): Sechs Fragen, eine Minute – geschätzte automatisierbare Stunden pro Monat und Empfehlung. Ohne Anmeldung.
+- Live-Demo E-Mail-Check auf der Startseite: KI ordnet eine Mail ein, zieht Daten heraus und schreibt einen Antwortentwurf.
+
 ## Preise
 
 - [Preise & Pakete](https://sjcode.de/preise.html): Website Starter ab 1.900 €, Website Business ab 3.900 €, KI-Automatisierung ab 2.500 €, Betreuung ab 89 €/Monat. Alle Preise netto, Festpreis-Angebot nach kostenlosem Erstgespräch.

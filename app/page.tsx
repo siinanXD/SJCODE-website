@@ -434,6 +434,22 @@ export default function HomePage() {
         </section>
 
         <section className="section">
+          <div className="container reveal">
+            <a href="/automatisierungs-check.html" className="check-teaser" data-umami-event="check-teaser">
+              <div>
+                <p className="eyebrow">Kostenloser Automatisierungs-Check</p>
+                <h2>Wie viel Zeit steckt in Ihrer Handarbeit?</h2>
+                <p>
+                  Sechs Fragen, eine Minute – Sie sehen sofort, wie viele Stunden im Monat sich
+                  automatisieren lassen und womit Sie anfangen sollten. Ohne Anmeldung.
+                </p>
+              </div>
+              <span className="btn btn-primary">Check starten →</span>
+            </a>
+          </div>
+        </section>
+
+        <section className="section">
           <div className="container">
             <div className="section-head reveal">
               <div>

@@ -29,6 +29,8 @@ Preise, Über mich, Kontakt). Die CSS-Tokens in `app/globals.css` entsprechen de
 | Leistungen (Texte, Preise, FAQ der 4 Detailseiten) | `lib/services.ts` |
 | Pakete & Preise, Preis-FAQ | `lib/pricing.ts` |
 | Google-Bewertungen | `components/reviewsData.ts` |
+| Automatisierungs-Check (Fragen, Rechenlogik) | `lib/automationCheck.ts` |
+| Live-Demo (Beispiele, Limits, Prompt) | `lib/emailCheck.ts` |
 | Werdegang, Arbeitsweise | `app/ueber-mich/page.tsx` |
 
 ## Entwicklung

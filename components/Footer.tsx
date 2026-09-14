@@ -33,6 +33,7 @@ export default function Footer({
                 {s.title}
               </a>
             ))}
+            <a href="/automatisierungs-check.html">Automatisierungs-Check (kostenlos)</a>
           </nav>
           <nav aria-label="Unternehmen">
             <h2>Unternehmen</h2>

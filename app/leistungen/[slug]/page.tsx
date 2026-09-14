@@ -11,6 +11,7 @@ import FaqList from '@/components/FaqList';
 import CtaBand from '@/components/CtaBand';
 import Reviews from '@/components/Reviews';
 import EmailDemoSection from '@/components/EmailDemoSection';
+import AutomationCheck from '@/components/AutomationCheck';
 
 /**
  * Eine Detailseite pro Leistung – eigene URL, eigener Titel, eigenes Schema.
@@ -225,6 +226,25 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             title="Probieren Sie es aus: Die KI liest Ihre Mail."
             text="Genau so arbeitet die Automatisierung, die Sie hier bekommen. Beispiel laden oder eigenen Text einfügen – die KI ordnet ein, zieht Daten heraus und schreibt einen Entwurf."
           />
+        )}
+
+        {s.slug === 'ki-automatisierung' && (
+          <section className="section">
+            <div className="container">
+              <div className="check-grid reveal">
+                <div>
+                  <p className="eyebrow">Kostenloser Automatisierungs-Check</p>
+                  <h2 className="section-title">Lohnt sich das bei Ihnen?</h2>
+                  <p className="section-sub">
+                    Sechs Fragen, eine Minute. Sie sehen sofort, wie viele Stunden im Monat in
+                    Handarbeit stecken und was davon automatisierbar ist – ehrlich auch dann, wenn
+                    es sich noch nicht lohnt.
+                  </p>
+                </div>
+                <AutomationCheck />
+              </div>
+            </div>
+          </section>
         )}
 
         <FaqList faqs={s.faqs} title={`Häufige Fragen zu ${s.title}`} />

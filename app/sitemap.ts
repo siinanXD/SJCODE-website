@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/leistungen.html', priority: 0.9, changeFrequency: 'monthly' },
     ...SERVICES.map((s) => ({ path: serviceUrl(s), priority: 0.9, changeFrequency: 'monthly' as const })),
     { path: '/preise.html', priority: 0.8, changeFrequency: 'monthly' },
+    { path: '/automatisierungs-check.html', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/referenz.html', priority: 0.7, changeFrequency: 'monthly' },
     { path: '/ueber-mich.html', priority: 0.7, changeFrequency: 'monthly' },
     { path: '/kontakt.html', priority: 0.8, changeFrequency: 'monthly' },
