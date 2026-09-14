@@ -51,6 +51,7 @@ export default function KontaktForm() {
   const [phone, setPhone] = useState('');
   const [msg, setMsg] = useState('');
   const [botField, setBotField] = useState(''); // Honeypot – für Menschen unsichtbar
+  const [pkg, setPkg] = useState(''); // optional: vorausgewähltes Paket (?paket=...)
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -60,7 +61,9 @@ export default function KontaktForm() {
   const didMount = useRef(false);
   const draftLoaded = useRef(false);
 
-  // Entwurf laden (nur die Auswahl, keine persönlichen Daten).
+  // Entwurf laden (nur die Auswahl, keine persönlichen Daten) – und danach
+  // eine Vorauswahl aus der URL übernehmen (Links von Leistungs-/Preisseiten:
+  // /kontakt.html?thema=Website&paket=business). Die URL gewinnt gegen den Entwurf.
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
@@ -73,6 +76,19 @@ export default function KontaktForm() {
       }
     } catch {
       /* localStorage evtl. blockiert – dann eben ohne Entwurf */
+    }
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const thema = params.get('thema');
+      if (thema) {
+        const match = CHIP_OPTIONS.find((o) => o.toLowerCase() === thema.toLowerCase());
+        setTopics(match ? [match] : ['Weiß ich noch nicht']);
+        if (!match) setMsg((m) => m || `Thema: ${thema}\n`);
+      }
+      const paket = params.get('paket');
+      if (paket) setPkg(paket);
+    } catch {
+      /* kein window (SSR) oder ungültige URL – ignorieren */
     }
     draftLoaded.current = true;
   }, []);
@@ -113,7 +129,14 @@ export default function KontaktForm() {
   const toggleSingle = (setter: (v: string) => void, current: string) => (label: string) =>
     setter(current === label ? '' : label);
 
-  const summary = [topics.join(', '), situation, timeline, budget].filter(Boolean).join(' · ');
+  const PKG_LABELS: Record<string, string> = {
+    starter: 'Paket: Website Starter',
+    business: 'Paket: Website Business',
+    automation: 'Paket: KI-Automatisierung',
+  };
+  const summary = [PKG_LABELS[pkg], topics.join(', '), situation, timeline, budget]
+    .filter(Boolean)
+    .join(' · ');
   const step1Incomplete = step === 1 && topics.length === 0;
 
   const reset = () => {
@@ -158,6 +181,7 @@ export default function KontaktForm() {
           ausgangslage: situation || '–',
           zeitrahmen: timeline || '–',
           budget: budget || '–',
+          paket: pkg || '–',
           _subject: 'Neue Projektanfrage über sjcode.de',
         }),
       });

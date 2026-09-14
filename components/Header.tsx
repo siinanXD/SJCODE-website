@@ -1,13 +1,15 @@
 import ThemeToggle from './ThemeToggle';
+import { SITE } from '@/lib/site';
 
 const NAV_ITEMS = [
-  { href: '/index.html', label: 'Start', key: 'start' },
   { href: '/leistungen.html', label: 'Leistungen', key: 'leistungen' },
+  { href: '/preise.html', label: 'Preise', key: 'preise' },
   { href: '/referenz.html', label: 'Referenz', key: 'referenz' },
+  { href: '/ueber-mich.html', label: 'Über mich', key: 'ueber-mich' },
   { href: '/kontakt.html', label: 'Kontakt', key: 'kontakt' },
 ] as const;
 
-export type NavKey = (typeof NAV_ITEMS)[number]['key'] | 'none';
+export type NavKey = (typeof NAV_ITEMS)[number]['key'] | 'start' | 'none';
 
 export default function Header({ active }: { active: NavKey }) {
   const current = (key: string) => (key === active ? 'page' : undefined);
@@ -18,7 +20,7 @@ export default function Header({ active }: { active: NavKey }) {
         Persönliche Antwort innerhalb von 24 Stunden · Erstgespräch kostenlos
       </div>
       <div className="container nav-row">
-        <a href="/index.html" className="brand">
+        <a href="/index.html" className="brand" aria-label="SJCODE – zur Startseite">
           SJCODE<span>.</span>
         </a>
         <nav className="nav-links" aria-label="Hauptnavigation">
@@ -31,6 +33,9 @@ export default function Header({ active }: { active: NavKey }) {
         <details id="mobilemenu">
           <summary aria-label="Menü" />
           <div className="mobile-panel">
+            <a href="/index.html" aria-current={current('start')}>
+              Start
+            </a>
             {NAV_ITEMS.map((item) => (
               <a key={item.key} href={item.href} aria-current={current(item.key)}>
                 {item.label}
@@ -46,7 +51,7 @@ export default function Header({ active }: { active: NavKey }) {
         {active === 'kontakt' ? (
           <a
             className="header-cta btn-outline"
-            href="https://calendly.com/sjcode"
+            href={SITE.calendly}
             target="_blank"
             rel="noopener noreferrer"
           >
