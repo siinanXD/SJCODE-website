@@ -39,6 +39,22 @@ npm run dev      # http://localhost:3000
 npm run build    # statischer Export nach ./out
 ```
 
+## Live-Demo „E-Mail-Check“ (Netlify Function)
+
+`netlify/functions/email-check.mts` ruft OpenAI (`gpt-4o-mini`) auf und ist unter
+`/api/email-check` erreichbar. Kostenschutz: 2 Auswertungen pro IP und Tag, 150 pro Tag
+insgesamt, Zähler in Netlify Blobs (Store `email-demo`), Grenzen in `lib/emailCheck.ts`.
+
+Umgebungsvariablen in Netlify (Site configuration → Environment variables):
+
+| Variable | Zweck |
+|---|---|
+| `OPENAI_API_KEY` | API-Schlüssel. Im OpenAI-Konto zusätzlich ein monatliches Spending-Limit setzen. |
+| `DEMO_SALT` | Zufällige Zeichenkette als Salz für den IP-Hash. |
+
+Ohne Schlüssel antwortet die Demo mit „nicht verfügbar“; die Beispiele funktionieren immer.
+Lokal testen: `npx netlify dev` (nutzt `.env` für die Variablen, niemals committen).
+
 ## Deployment
 
 Netlify baut automatisch bei jedem Push auf `main` (siehe `netlify.toml`:

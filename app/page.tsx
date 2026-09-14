@@ -13,6 +13,7 @@ import PricingCards from '@/components/PricingCards';
 import Reviews from '@/components/Reviews';
 import FaqList from '@/components/FaqList';
 import CtaBand from '@/components/CtaBand';
+import EmailDemoSection from '@/components/EmailDemoSection';
 import { REVIEW_STATS } from '@/components/reviewsData';
 
 export const metadata: Metadata = {
@@ -356,7 +357,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section on-surface">
+        <EmailDemoSection />
+
+        <section className="section">
           <div className="container reveal">
             <div className="case-split">
               <div>

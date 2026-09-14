@@ -64,6 +64,19 @@ export default function DatenschutzPage() {
             Wenn Sie das nicht möchten, nutzen Sie bitte E-Mail oder das Anfrageformular.
           </p>
           <p>
+            <strong>4b. Live-Demo „E-Mail-Check“</strong>
+            <br />
+            Wenn Sie in der Demo einen eigenen Text auswerten lassen, wird dieser Text einmalig an
+            OpenAI (OpenAI Ireland Ltd., Irland; Verarbeitung ggf. in den USA auf Grundlage der
+            EU-Standardvertragsklauseln) übermittelt, um Kategorie, Daten und einen Antwortentwurf
+            zu erzeugen. Der Text wird von mir nicht gespeichert; OpenAI nutzt API-Daten nach
+            eigenen Angaben nicht zum Training. Bitte fügen Sie keine echten personenbezogenen
+            Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich für zwei Tage einen
+            gesalzenen Hash Ihrer IP-Adresse mit einem Zähler, aus dem die IP-Adresse nicht
+            wiederherstellbar ist. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
+            der Demo (Art. 6 Abs. 1 lit. a DSGVO); die Beispiele funktionieren ohne Übermittlung.
+          </p>
+          <p>
             <strong>5. Reichweitenmessung (Umami)</strong>
             <br />
             Diese Website nutzt Umami Cloud (Umami Software, Inc.), einen datenschutzfreundlichen

@@ -10,6 +10,7 @@ import StickyCta from '@/components/StickyCta';
 import FaqList from '@/components/FaqList';
 import CtaBand from '@/components/CtaBand';
 import Reviews from '@/components/Reviews';
+import EmailDemoSection from '@/components/EmailDemoSection';
 
 /**
  * Eine Detailseite pro Leistung – eigene URL, eigener Titel, eigenes Schema.
@@ -218,6 +219,13 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
             </div>
           </div>
         </section>
+
+        {(s.slug === 'ki-automatisierung' || s.slug === 'email-automatisierung') && (
+          <EmailDemoSection
+            title="Probieren Sie es aus: Die KI liest Ihre Mail."
+            text="Genau so arbeitet die Automatisierung, die Sie hier bekommen. Beispiel laden oder eigenen Text einfügen – die KI ordnet ein, zieht Daten heraus und schreibt einen Entwurf."
+          />
+        )}
 
         <FaqList faqs={s.faqs} title={`Häufige Fragen zu ${s.title}`} />
 

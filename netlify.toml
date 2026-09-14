@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "out"
 
+# Serverless-Funktionen (Live-Demo E-Mail-Check, erreichbar unter /api/email-check).
+# Benötigt die Umgebungsvariablen OPENAI_API_KEY und DEMO_SALT in Netlify.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Sicherheits-Header für alle Seiten
 [[headers]]
   for = "/*"
