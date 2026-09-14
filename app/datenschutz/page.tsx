@@ -55,6 +55,29 @@ export default function DatenschutzPage() {
             Nutzung gelten die Datenschutzhinweise von Calendly.
           </p>
           <p>
+            <strong>4a. Kontakt per Telefon und WhatsApp</strong>
+            <br />
+            Wenn Sie mich anrufen oder über WhatsApp kontaktieren, verarbeite ich Ihre Angaben
+            (Rufnummer, Name, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage (Art. 6 Abs.
+            1 lit. b DSGVO). Bei WhatsApp (WhatsApp Ireland Ltd., Irland) gelten zusätzlich dessen
+            Datenschutzhinweise; Metadaten der Kommunikation können an Meta übermittelt werden.
+            Wenn Sie das nicht möchten, nutzen Sie bitte E-Mail oder das Anfrageformular.
+          </p>
+          <p>
+            <strong>4b. Live-Demo „E-Mail-Check“</strong>
+            <br />
+            Wenn Sie in der Demo einen eigenen Text auswerten lassen, wird dieser Text einmalig an
+            OpenAI (OpenAI Ireland Ltd., Irland; Verarbeitung ggf. in den USA auf Grundlage der
+            EU-Standardvertragsklauseln) übermittelt, um Kategorie, Daten und einen Antwortentwurf
+            zu erzeugen. Der Text wird von mir nicht gespeichert; OpenAI nutzt API-Daten nach
+            eigenen Angaben nicht zum Training. Bitte fügen Sie keine echten personenbezogenen
+            Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich einen gesalzenen Hash Ihrer
+            IP-Adresse mit einem Zähler; diese Einträge werden durch eine tägliche automatische
+            Bereinigung spätestens nach 72 Stunden gelöscht, und die IP-Adresse ist daraus nicht
+            wiederherstellbar. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
+            der Demo (Art. 6 Abs. 1 lit. a DSGVO); die Beispiele funktionieren ohne Übermittlung.
+          </p>
+          <p>
             <strong>5. Reichweitenmessung (Umami)</strong>
             <br />
             Diese Website nutzt Umami Cloud (Umami Software, Inc.), einen datenschutzfreundlichen

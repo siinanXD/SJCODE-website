@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
+import { track } from '@/lib/analytics';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mojorgeb';
 const DRAFT_KEY = 'sjcode-form-draft';
@@ -11,8 +12,22 @@ const CHIP_OPTIONS = [
   'KI / Automatisierung',
   'Individuelle Software',
   'E-Mail-Automatisierung',
+  'Betreuung / Wartung',
   'Weiß ich noch nicht',
 ];
+
+/**
+ * URL-Wert (?thema=…) einer Option zuordnen: exakt, sonst über den Anfang
+ * („Betreuung“ → „Betreuung / Wartung“). Unbekannte Werte fallen auf
+ * „Weiß ich noch nicht“ zurück und landen als Hinweis in der Beschreibung.
+ */
+const matchTopic = (thema: string) => {
+  const t = thema.trim().toLowerCase();
+  return (
+    CHIP_OPTIONS.find((o) => o.toLowerCase() === t) ??
+    CHIP_OPTIONS.find((o) => o.toLowerCase().startsWith(t) || t.startsWith(o.toLowerCase()))
+  );
+};
 const SITUATION_OPTIONS = ['Neu starten', 'Bestehendes verbessern', 'Etwas Vorhandenes ersetzen'];
 const TIMELINE_OPTIONS = ['So schnell wie möglich', 'In 1–3 Monaten', 'Flexibel'];
 const BUDGET_OPTIONS = ['Bis 3.000 €', '3.000–10.000 €', 'Über 10.000 €', 'Noch unklar'];
@@ -51,6 +66,7 @@ export default function KontaktForm() {
   const [phone, setPhone] = useState('');
   const [msg, setMsg] = useState('');
   const [botField, setBotField] = useState(''); // Honeypot – für Menschen unsichtbar
+  const [pkg, setPkg] = useState(''); // optional: vorausgewähltes Paket (?paket=...)
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -60,7 +76,9 @@ export default function KontaktForm() {
   const didMount = useRef(false);
   const draftLoaded = useRef(false);
 
-  // Entwurf laden (nur die Auswahl, keine persönlichen Daten).
+  // Entwurf laden (nur die Auswahl, keine persönlichen Daten) – und danach
+  // eine Vorauswahl aus der URL übernehmen (Links von Leistungs-/Preisseiten:
+  // /kontakt.html?thema=Website&paket=business). Die URL gewinnt gegen den Entwurf.
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
@@ -73,6 +91,19 @@ export default function KontaktForm() {
       }
     } catch {
       /* localStorage evtl. blockiert – dann eben ohne Entwurf */
+    }
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const thema = params.get('thema');
+      if (thema) {
+        const match = matchTopic(thema);
+        setTopics(match ? [match] : ['Weiß ich noch nicht']);
+        if (!match) setMsg((m) => m || `Thema: ${thema}\n`);
+      }
+      const paket = params.get('paket');
+      if (paket) setPkg(paket);
+    } catch {
+      /* kein window (SSR) oder ungültige URL – ignorieren */
     }
     draftLoaded.current = true;
   }, []);
@@ -113,7 +144,14 @@ export default function KontaktForm() {
   const toggleSingle = (setter: (v: string) => void, current: string) => (label: string) =>
     setter(current === label ? '' : label);
 
-  const summary = [topics.join(', '), situation, timeline, budget].filter(Boolean).join(' · ');
+  const PKG_LABELS: Record<string, string> = {
+    starter: 'Paket: Website Starter',
+    business: 'Paket: Website Business',
+    automation: 'Paket: KI-Automatisierung',
+  };
+  const summary = [PKG_LABELS[pkg], topics.join(', '), situation, timeline, budget]
+    .filter(Boolean)
+    .join(' · ');
   const step1Incomplete = step === 1 && topics.length === 0;
 
   const reset = () => {
@@ -158,12 +196,17 @@ export default function KontaktForm() {
           ausgangslage: situation || '–',
           zeitrahmen: timeline || '–',
           budget: budget || '–',
+          paket: pkg || '–',
           _subject: 'Neue Projektanfrage über sjcode.de',
         }),
       });
       if (!res.ok) throw new Error('send failed');
       clearDraft();
-      setSubmitted(true);
+      // Conversion-Ereignis (Umami) und Weiterleitung auf die Danke-Seite –
+      // eine eigene URL lässt sich in Umami/Google Ads als Ziel messen.
+      track('anfrage-gesendet', { themen: topics.join(', ') || '–', paket: pkg || '–' });
+      window.location.assign('/danke.html');
+      return;
     } catch {
       setError(true);
     } finally {

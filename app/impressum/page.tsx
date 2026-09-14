@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Impressum – SJCODE',
@@ -31,7 +32,9 @@ export default function ImpressumPage() {
           <p>
             <strong>Kontakt</strong>
             <br />
-            E-Mail: kontakt@sjcode.de
+            E-Mail: {SITE.email}
+            <br />
+            Telefon: <a href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
           </p>
           <p>
             <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>
