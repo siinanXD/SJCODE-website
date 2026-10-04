@@ -62,7 +62,7 @@ Lokal testen: `npx netlify dev` (nutzt `.env` für die Variablen, niemals commit
 
 ## Pull Requests
 
-Jeder PR wird automatisch geprüft (CI, `pr-title`, `merge-gate`). PRs mit `risk:low` oder `risk:medium` mergen von selbst, sobald alle Checks grün sind. `risk:high` wartet auf das Label `freigegeben`. Details: `AGENTS.md`, Abschnitt „Pull Requests und Merge“.
+Jeder PR wird automatisch geprüft (CI, `pr-title`, `merge-gate`). PRs mit `risk:low` oder `risk:medium` mergen von selbst, sobald alle Checks grün sind. `risk:high` wartet auf das Label `freigegeben`. Details: `AGENTS.md`, Abschnitt „Pull Requests und Merge“. Hat Cursor kein Guthaben, übernimmt Claude: `@claude` in einem Issue-Kommentar oder Label `claude`.
 
 ## Deployment
 
