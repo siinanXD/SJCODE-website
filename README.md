@@ -60,6 +60,10 @@ löscht Zähler, die älter als gestern sind – so gilt die Löschfrist aus der
 auch ohne weitere Demo-Aufrufe.
 Lokal testen: `npx netlify dev` (nutzt `.env` für die Variablen, niemals committen).
 
+## Pull Requests
+
+Jeder PR wird automatisch geprüft (CI, `pr-title`, `merge-gate`). PRs mit `risk:low` oder `risk:medium` mergen von selbst, sobald alle Checks grün sind. `risk:high` wartet auf das Label `freigegeben`. Details: `AGENTS.md`, Abschnitt „Pull Requests und Merge“.
+
 ## Deployment
 
 Netlify baut automatisch bei jedem Push auf `main` (siehe `netlify.toml`:
