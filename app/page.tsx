@@ -116,7 +116,7 @@ const WORKFLOW = [
 const VALUES = [
   {
     title: 'Auf Augenhöhe, ohne Fachchinesisch',
-    text: `${PROOF.yearsIndustry} Jahre Betriebstechnik heißt: Ich weiß, wie Instandhaltung und Störungssuche in der Praxis aussehen – nicht nur auf Folien. Wir reden über Ihr Problem, nicht über Frameworks.`,
+    text: `${PROOF.yearsIndustry} Jahre Berufserfahrung in der Betriebstechnik heißt: Ich weiß, wie Instandhaltung und Störungssuche in der Praxis aussehen – nicht nur auf Folien. Wir reden über Ihr Problem, nicht über Frameworks.`,
   },
   {
     title: 'Ich vereinfache gern',
@@ -195,8 +195,8 @@ export default function HomePage() {
               Ich mache sie findbar – mit Quelle.
             </h1>
             <p className="lede rise rise-3">
-              Ich bin Sinan – erst Elektroniker für Betriebstechnik ({PROOF.yearsIndustry} Jahre
-              Industriepraxis), heute AI Engineer. Ich mache technische Doku, SPS-Exporte und
+              Ich bin Sinan – erst Elektroniker für Betriebstechnik (3,5 Jahre Ausbildung und fast{' '}
+              {PROOF.yearsIndustry} Jahre in der Instandhaltung), heute AI Engineer. Ich mache technische Doku, SPS-Exporte und
               Wartungswissen durchsuchbar. Sie fragen, die KI antwortet und zeigt, woher die
               Antwort kommt.
             </p>

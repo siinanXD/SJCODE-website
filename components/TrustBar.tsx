@@ -5,7 +5,7 @@ import { REVIEW_STATS } from './reviewsData';
 export default function TrustBar() {
   const items = [
     { big: `${REVIEW_STATS.averageLabel} ★`, small: `Google · ${REVIEW_STATS.count} Bewertungen` },
-    { big: `${PROOF.yearsIndustry} Jahre`, small: 'Industriepraxis' },
+    { big: `${PROOF.yearsIndustry} Jahre`, small: 'Berufserfahrung' },
     { big: PROOF.responseTime, small: 'persönliche Antwort' },
     { big: PROOF.testsInReference, small: 'automatisierte Tests im Referenzprojekt' },
     { big: '0 €', small: 'Erstgespräch & Einschätzung' },

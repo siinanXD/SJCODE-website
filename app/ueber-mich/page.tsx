@@ -123,7 +123,7 @@ export default function UeberMichPage() {
             <h1 className="rise rise-2">Erst Anlagen am Laufen gehalten. Dann KI dafür gebaut.</h1>
             <p className="lede rise rise-3">
               Ich bin {SITE.owner} aus {SITE.city}. Als Elektroniker für Betriebstechnik habe ich{' '}
-              {PROOF.yearsIndustry} Jahre lang Anlagen am Laufen gehalten – und dabei gelernt, wie
+              3,5 Jahre Ausbildung und fast {PROOF.yearsIndustry} Jahre lang Anlagen am Laufen gehalten – und dabei gelernt, wie
               Störungssuche und Instandhaltung in der Praxis wirklich aussehen. Heute baue ich als
               AI Engineer KI, die technische Doku, SPS-Exporte und Wartungswissen durchsuchbar
               macht – mit Quellenbeleg. Websites und Automatisierung für kleine Betriebe biete ich
