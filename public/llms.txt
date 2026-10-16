@@ -8,19 +8,19 @@
 
 ## Leistungen
 
-- [Webseiten-Entwicklung](https://sjcode.de/leistungen/webseiten.html): Websites zum Festpreis ab 1.900 € netto, React/Next.js, mobil-optimiert, SEO-Grundlagen, Impressum & Datenschutz inklusive.
-- [KI-Automatisierung](https://sjcode.de/leistungen/ki-automatisierung.html): E-Mail-Verarbeitung mit LLMs, Assistenten auf eigenen Daten (RAG), Workflow-Automatisierung. Ab 2.500 € nach kostenloser Prozess-Analyse.
-- [Individuelle Software](https://sjcode.de/leistungen/individuelle-software.html): Kleine Tools, interne Apps, API-Integrationen. Ab 1.500 € oder 95 €/Stunde.
-- [E-Mail-Automatisierung](https://sjcode.de/leistungen/email-automatisierung.html): Postfach sortieren, Daten extrahieren, Antwortentwürfe – Versand nur nach menschlicher Freigabe. Microsoft 365, Gmail, IMAP.
+- [Doku-Assistent](https://sjcode.de/leistungen/doku-assistent.html): Handbücher, Wartungsanleitungen und Störungsberichte fragen statt suchen. Antwort mit Dokument und Seite.
+- [Wartungs-Assistent](https://sjcode.de/leistungen/wartungs-assistent.html): Störung eingeben, bekannte Ursachen und Schritte aus der eigenen Historie bekommen, mit Quellen.
+- [Stromlaufplan-KI](https://sjcode.de/leistungen/stromlaufplan-ki.html): Fragen an Stromlaufpläne und STEP-7-Programme, Antwort mit Pfad und Blatt. Mit Live-Demo auf Demo-Daten.
+- [Qualitätsprüfung](https://sjcode.de/leistungen/qualitaetspruefung.html): Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist, vor dem Einsatz.
 
 ## Kostenlose Werkzeuge
 
 - [Automatisierungs-Check](https://sjcode.de/automatisierungs-check.html): Sechs Fragen, eine Minute – geschätzte automatisierbare Stunden pro Monat und Empfehlung. Ohne Anmeldung.
-- Live-Demo E-Mail-Check auf der Startseite: KI ordnet eine Mail ein, zieht Daten heraus und schreibt einen Antwortentwurf.
+- Doku-Check: 30 Minuten, zehn echte Fragen an eines Ihrer Handbücher, Ergebnis als PDF.
 
-## Preise
+## Ablauf und Preise
 
-- [Preise & Pakete](https://sjcode.de/preise.html): Website Starter ab 1.900 €, Website Business ab 3.900 €, KI-Automatisierung ab 2.500 €, Betreuung ab 89 €/Monat. Alle Preise netto, Festpreis-Angebot nach kostenlosem Erstgespräch.
+- [Ablauf](https://sjcode.de/#ablauf): Live-Demo (kostenlos), Doku-Check (kostenlos, 30 Min), Potenzialcheck (1.490 € Festpreis), Pilot (9.900 € Festpreis). Preise zzgl. MwSt.
 
 ## Referenz
 

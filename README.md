@@ -28,8 +28,7 @@ Preise, Über mich, Kontakt). Die CSS-Tokens in `app/globals.css` entsprechen de
 | Was | Wo |
 |---|---|
 | Adresse, E-Mail, Calendly, Social-Links | `lib/site.ts` |
-| Leistungen (Texte, Preise, FAQ der 4 Detailseiten) | `lib/services.ts` |
-| Pakete & Preise, Preis-FAQ | `lib/pricing.ts` |
+| Leistungen (Texte, FAQ der 4 Detailseiten) | `lib/services.ts` |
 | Google-Bewertungen | `components/reviewsData.ts` |
 | Automatisierungs-Check (Fragen, Rechenlogik) | `lib/automationCheck.ts` |
 | Live-Demo (Beispiele, Limits, Prompt) | `lib/emailCheck.ts` |
@@ -75,12 +74,11 @@ Build-Befehl `npm run build`, Veröffentlichungsordner `out`).
 
 ```
 app/              Routen (page.tsx je Seite) + globals.css + layout.tsx
-  leistungen/     Übersicht + [slug]/ Detailseiten (aus lib/services.ts erzeugt)
-  preise/         Pakete, Betreuung, Preis-FAQ
+  leistungen/     [slug]/ Detailseiten -K1 bis -K4 (aus lib/services.ts erzeugt)
   ueber-mich/     Person, Werdegang, Arbeitsweise
-components/       Header, Footer, StickyCta, TrustBar, PricingCards, FaqList, CtaBand,
-                  Reviews(+Carousel), InboxMock, KontaktForm, CookieBanner, ThemeToggle
-lib/              site.ts (Stammdaten), services.ts, pricing.ts, og.ts
+components/       Header, Footer (mit Schriftfeld), StickyCta, TrustBar, FaqList, CtaBand,
+                  Reviews(+Carousel), InboxMock, KontaktForm, CookieBanner
+lib/              site.ts (Stammdaten), services.ts, repos.ts, og.ts
 public/           Fonts, Bilder, robots.txt, llms.txt, Favicon, OG-Bild
 ```
 

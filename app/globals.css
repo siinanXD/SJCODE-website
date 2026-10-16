@@ -3194,3 +3194,44 @@ a.example-card {
 @media (prefers-reduced-motion: reduce) {
   .cx { display: none; }
 }
+
+/* Unterseiten im neuen Stil (SIN-786): gemeinsame Navigation und Footer,
+   Creme/Tinte/Signal-Orange, Geist Mono für Beschriftungen. Keine Animation. */
+body:has(.hm) { background: #f4efe7; }
+.hm-nav-links a[aria-current='page'] { text-decoration: underline; text-decoration-color: #dd7348; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.hm-split-top { align-items: start; }
+.hm-narrow { max-width: 760px; }
+.hm-list { margin: 0; padding-left: 20px; display: grid; gap: 8px; line-height: 1.5; }
+.hm-faq { display: grid; gap: 8px; margin-top: 24px; }
+.hm-faq details { border: 1px solid rgba(33, 30, 25, 0.2); border-radius: 8px; padding: 14px 16px; background: #fff; }
+.hm-faq summary { cursor: pointer; font-weight: 600; }
+.hm-faq p { margin: 12px 0 0; color: #66615a; line-height: 1.55; }
+.hm-circuits .hm-circuit a { color: #1a4099; }
+.hm-footer { background: #1a1816; color: #f4efe7; padding: 56px 0 32px; }
+.hm-footer a { text-decoration: none; }
+.hm-footer a:hover { text-decoration: underline; }
+.hm-footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 32px; }
+.hm-footer-grid p, .hm-footer address { margin: 12px 0 0; font-style: normal; color: #cfc8ba; font-size: 15px; line-height: 1.5; }
+.hm-footer nav { display: grid; gap: 8px; align-content: start; }
+.hm-footer h2 { margin: 0 0 4px; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.04em; font-weight: 500; color: #b8b0a2; text-transform: uppercase; }
+.hm-footer nav a { color: #f4efe7; font-size: 15px; }
+.hm-titleplate { width: 100%; margin-top: 40px; border-collapse: collapse; border: 2px solid #f4efe7; font-family: 'Geist Mono', monospace; font-size: 13px; }
+.hm-titleplate th, .hm-titleplate td { padding: 10px 12px; text-align: left; border: 1px solid rgba(244, 239, 231, 0.4); }
+.hm-titleplate th { color: #b8b0a2; font-weight: 500; }
+.hm-footer-bottom { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; margin-top: 24px; font-size: 14px; color: #b8b0a2; }
+.hm-footer-bottom nav { display: flex; gap: 20px; }
+.hm-footer-bottom nav a { color: #f4efe7; }
+.hm-footer a[aria-current='page'] { text-decoration: underline; }
+@media (max-width: 860px) {
+  .hm-footer-grid { grid-template-columns: 1fr 1fr; }
+  .hm-titleplate th, .hm-titleplate td { display: block; border-width: 0 0 1px; }
+}
+@media (max-width: 520px) {
+  .hm-footer-grid { grid-template-columns: 1fr; }
+}
+
+/* Bestandsseiten (Referenz, Über mich, Kontakt, Rechtliches) liefen unter dem
+   alten fixen Header; die neue Navigation ist sticky und braucht keinen Abstand. */
+.page-head, .kontakt-grid, .legal, .about-hero { padding-top: 56px; }
+.btn-primary { background: #dd7348; color: #1a1816; }
+.eyebrow, .breadcrumb { font-family: 'Geist Mono', monospace; }

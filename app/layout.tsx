@@ -21,13 +21,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de">
+    // Der neue Stil ist Creme/Tinte; die hellen Tokens gelten fest für alle Seiten.
+    <html lang="de" data-theme="light">
       <body>
-        {/* Theme früh setzen – vor dem ersten Paint, damit die Farben
-            nicht aufblitzen. Nutzt gespeicherte Wahl oder Systemeinstellung. */}
-        <Script id="theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=localStorage.getItem('sjcode-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`}
-        </Script>
         <a href="#main" className="skip-link">
           Zum Inhalt springen
         </a>

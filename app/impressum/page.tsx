@@ -6,6 +6,7 @@ import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Impressum – SJCODE',
+  description: 'Impressum und Anbieterkennzeichnung von SJCODE, Sinan Kahraman, Euskirchen.',
   robots: { index: false },
   alternates: { canonical: 'https://sjcode.de/impressum.html' },
 };
