@@ -28,7 +28,7 @@ export const SITE = {
 
 /** Öffentliche Kennzahlen – werden in Trust-Leiste und Hero angezeigt. */
 export const PROOF = {
-  yearsIndustry: '10+',
+  yearsIndustry: '7',
   responseTime: '24 h',
   testsInReference: '276+',
   releasesInReference: '60+',
