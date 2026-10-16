@@ -2,7 +2,9 @@
 
 Impressum und Datenschutz: <https://sjcode.de/impressum.html> · <https://sjcode.de/datenschutz.html>
 
-Website von SJCODE — Softwareentwicklung & AI Engineering für kleine und mittlere Betriebe.
+Website von SJCODE — industrielle KI für Maschinenbauer, Anlagenbetreiber und Instandhaltungsteams:
+technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten, mit Quellenbeleg.
+Zweites Angebot: Websites und Automatisierung für kleine Betriebe.
 Gebaut mit **Next.js 15** (App Router, TypeScript), als statische Seite exportiert und auf Netlify gehostet.
 
 Das Design liegt in Figma: **„SJCODE Website – Redesign 2026“** (Design-System mit Farb-Variablen
