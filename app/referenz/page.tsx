@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
+import { INDUSTRY_REPOS } from '@/lib/repos';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -83,6 +84,34 @@ export default function ReferenzPage() {
       />
       <Header active="referenz" />
       <main id="main" tabIndex={-1}>
+        <section className="section">
+          <div className="container">
+            <div className="section-head reveal">
+              <div>
+                <p className="eyebrow">Industrielle KI · öffentlich auf GitHub</p>
+                <h2 className="section-title">Werkzeuge für Anlagen und Instandhaltung</h2>
+              </div>
+            </div>
+            <div className="card-grid reveal">
+              {INDUSTRY_REPOS.map((r) => (
+                <a
+                  key={r.name}
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="teaser-card"
+                >
+                  <h3>{r.name}</h3>
+                  <p>{r.text}</p>
+                  <span className="teaser-more">
+                    Auf GitHub ansehen →<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="page-head container" style={{ paddingBottom: 50 }}>
           <Breadcrumb items={[{ name: 'Referenz' }]} />
           <p className="eyebrow rise rise-1">Referenzprojekt · läuft produktiv</p>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
-import { SITE } from '@/lib/site';
+import { SITE, PROOF } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -12,12 +12,12 @@ import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 export const metadata: Metadata = {
   title: 'Über mich – Sinan Kahraman, Softwareentwickler & AI Engineer aus Euskirchen | SJCODE',
   description:
-    'Sinan Kahraman: über zehn Jahre Elektroniker für Betriebstechnik, heute Softwareentwickler und AI Engineer. Websites, KI-Automatisierung und Tools für Betriebe ohne IT-Abteilung – aus Euskirchen, remote deutschlandweit.',
+    'Sinan Kahraman: Elektroniker für Betriebstechnik, heute AI Engineer. KI für Instandhaltung und Anlagen: Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, mit Quellenbeleg. Aus Euskirchen, remote deutschlandweit.',
   alternates: { canonical: `${SITE.url}/ueber-mich.html` },
   openGraph: openGraph({
     title: 'Über mich – Sinan Kahraman, SJCODE',
     description:
-      'Zehn Jahre Betriebstechnik, dann Softwareentwicklung und AI Engineering. Warum ich Software für Betriebe baue, die keine IT-Abteilung haben.',
+      'Erst Elektroniker für Betriebstechnik, dann AI Engineer. Warum ich KI für Instandhaltung und Anlagen baue.',
     url: `${SITE.url}/ueber-mich.html`,
   }),
 };
@@ -64,12 +64,12 @@ const TIMELINE = [
   {
     when: '2024–2025',
     title: 'AI Engineering',
-    text: 'LLM-Anwendungen, RAG-Systeme, LangGraph, Evaluierung und Absicherung. Referenzprojekt Booking Email Check – heute produktiv im Einsatz.',
+    text: 'LLM-Anwendungen, RAG-Systeme, LangGraph, Evaluierung und Absicherung. Referenzprojekte öffentlich auf GitHub, darunter Booking Email Check – produktiv im Einsatz.',
   },
   {
     when: 'seit 2025',
     title: 'SJCODE',
-    text: 'Selbständig: Websites, Automatisierung und Tools für kleine und mittlere Betriebe. Remote deutschlandweit, persönlich in der Region Euskirchen/Köln/Bonn.',
+    text: 'Selbständig: KI für Instandhaltung und Anlagen, außerdem Websites, Automatisierung und Tools für kleine und mittlere Betriebe. Remote deutschlandweit, persönlich in der Region Euskirchen/Köln/Bonn.',
   },
 ];
 
@@ -120,12 +120,14 @@ export default function UeberMichPage() {
           <div className="about-text">
             <Breadcrumb items={[{ name: 'Über mich' }]} />
             <p className="eyebrow rise rise-1">Über mich</p>
-            <h1 className="rise rise-2">Zehn Jahre Betriebstechnik. Dann kam die Software.</h1>
+            <h1 className="rise rise-2">Erst Anlagen am Laufen gehalten. Dann KI dafür gebaut.</h1>
             <p className="lede rise rise-3">
-              Ich bin {SITE.owner} aus {SITE.city}. Als Elektroniker für Betriebstechnik habe ich
-              über zehn Jahre lang Anlagen am Laufen gehalten – und dabei gelernt, wie Abläufe in
-              der Praxis wirklich aussehen. Heute baue ich Software und KI-Lösungen für genau
-              diese Betriebe: verständlich, getestet und so, dass Sie sie behalten können.
+              Ich bin {SITE.owner} aus {SITE.city}. Als Elektroniker für Betriebstechnik habe ich{' '}
+              {PROOF.yearsIndustry} Jahre lang Anlagen am Laufen gehalten – und dabei gelernt, wie
+              Störungssuche und Instandhaltung in der Praxis wirklich aussehen. Heute baue ich als
+              AI Engineer KI, die technische Doku, SPS-Exporte und Wartungswissen durchsuchbar
+              macht – mit Quellenbeleg. Websites und Automatisierung für kleine Betriebe biete ich
+              weiterhin an.
             </p>
             <div className="actions rise rise-4">
               <a

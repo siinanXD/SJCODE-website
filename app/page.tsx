@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
+import { INDUSTRY_REPOS } from '@/lib/repos';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
@@ -17,14 +18,14 @@ import EmailDemoSection from '@/components/EmailDemoSection';
 import { REVIEW_STATS } from '@/components/reviewsData';
 
 export const metadata: Metadata = {
-  title: 'SJCODE – Softwareentwicklung & KI-Automatisierung für Handwerk, Dienstleister & KMU',
+  title: 'SJCODE – KI für Instandhaltung und Anlagen: Doku durchsuchen, Antworten mit Quelle',
   description:
-    'Websites zum Festpreis, KI-Automatisierung und individuelle Software für Betriebe ohne IT-Abteilung. 10+ Jahre Industriepraxis, 5,0 Sterne auf Google, kostenloses Erstgespräch. Euskirchen, Köln, deutschlandweit.',
+    'KI für Maschinenbauer, Anlagenbetreiber und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Vom Elektroniker für Betriebstechnik zum AI Engineer. Auch Websites und Automatisierung für kleine Betriebe.',
   alternates: { canonical: `${SITE.url}/` },
   openGraph: openGraph({
-    title: 'SJCODE – Software & KI, die Ihnen Zeit spart',
+    title: 'SJCODE – KI für Instandhaltung und Anlagen',
     description:
-      'Websites, KI-Automatisierung und individuelle Tools für Handwerk, Dienstleister und kleine Unternehmen. Kostenloses Erstgespräch, klares Angebot.',
+      'Technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber und Instandhaltung.',
     url: `${SITE.url}/`,
   }),
 };
@@ -50,7 +51,7 @@ const JSON_LD = {
       },
       geo: { '@type': 'GeoCoordinates', latitude: 50.66, longitude: 6.79 },
       description:
-        'Softwareentwicklung & AI Engineering für kleine und mittlere Betriebe: Websites zum Festpreis, KI-Automatisierung, individuelle Tools und E-Mail-Automatisierung.',
+        'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Außerdem Websites, KI-Automatisierung und E-Mail-Automatisierung für kleine Betriebe.',
       founder: { '@id': SITE.personId },
       areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Rheinland', 'DE'],
       knowsLanguage: 'de',
@@ -115,7 +116,7 @@ const WORKFLOW = [
 const VALUES = [
   {
     title: 'Auf Augenhöhe, ohne Fachchinesisch',
-    text: 'Über zehn Jahre Betriebstechnik heißt: Ich weiß, wie Abläufe in der Praxis aussehen – nicht nur auf Folien. Wir reden über Ihr Problem, nicht über Frameworks.',
+    text: `${PROOF.yearsIndustry} Jahre Betriebstechnik heißt: Ich weiß, wie Instandhaltung und Störungssuche in der Praxis aussehen – nicht nur auf Folien. Wir reden über Ihr Problem, nicht über Frameworks.`,
   },
   {
     title: 'Ich vereinfache gern',
@@ -123,7 +124,7 @@ const VALUES = [
   },
   {
     title: 'Nachvollziehbar statt Blackbox',
-    text: 'Automatisierte Tests, Dokumentation, saubere Übergabe. Sie bekommen ein Werkzeug, das Sie verstehen und behalten – mit allen Zugängen.',
+    text: 'Jede Antwort mit Quellenbeleg. Automatisierte Tests, Dokumentation, saubere Übergabe. Sie bekommen ein Werkzeug, das Sie verstehen und behalten – mit allen Zugängen.',
   },
 ];
 
@@ -185,18 +186,19 @@ export default function HomePage() {
         <section id="hero" className="hero-split container">
           <div className="hero-text">
             <p className="hero-kicker rise rise-1">
-              <span className="pill">Softwareentwicklung &amp; KI-Automatisierung</span>
-              <span>für Handwerk, Dienstleister &amp; KMU</span>
+              <span className="pill">KI für die Industrie</span>
+              <span>für Maschinenbauer, Anlagenbetreiber &amp; Instandhaltung</span>
             </p>
             <h1 className="rise rise-2">
-              Weniger Handarbeit im Betrieb.{' '}
+              Die Antwort steht schon irgendwo in Ihrer Doku.{' '}
               <br />
-              Software, die Ihnen jeden Tag Zeit spart.
+              Ich mache sie findbar – mit Quelle.
             </h1>
             <p className="lede rise rise-3">
-              Ich bin Sinan – über zehn Jahre Betriebstechnik, heute Softwareentwickler und AI
-              Engineer. Ich baue Websites, Automatisierungen und Tools für Betriebe, die keine
-              IT-Abteilung haben. Verständlich, getestet, ohne Blackbox.
+              Ich bin Sinan – erst Elektroniker für Betriebstechnik ({PROOF.yearsIndustry} Jahre
+              Industriepraxis), heute AI Engineer. Ich mache technische Doku, SPS-Exporte und
+              Wartungswissen durchsuchbar. Sie fragen, die KI antwortet und zeigt, woher die
+              Antwort kommt.
             </p>
             <div className="actions rise rise-4">
               <a
@@ -209,8 +211,8 @@ export default function HomePage() {
               >
                 Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
               </a>
-              <a href="/leistungen.html" className="btn btn-outline">
-                Leistungen ansehen →
+              <a href="/referenz.html" className="btn btn-outline">
+                Referenzen ansehen →
               </a>
             </div>
             <p className="hero-contact rise rise-4">
@@ -247,8 +249,81 @@ export default function HomePage() {
           <div className="container">
             <div className="section-head reveal">
               <div>
-                <p className="eyebrow">Für wen</p>
-                <h2 className="section-title">Gebaut für Betriebe ohne eigene IT-Abteilung.</h2>
+                <p className="eyebrow">Industrielle KI</p>
+                <h2 className="section-title">Wissen aus Anlagen und Dokumenten – schnell gefunden.</h2>
+                <p className="section-sub">
+                  Schaltpläne, SPS-Programme, Handbücher, Wartungsberichte: Das Wissen ist da, aber
+                  keiner findet es schnell. Meine Werkzeuge machen es durchsuchbar und beantworten
+                  Fragen – immer mit Beleg, woher die Antwort stammt. Öffentlich einsehbar auf
+                  GitHub.
+                </p>
+              </div>
+              <a href="/referenz.html" className="link-accent">
+                Alle Referenzen →
+              </a>
+            </div>
+            <div className="card-grid reveal">
+              {INDUSTRY_REPOS.map((r) => (
+                <a
+                  key={r.name}
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="teaser-card"
+                >
+                  <h3>{r.name}</h3>
+                  <p>{r.text}</p>
+                  <span className="teaser-more">
+                    Auf GitHub ansehen →<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="why-grid reveal">
+              <div className="why-intro">
+                <p className="eyebrow">Warum mit mir?</p>
+                <h2 className="section-title">Ich habe Anlagen selbst am Laufen gehalten.</h2>
+                <div className="why-person">
+                  <img
+                    src="/images/sinan-kahraman.webp"
+                    alt="Porträt von Sinan Kahraman"
+                    width={72}
+                    height={72}
+                    loading="lazy"
+                  />
+                  <span>
+                    <strong>{SITE.owner}</strong>
+                    <br />
+                    Elektroniker für Betriebstechnik, dann AI Engineer · {SITE.city}
+                  </span>
+                </div>
+                <a href="/ueber-mich.html" className="link-accent">
+                  Mehr über mich →
+                </a>
+              </div>
+              <div className="value-list">
+                {VALUES.map((v) => (
+                  <div key={v.title} className="value-item">
+                    <h3>{v.title}</h3>
+                    <p>{v.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+            <div className="section-head reveal">
+              <div>
+                <p className="eyebrow">Auch für kleine Betriebe</p>
+                <h2 className="section-title">Websites und Automatisierung für Betriebe ohne eigene IT-Abteilung.</h2>
                 <p className="section-sub">
                   Ich arbeite mit Handwerksbetrieben, Dienstleistern, Praxen, Selbständigen und
                   kleinen Unternehmen – überall dort, wo Anfragen, Angebote und Belege jeden Tag
@@ -274,7 +349,7 @@ export default function HomePage() {
           <div className="container">
             <div className="section-head reveal">
               <div>
-                <p className="eyebrow">Leistungen</p>
+                <p className="eyebrow">Leistungen für kleine Betriebe</p>
                 <h2 className="section-title">Womit ich Ihnen helfen kann</h2>
               </div>
               <a href="/leistungen.html" className="link-accent">
@@ -290,42 +365,6 @@ export default function HomePage() {
                   <span className="teaser-more">Mehr erfahren →</span>
                 </a>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="why-grid reveal">
-              <div className="why-intro">
-                <p className="eyebrow">Warum mit mir?</p>
-                <h2 className="section-title">Ich kenne den Betriebsalltag – nicht nur die Folien.</h2>
-                <div className="why-person">
-                  <img
-                    src="/images/sinan-kahraman.webp"
-                    alt="Porträt von Sinan Kahraman"
-                    width={72}
-                    height={72}
-                    loading="lazy"
-                  />
-                  <span>
-                    <strong>{SITE.owner}</strong>
-                    <br />
-                    Softwareentwickler &amp; AI Engineer, {SITE.city}
-                  </span>
-                </div>
-                <a href="/ueber-mich.html" className="link-accent">
-                  Mehr über mich →
-                </a>
-              </div>
-              <div className="value-list">
-                {VALUES.map((v) => (
-                  <div key={v.title} className="value-item">
-                    <h3>{v.title}</h3>
-                    <p>{v.text}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </section>
