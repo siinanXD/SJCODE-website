@@ -1,67 +1,43 @@
-import ThemeToggle from './ThemeToggle';
-import { SITE } from '@/lib/site';
-
+/**
+ * Navigation für Startseite und Unterseiten – überall dieselbe Leiste.
+ * Die Startseite liegt unter „/“, deshalb funktionieren die Anker
+ * (`/#leistungen`) dort wie ein Sprung auf der Seite.
+ */
 const NAV_ITEMS = [
-  { href: '/leistungen.html', label: 'Leistungen', key: 'leistungen' },
-  { href: '/preise.html', label: 'Preise', key: 'preise' },
+  { href: '/#leistungen', label: 'Leistungen', key: 'leistungen' },
+  { href: '/#demo', label: 'Live-Demo', key: 'demo' },
+  { href: '/#ablauf', label: 'Ablauf', key: 'ablauf' },
   { href: '/referenz.html', label: 'Referenz', key: 'referenz' },
   { href: '/ueber-mich.html', label: 'Über mich', key: 'ueber-mich' },
   { href: '/kontakt.html', label: 'Kontakt', key: 'kontakt' },
 ] as const;
 
+export const DOKU_CHECK_HREF = '/kontakt.html?thema=Doku-Check';
+
 export type NavKey = (typeof NAV_ITEMS)[number]['key'] | 'start' | 'none';
 
 export default function Header({ active }: { active: NavKey }) {
-  const current = (key: string) => (key === active ? 'page' : undefined);
-
   return (
-    <header className="site-header">
-      <div className="announcement">
-        Persönliche Antwort innerhalb von 24 Stunden · Erstgespräch kostenlos
-      </div>
-      <div className="container nav-row">
-        <a href="/index.html" className="brand" aria-label="SJCODE – zur Startseite">
-          SJCODE<span>.</span>
+    <header className="hm hm-nav">
+      <div className="hm-wrap hm-nav-row">
+        <a href="/index.html" className="hm-brand" aria-label="SJCODE – zur Startseite">
+          SJCODE
         </a>
-        <nav className="nav-links" aria-label="Hauptnavigation">
+        <nav aria-label="Hauptnavigation" className="hm-nav-links">
           {NAV_ITEMS.map((item) => (
-            <a key={item.key} href={item.href} aria-current={current(item.key)}>
+            <a key={item.key} href={item.href} aria-current={item.key === active ? 'page' : undefined}>
               {item.label}
             </a>
           ))}
         </nav>
-        <details id="mobilemenu">
-          <summary aria-label="Menü" />
-          <div className="mobile-panel">
-            <a href="/index.html" aria-current={current('start')}>
-              Start
-            </a>
-            {NAV_ITEMS.map((item) => (
-              <a key={item.key} href={item.href} aria-current={current(item.key)}>
-                {item.label}
-              </a>
-            ))}
-            <a href="/kontakt.html" className="mobile-cta">
-              Projekt anfragen
-            </a>
-            <p>Persönliche Antwort in 24 h · Erstgespräch kostenlos</p>
-          </div>
-        </details>
-        <ThemeToggle />
-        {active === 'kontakt' ? (
-          <a
-            className="header-cta btn-outline"
-            href={SITE.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-          </a>
-        ) : (
-          <a className="header-cta btn-primary" href="/kontakt.html" data-umami-event="projekt-anfragen" data-umami-event-ort="header">
-            Projekt anfragen
-          </a>
-        )}
+        <a
+          href={DOKU_CHECK_HREF}
+          className="hm-btn hm-btn-primary hm-nav-cta"
+          data-umami-event="doku-check"
+          data-umami-event-ort="nav"
+        >
+          Doku-Check buchen
+        </a>
       </div>
     </header>
   );

@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
  */
 export const metadata: Metadata = {
   title: 'Danke für Ihre Anfrage – SJCODE',
+  description: 'Ihre Anfrage ist bei SJCODE angekommen. Sie erhalten innerhalb von 24 Stunden eine persönliche Antwort.',
   robots: { index: false, follow: false },
   alternates: { canonical: `${SITE.url}/danke.html` },
 };

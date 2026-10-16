@@ -3,8 +3,8 @@ import { SERVICES, serviceUrl } from '@/lib/services';
 
 /**
  * Footer mit Leistungs-Links (interne Verlinkung für Google), sichtbaren
- * NAP-Angaben (Name, Adresse – deckungsgleich mit dem ProfessionalService-Schema)
- * und Rechtlichem.
+ * NAP-Angaben (Name, Adresse – deckungsgleich mit dem ProfessionalService-Schema),
+ * Rechtlichem und dem Schriftfeld (Zeichnungskopf) im BMK-Stil.
  */
 export default function Footer({
   active = 'none',
@@ -12,14 +12,14 @@ export default function Footer({
   active?: 'impressum' | 'datenschutz' | 'none';
 }) {
   return (
-    <footer className="site-footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <a href="/index.html" className="brand">
-              SJCODE<span>.</span>
+    <footer className="hm hm-footer">
+      <div className="hm-wrap">
+        <div className="hm-footer-grid">
+          <div>
+            <a href="/index.html" className="hm-brand">
+              SJCODE
             </a>
-            <p>Softwareentwicklung &amp; AI Engineering für kleine und mittlere Betriebe.</p>
+            <p>KI für Instandhaltung und Anlagen.</p>
             <address>
               {SITE.street}, {SITE.zip} {SITE.city}
               <br />
@@ -30,17 +30,16 @@ export default function Footer({
             <h2>Leistungen</h2>
             {SERVICES.map((s) => (
               <a key={s.slug} href={serviceUrl(s)}>
-                {s.title}
+                {s.id} {s.title}
               </a>
             ))}
-            <a href="/automatisierungs-check.html">Automatisierungs-Check (kostenlos)</a>
           </nav>
           <nav aria-label="Unternehmen">
             <h2>Unternehmen</h2>
             <a href="/ueber-mich.html">Über mich</a>
-            <a href="/preise.html">Preise</a>
             <a href="/referenz.html">Referenz</a>
             <a href="/kontakt.html">Kontakt</a>
+            <a href="/automatisierungs-check.html">Automatisierungs-Check</a>
           </nav>
           <nav aria-label="Kontakt und Profile">
             <h2>Kontakt</h2>
@@ -62,8 +61,25 @@ export default function Footer({
             </a>
           </nav>
         </div>
-        <div className="footer-bottom">
-          <span className="copyright">© 2026 {SITE.name} · {SITE.owner}</span>
+
+        <table className="hm-titleplate">
+          <caption className="sr-only">Schriftfeld</caption>
+          <tbody>
+            <tr>
+              <th scope="row">Dokument</th>
+              <td>sjcode.de</td>
+              <th scope="row">Ersteller</th>
+              <td>{SITE.owner}</td>
+              <th scope="row">Stand</th>
+              <td>2026</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="hm-footer-bottom">
+          <span>
+            © 2026 {SITE.name} · {SITE.owner}
+          </span>
           <nav aria-label="Rechtliches">
             <a href="/impressum.html" aria-current={active === 'impressum' ? 'page' : undefined}>
               Impressum

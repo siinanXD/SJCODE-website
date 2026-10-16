@@ -8,6 +8,68 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# Weiterleitungen alter Leistungsseiten (SIN-786). Die Seiten existieren nicht mehr,
+# deshalb greifen die Regeln ohne `force`. Reihenfolge: erste passende Regel gewinnt.
+[[redirects]]
+  from = "/leistungen/webseiten"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/webseiten.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/email-automatisierung"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/email-automatisierung.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/individuelle-software"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/individuelle-software.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/ki-automatisierung"
+  to = "/leistungen/doku-assistent.html"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen/ki-automatisierung.html"
+  to = "/leistungen/doku-assistent.html"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen"
+  to = "/#leistungen"
+  status = 301
+
+[[redirects]]
+  from = "/leistungen.html"
+  to = "/#leistungen"
+  status = 301
+
+[[redirects]]
+  from = "/preise"
+  to = "/#ablauf"
+  status = 301
+
+[[redirects]]
+  from = "/preise.html"
+  to = "/#ablauf"
+  status = 301
+
 # Sicherheits-Header für alle Seiten
 [[headers]]
   for = "/*"

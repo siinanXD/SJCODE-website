@@ -3,6 +3,7 @@ import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
 import { INDUSTRY_REPOS } from '@/lib/repos';
+import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import ScrollScene from '@/components/home/ScrollScene';
@@ -75,7 +76,7 @@ const JSON_LD = {
   ],
 };
 
-const CTA_HREF = '/kontakt.html?thema=Doku-Check';
+const CTA_HREF = DOKU_CHECK_HREF;
 const CTA_LABEL = 'Doku-Check buchen · 30 Min kostenlos';
 
 const FACTS = [
@@ -110,13 +111,6 @@ const PLATE = [
   ['Nachweis', 'Code öffentlich auf GitHub'],
 ];
 
-const NAV = [
-  { href: '#leistungen', label: 'Leistungen' },
-  { href: '#demo', label: 'Live-Demo' },
-  { href: '#ablauf', label: 'Ablauf' },
-  { href: '#ueber-mich', label: 'Über mich' },
-];
-
 export default function HomePage() {
   const k3 = repo('stromlauf-ai');
   return (
@@ -126,19 +120,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
       <div className="hm">
-        <header className="hm-nav">
-          <div className="hm-wrap hm-nav-row">
-            <a href="/index.html" className="hm-brand" aria-label="SJCODE – zur Startseite">SJCODE</a>
-            <nav aria-label="Hauptnavigation" className="hm-nav-links">
-              {NAV.map((n) => (
-                <a key={n.href} href={n.href}>{n.label}</a>
-              ))}
-            </nav>
-            <a href={CTA_HREF} className="hm-btn hm-btn-primary hm-nav-cta" data-umami-event="doku-check" data-umami-event-ort="nav">
-              Doku-Check buchen
-            </a>
-          </div>
-        </header>
+        <Header active="start" />
 
         <main id="main" tabIndex={-1}>
           <section id="hero" className="hm-section hm-hero">
@@ -210,6 +192,9 @@ export default function HomePage() {
                       <span className="hm-mono">{c.id}</span>
                       <h3>{c.title}</h3>
                       <p>{c.text}</p>
+                      <a href={serviceUrl(SERVICES.find((s) => s.id === c.id)!)} className="hm-mono">
+                        Mehr zu {c.title} →
+                      </a>
                       <a href={c.repo.href} target="_blank" rel="noopener noreferrer" className="hm-mono">
                         Repo: {c.repo.name} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                       </a>
