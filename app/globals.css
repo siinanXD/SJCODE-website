@@ -3140,3 +3140,23 @@ a.example-card {
 @media (max-width: 520px) {
   .hm-circuits, .hm-steps { grid-template-columns: 1fr; }
 }
+
+/* Scroll-Szene 1–2 (SIN-784): Standard = Endzustand (ohne JS), GSAP setzt den Anfang. */
+.sc { border-top: 1px solid rgba(33, 30, 25, 0.1); padding: 56px 0; }
+.sc-grid { display: grid; gap: 32px; align-items: center; }
+.sc-stage { position: relative; width: min(320px, 80%); aspect-ratio: 3 / 4; margin: 0 auto; perspective: 900px; }
+.sc-inside { position: absolute; inset: 0; background: #ecede9; border: 10px solid #9ea19b; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-evenly; padding: 16px; }
+.sc-k { display: flex; align-items: center; gap: 12px; padding: 14px; background: #d5d7d3; border: 1px solid #8a8d87; border-radius: 3px; }
+.sc-k-lamp { width: 14px; height: 14px; border-radius: 50%; background: #2e9e4f; box-shadow: 0 0 10px #2e9e4f; }
+.sc-door { position: absolute; inset: 0; transform-origin: left center; transform: rotateY(-105deg); background: #d5d7d3; border: 3px solid #9ea19b; border-radius: 6px; display: flex; flex-direction: column; align-items: center; padding-top: 24px; gap: 6px; backface-visibility: hidden; will-change: transform; }
+.sc-h1 { width: 28px; height: 28px; border-radius: 50%; background: #2e9e4f; border: 3px solid #1c6b33; }
+.sc-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.sc-card { display: grid; gap: 4px; padding: 16px; background: #fff; border: 1px solid rgba(33, 30, 25, 0.15); border-radius: 4px; }
+.sc-card strong { font-size: 24px; }
+@media (min-width: 768px) {
+  .sc { min-height: 100vh; display: flex; align-items: center; padding: 0; }
+  .sc-grid { grid-template-columns: 1fr 1fr 1fr; width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sc { display: none; }
+}

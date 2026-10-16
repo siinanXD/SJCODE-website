@@ -5,6 +5,7 @@ import { SERVICES, serviceUrl } from '@/lib/services';
 import { INDUSTRY_REPOS } from '@/lib/repos';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
+import ScrollScene from '@/components/home/ScrollScene';
 import { CabinetClosed, CabinetOpen, Schematic } from '@/components/home/Schematics';
 
 export const metadata: Metadata = {
@@ -164,6 +165,8 @@ export default function HomePage() {
               <div className="hm-visual"><CabinetClosed /></div>
             </div>
           </section>
+
+          <ScrollScene />
 
           <section id="problem" className="hm-section">
             <div className="hm-wrap hm-split">
