@@ -1,21 +1,11 @@
 import type { Metadata } from 'next';
-import { Fragment } from 'react';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
 import { INDUSTRY_REPOS } from '@/lib/repos';
-import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import StickyCta from '@/components/StickyCta';
-import TrustBar from '@/components/TrustBar';
-import InboxMock from '@/components/InboxMock';
-import PricingCards from '@/components/PricingCards';
-import Reviews from '@/components/Reviews';
-import FaqList from '@/components/FaqList';
-import CtaBand from '@/components/CtaBand';
-import EmailDemoSection from '@/components/EmailDemoSection';
-import { REVIEW_STATS } from '@/components/reviewsData';
+import { CabinetClosed, CabinetOpen, Schematic } from '@/components/home/Schematics';
 
 export const metadata: Metadata = {
   title: 'SJCODE – KI für Instandhaltung und Anlagen: Doku durchsuchen, Antworten mit Quelle',
@@ -83,438 +73,247 @@ const JSON_LD = {
   ],
 };
 
-const AUDIENCES = [
-  {
-    icon: '🔧',
-    title: 'Handwerk',
-    text: 'Angebote, Aufmaße und Anfragen – ohne Feierabend-Papierkram.',
-  },
-  {
-    icon: '🗓',
-    title: 'Dienstleister & Praxen',
-    text: 'Terminbestätigungen, Erinnerungen, weniger Ausfälle.',
-  },
-  {
-    icon: '💼',
-    title: 'Selbständige',
-    text: 'Belege automatisch erkannt, benannt, ans Steuerbüro.',
-  },
-  {
-    icon: '🏢',
-    title: 'Kleine Unternehmen',
-    text: 'Interner Assistent auf Ihren Unterlagen, Tools für Ihr Team.',
-  },
+const CTA_HREF = '/kontakt.html?thema=Doku-Check';
+const CTA_LABEL = 'Doku-Check buchen · 30 Min kostenlos';
+
+const FACTS = [
+  { value: '60–75 %', text: 'der Service- und Wartungsanfragen folgen wiederkehrenden Mustern.' },
+  { value: '6–12 Monate', text: 'dauert es, bis neue Mitarbeiter die Anlage wirklich kennen.' },
+  { value: 'Engpass Doku', text: 'Nicht die KI, sondern verstreute und alte Unterlagen bremsen.' },
 ];
 
-const WORKFLOW = [
-  { num: '1', title: 'E-Mail geht ein', text: 'Die Anfrage landet wie gewohnt im Postfach.' },
-  { num: '2', title: 'KI liest & ordnet ein', text: 'Anliegen, Daten und Dringlichkeit werden erkannt.' },
-  { num: '3', title: 'Entwurf entsteht', text: 'Eine passende Antwort liegt automatisch bereit.' },
-  { num: '4', title: 'Sie geben frei', text: 'Kein Versand ohne Ihr Okay – fertig in Sekunden.' },
-];
+const repo = (name: string) => INDUSTRY_REPOS.find((r) => r.name === name)!;
 
-const VALUES = [
-  {
-    title: 'Auf Augenhöhe, ohne Fachchinesisch',
-    text: `${PROOF.yearsIndustry} Jahre Berufserfahrung in der Betriebstechnik heißt: Ich weiß, wie Instandhaltung und Störungssuche in der Praxis aussehen – nicht nur auf Folien. Wir reden über Ihr Problem, nicht über Frameworks.`,
-  },
-  {
-    title: 'Ich vereinfache gern',
-    text: 'Wenn eine Aufgabe jeden Tag Zeit frisst, gehört sie automatisiert. Und wenn sich etwas nicht lohnt, sage ich das auch – vor dem Angebot.',
-  },
-  {
-    title: 'Nachvollziehbar statt Blackbox',
-    text: 'Jede Antwort mit Quellenbeleg. Automatisierte Tests, Dokumentation, saubere Übergabe. Sie bekommen ein Werkzeug, das Sie verstehen und behalten – mit allen Zugängen.',
-  },
+const CIRCUITS = [
+  { id: '-K1', title: 'Doku-Assistent', repo: repo('document-intelligence-mvp'), active: false, text: 'Handbücher, Wartungsanleitungen und Störungsberichte fragen statt suchen. Antwort mit Dokument und Seite.' },
+  { id: '-K2', title: 'Wartungs-Assistent', repo: repo('maintenance-ai-assistant'), active: false, text: 'Störung eingeben, bekannte Ursachen und Schritte aus Ihrer Historie bekommen.' },
+  { id: '-K3', title: 'Stromlaufplan-KI', repo: repo('stromlauf-ai'), active: true, text: 'Fragen an Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt?' },
+  { id: '-K4', title: 'Qualitätsprüfung', repo: repo('agent-eval-harness'), active: false, text: 'Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist – vor dem Einsatz.' },
 ];
 
 const STEPS = [
-  {
-    num: 'Schritt 1',
-    title: 'Anfrage',
-    text: 'Sie beschreiben Ihr Anliegen in drei Sätzen über das Formular – oder buchen direkt einen Termin.',
-  },
-  {
-    num: 'Schritt 2',
-    title: 'Kostenloses Erstgespräch',
-    text: '15–30 Minuten: Wir klären Ziel, Umfang und Machbarkeit. Ehrliche Einschätzung – auch, wenn sich etwas nicht lohnt.',
-  },
-  {
-    num: 'Schritt 3',
-    title: 'Angebot & Umsetzung',
-    text: 'Klares Festpreis- oder Aufwandsangebot, dann iterative Entwicklung mit Zwischenständen, Tests und Übergabe.',
-  },
+  { id: '-S1', title: 'Live-Demo', price: 'kostenlos', text: 'Selbst ausprobieren, sofort.' },
+  { id: '-S2', title: 'Doku-Check', price: 'kostenlos · 30 Min', text: '10 echte Fragen an eines Ihrer Handbücher. Ergebnis als PDF.' },
+  { id: '-S3', title: 'Potenzialcheck', price: '1.490 € Festpreis', text: '1–2 Tage: Doku-Bestand, Top-Fragen, Machbarkeit, Angebot.' },
+  { id: '-S4', title: 'Pilot', price: '9.900 € Festpreis', text: '8 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
 ];
 
-const HOME_FAQS = [
-  {
-    q: 'Was kostet die Zusammenarbeit?',
-    a: 'Websites starten bei einem Festpreis ab 1.900 € netto, KI-Automatisierungen ab 2.500 € – nach einer kostenlosen Prozess-Analyse. Sie bekommen vorab ein klares Angebot; vorher fließt kein Geld.',
-  },
-  {
-    q: 'Wie lange dauert ein Projekt?',
-    a: 'Kleine Websites sind oft in zwei bis vier Wochen online, Automatisierungen je nach Komplexität in zwei bis acht Wochen. Sie bekommen von Anfang an einen realistischen Zeitplan und regelmäßige Zwischenstände.',
-  },
-  {
-    q: 'Ich weiß noch nicht genau, was ich brauche – ist das ein Problem?',
-    a: 'Überhaupt nicht. Genau dafür ist das Erstgespräch da. Beschreiben Sie einfach Ihr Problem in ein paar Sätzen – ich sage Ihnen ehrlich, ob und wie sich das lösen lässt.',
-  },
-  {
-    q: 'Arbeiten Sie auch remote und deutschlandweit?',
-    a: 'Ja. Die Zusammenarbeit läuft komplett remote per Video, Telefon und E-Mail – unabhängig davon, wo Sie sitzen. Persönliche Treffen in der Region Euskirchen/Köln/Bonn sind nach Absprache möglich.',
-  },
-  {
-    q: 'Was passiert mit meinen Daten?',
-    a: 'Ich arbeite DSGVO-konform. Bei KI-Lösungen werden E-Mail-Inhalte streng als Daten behandelt – nie als Anweisung an das Modell – und nichts geht ohne Ihre Freigabe raus. Details in der Datenschutzerklärung.',
-  },
-  {
-    q: 'Wem gehört das Ergebnis?',
-    a: 'Ihnen. Quellcode, Domain, Hosting und alle Zugänge laufen auf Ihren Namen. Sie bleiben unabhängig – auch von mir.',
-  },
+const PLATE = [
+  ['Typ', 'AI Engineer · Betriebstechnik'],
+  ['Hersteller', 'SJCODE · Sinan Kahraman'],
+  ['Praxis', `${PROOF.yearsIndustry} Jahre Betriebstechnik`],
+  ['Ausbildung', 'Elektroniker f. Betriebstechnik'],
+  ['Weiterbildung', 'AI Engineering, 1.600 h (2026)'],
+  ['Schutzart', 'Daten bleiben in der EU'],
+  ['Nachweis', 'Code öffentlich auf GitHub'],
+];
+
+const NAV = [
+  { href: '#leistungen', label: 'Leistungen' },
+  { href: '#demo', label: 'Live-Demo' },
+  { href: '#ablauf', label: 'Ablauf' },
+  { href: '#ueber-mich', label: 'Über mich' },
 ];
 
 export default function HomePage() {
-  const rating = REVIEW_STATS.averageLabel;
+  const k3 = repo('stromlauf-ai');
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
       />
-      <Header active="start" />
-      <main id="main" tabIndex={-1}>
-        <section id="hero" className="hero-split container">
-          <div className="hero-text">
-            <p className="hero-kicker rise rise-1">
-              <span className="pill">KI für die Industrie</span>
-              <span>für Maschinenbauer, Anlagenbetreiber &amp; Instandhaltung</span>
-            </p>
-            <h1 className="rise rise-2">
-              Die Antwort steht schon irgendwo in Ihrer Doku.{' '}
-              <br />
-              Ich mache sie findbar – mit Quelle.
-            </h1>
-            <p className="lede rise rise-3">
-              Ich bin Sinan – erst Elektroniker für Betriebstechnik (3,5 Jahre Ausbildung und fast{' '}
-              {PROOF.yearsIndustry} Jahre in der Instandhaltung), heute AI Engineer. Ich mache technische Doku, SPS-Exporte und
-              Wartungswissen durchsuchbar. Sie fragen, die KI antwortet und zeigt, woher die
-              Antwort kommt.
-            </p>
-            <div className="actions rise rise-4">
-              <a
-                href={SITE.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                data-umami-event="erstgespraech"
-                data-umami-event-ort="hero"
-              >
-                Kostenloses Erstgespräch ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-              </a>
-              <a href="/referenz.html" className="btn btn-outline">
-                Referenzen ansehen →
-              </a>
-            </div>
-            <p className="hero-contact rise rise-4">
-              Oder direkt:{' '}
-              <a href={SITE.phoneHref} data-umami-event="anruf" data-umami-event-ort="hero">
-                {SITE.phoneDisplay}
-              </a>{' '}
-              ·{' '}
-              <a
-                href={SITE.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-umami-event="whatsapp"
-                data-umami-event-ort="hero"
-              >
-                WhatsApp schreiben ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-              </a>
-            </p>
-            <p className="subline rise rise-5">
-              <span className="stars-inline" aria-hidden="true">
-                ★★★★★
-              </span>{' '}
-              {rating} auf Google · {REVIEW_STATS.count} Bewertungen · Antwort in {PROOF.responseTime}
-            </p>
-          </div>
-          <div className="hero-visual rise rise-3">
-            <InboxMock withPipeline={false} />
-          </div>
-        </section>
-
-        <TrustBar />
-
-        <section className="section">
-          <div className="container">
-            <div className="section-head reveal">
-              <div>
-                <p className="eyebrow">Industrielle KI</p>
-                <h2 className="section-title">Wissen aus Anlagen und Dokumenten – schnell gefunden.</h2>
-                <p className="section-sub">
-                  Schaltpläne, SPS-Programme, Handbücher, Wartungsberichte: Das Wissen ist da, aber
-                  keiner findet es schnell. Meine Werkzeuge machen es durchsuchbar und beantworten
-                  Fragen – immer mit Beleg, woher die Antwort stammt. Öffentlich einsehbar auf
-                  GitHub.
-                </p>
-              </div>
-              <a href="/referenz.html" className="link-accent">
-                Alle Referenzen →
-              </a>
-            </div>
-            <div className="card-grid reveal">
-              {INDUSTRY_REPOS.map((r) => (
-                <a
-                  key={r.name}
-                  href={r.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="teaser-card"
-                >
-                  <h3>{r.name}</h3>
-                  <p>{r.text}</p>
-                  <span className="teaser-more">
-                    Auf GitHub ansehen →<span className="sr-only"> (öffnet in neuem Tab)</span>
-                  </span>
-                </a>
+      <div className="hm">
+        <header className="hm-nav">
+          <div className="hm-wrap hm-nav-row">
+            <a href="/index.html" className="hm-brand" aria-label="SJCODE – zur Startseite">SJCODE</a>
+            <nav aria-label="Hauptnavigation" className="hm-nav-links">
+              {NAV.map((n) => (
+                <a key={n.href} href={n.href}>{n.label}</a>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="why-grid reveal">
-              <div className="why-intro">
-                <p className="eyebrow">Warum mit mir?</p>
-                <h2 className="section-title">Ich habe Anlagen selbst am Laufen gehalten.</h2>
-                <div className="why-person">
-                  <img
-                    src="/images/sinan-kahraman.webp"
-                    alt="Porträt von Sinan Kahraman"
-                    width={72}
-                    height={72}
-                    loading="lazy"
-                  />
-                  <span>
-                    <strong>{SITE.owner}</strong>
-                    <br />
-                    Elektroniker für Betriebstechnik, dann AI Engineer · {SITE.city}
-                  </span>
-                </div>
-                <a href="/ueber-mich.html" className="link-accent">
-                  Mehr über mich →
-                </a>
-              </div>
-              <div className="value-list">
-                {VALUES.map((v) => (
-                  <div key={v.title} className="value-item">
-                    <h3>{v.title}</h3>
-                    <p>{v.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="section-head reveal">
-              <div>
-                <p className="eyebrow">Auch für kleine Betriebe</p>
-                <h2 className="section-title">Websites und Automatisierung für Betriebe ohne eigene IT-Abteilung.</h2>
-                <p className="section-sub">
-                  Ich arbeite mit Handwerksbetrieben, Dienstleistern, Praxen, Selbständigen und
-                  kleinen Unternehmen – überall dort, wo Anfragen, Angebote und Belege jeden Tag
-                  Zeit kosten.
-                </p>
-              </div>
-            </div>
-            <div className="audience-grid reveal">
-              {AUDIENCES.map((a) => (
-                <div key={a.title} className="audience-card">
-                  <span className="icon" aria-hidden="true">
-                    {a.icon}
-                  </span>
-                  <h3>{a.title}</h3>
-                  <p>{a.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="section-head reveal">
-              <div>
-                <p className="eyebrow">Leistungen für kleine Betriebe</p>
-                <h2 className="section-title">Womit ich Ihnen helfen kann</h2>
-              </div>
-              <a href="/leistungen.html" className="link-accent">
-                Alle Leistungen →
-              </a>
-            </div>
-            <div className="card-grid reveal">
-              {SERVICES.map((s) => (
-                <a key={s.slug} href={serviceUrl(s)} className="teaser-card">
-                  <div className="num">{s.num}</div>
-                  <h3>{s.title}</h3>
-                  <p>{s.teaser}</p>
-                  <span className="teaser-more">Mehr erfahren →</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="reveal">
-              <h2 className="section-title" style={{ marginBottom: 14 }}>
-                So sieht Automatisierung bei mir aus
-              </h2>
-              <p className="section-sub">
-                Beispiel E-Mail-Automatisierung: vier Schritte – und der letzte gehört immer Ihnen.
-              </p>
-            </div>
-            <div className="workflow reveal">
-              {WORKFLOW.map((w, i) => (
-                <Fragment key={w.num}>
-                  {i > 0 && <div className="wf-connector" aria-hidden="true" />}
-                  <div className="wf-node">
-                    <div className="wf-circle">{w.num}</div>
-                    <div>
-                      <strong>{w.title}</strong>
-                      <small>{w.text}</small>
-                    </div>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <EmailDemoSection />
-
-        <section className="section">
-          <div className="container reveal">
-            <div className="case-split">
-              <div>
-                <p className="eyebrow">Aus der Praxis · läuft produktiv</p>
-                <h2 className="section-title" style={{ marginBottom: 18 }}>
-                  Booking Email Check
-                </h2>
-                <p className="section-sub" style={{ marginBottom: 36 }}>
-                  Eine Plattform, die Buchungs-E-Mails automatisch liest, einordnet und
-                  Antwortentwürfe vorbereitet – versendet wird erst, wenn ein Mensch freigibt. Läuft
-                  heute produktiv für Betriebe mit hohem Buchungsaufkommen.
-                </p>
-                <div className="stats">
-                  <div>
-                    <strong>{PROOF.testsInReference}</strong>
-                    <small>automatisierte Tests</small>
-                  </div>
-                  <div>
-                    <strong>{PROOF.releasesInReference}</strong>
-                    <small>Releases in Produktion</small>
-                  </div>
-                  <div>
-                    <strong>0</strong>
-                    <small>Mails ohne menschliche Freigabe</small>
-                  </div>
-                </div>
-                <a href="/referenz.html" className="link-accent" style={{ fontSize: 16 }}>
-                  Zur Case Study →
-                </a>
-              </div>
-              <div className="case-tech">
-                <p className="tech-label">Eingesetzte Technik</p>
-                <div className="tag-row">
-                  {['Flask', 'LangGraph', 'OpenAI', 'MongoDB Atlas', 'React', 'Langfuse', 'GitHub Actions'].map(
-                    (t) => (
-                      <span key={t} className="tag">
-                        {t}
-                      </span>
-                    ),
-                  )}
-                </div>
-                <ul className="dash-list" style={{ marginTop: 22 }}>
-                  <li>Multi-Tenant-Architektur</li>
-                  <li>Klassifikation &amp; Datenextraktion per LLM</li>
-                  <li>Prompt-Injection-Härtung</li>
-                  <li>Jede Entscheidung nachvollziehbar (Langfuse)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <div className="section-head reveal">
-              <div>
-                <p className="eyebrow">Ablauf</p>
-                <h2 className="section-title">So arbeiten wir zusammen</h2>
-                <p className="section-sub">Drei Schritte, keine Überraschungen. Vor dem Angebot fließt kein Geld.</p>
-              </div>
-            </div>
-            <div className="step-grid reveal">
-              {STEPS.map((s) => (
-                <div key={s.num} className="step">
-                  <div className="num">{s.num}</div>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container reveal">
-            <a href="/automatisierungs-check.html" className="check-teaser" data-umami-event="check-teaser">
-              <div>
-                <p className="eyebrow">Kostenloser Automatisierungs-Check</p>
-                <h2>Wie viel Zeit steckt in Ihrer Handarbeit?</h2>
-                <p>
-                  Sechs Fragen, eine Minute – Sie sehen sofort, wie viele Stunden im Monat sich
-                  automatisieren lassen und womit Sie anfangen sollten. Ohne Anmeldung.
-                </p>
-              </div>
-              <span className="btn btn-primary">Check starten →</span>
+            </nav>
+            <a href={CTA_HREF} className="hm-btn hm-btn-primary hm-nav-cta" data-umami-event="doku-check" data-umami-event-ort="nav">
+              Doku-Check buchen
             </a>
           </div>
-        </section>
+        </header>
 
-        <section className="section">
-          <div className="container">
-            <div className="section-head reveal">
+        <main id="main" tabIndex={-1}>
+          <section id="hero" className="hm-section hm-hero">
+            <div className="hm-wrap hm-split">
               <div>
-                <p className="eyebrow">Preise</p>
-                <h2 className="section-title">Transparent statt Überraschung</h2>
-                <p className="section-sub">
-                  Websites zum Festpreis, Automatisierung nach klar kalkuliertem Aufwand. Alle
-                  Angaben netto.
+                <p className="hm-kicker">-A1 · KI FÜR INSTANDHALTUNG &amp; ANLAGEN · KÖLN / BONN / AACHEN</p>
+                <h1 className="hm-h1">
+                  Die Antwort steht schon in Ihrer Doku.
+                  <br />
+                  <span className="hm-accent">Ich mache sie findbar – mit Quelle.</span>
+                </h1>
+                <p className="hm-lede">
+                  Handbücher, Stromlaufpläne, SPS-Programme und Störungsberichte – durchsuchbar für Ihre
+                  Instandhaltung. Jede Antwort zeigt Dokument und Seite. Gebaut von einem Elektroniker für
+                  Betriebstechnik, der heute AI Engineer ist.
+                </p>
+                <div className="hm-actions">
+                  <a href={CTA_HREF} className="hm-btn hm-btn-primary" data-umami-event="doku-check" data-umami-event-ort="hero">{CTA_LABEL}</a>
+                  <a href="#demo" className="hm-btn hm-btn-outline">Live-Demo ansehen ↓</a>
+                </div>
+                <p className="hm-trust">
+                  {PROOF.yearsIndustry} Jahre Betriebstechnik · Daten bleiben in der EU · Code öffentlich auf GitHub
                 </p>
               </div>
-              <a href="/preise.html" className="link-accent">
-                Alle Preise →
-              </a>
+              <div className="hm-visual"><CabinetClosed /></div>
             </div>
-            <PricingCards compact />
-          </div>
-        </section>
+          </section>
 
-        <Reviews />
+          <section id="problem" className="hm-section">
+            <div className="hm-wrap hm-split">
+              <div className="hm-visual"><CabinetOpen /></div>
+              <div>
+                <p className="hm-kicker">-A2 · DAS PROBLEM</p>
+                <h2 className="hm-h2">Das Wissen steckt im Schrank. Und im Kopf von drei Leuten.</h2>
+                <p className="hm-lede">
+                  Wenn die Anlage steht, sucht jemand im Ordner, im Netzlaufwerk oder ruft den Kollegen an, der es
+                  weiß. Das kostet Stillstand und Nerven.
+                </p>
+                <ul className="hm-facts">
+                  {FACTS.map((f) => (
+                    <li key={f.value}>
+                      <strong>{f.value}</strong>
+                      <span>{f.text}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="hm-small">
+                  <a href="https://www.ki-syndikat.de/usecases/maschinenbau/20-kundensupport-wartungsanfragen/" target="_blank" rel="noopener noreferrer">
+                    Quelle: KI-Syndikat, Use Case Kundensupport &amp; Wartungsanfragen im Maschinenbau
+                    <span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
 
-        <FaqList faqs={HOME_FAQS} />
+          <section id="leistungen" className="hm-section">
+            <div className="hm-wrap">
+              <p className="hm-kicker">-A3 · LEISTUNGEN</p>
+              <h2 className="hm-h2">Vier Stromkreise. Einer davon passt zu Ihrem Problem.</h2>
+              <div className="hm-sheet">
+                <Schematic />
+                <div className="hm-circuits">
+                  {CIRCUITS.map((c) => (
+                    <article key={c.id} className={`hm-circuit${c.active ? ' is-active' : ''}`}>
+                      <span className="hm-mono">{c.id}</span>
+                      <h3>{c.title}</h3>
+                      <p>{c.text}</p>
+                      <a href={c.repo.href} target="_blank" rel="noopener noreferrer" className="hm-mono">
+                        Repo: {c.repo.name} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                      </a>
+                    </article>
+                  ))}
+                </div>
+                <p className="hm-titleblock hm-mono">sjcode.de · Blatt 3 / 7 · =A3 Leistungen</p>
+              </div>
+            </div>
+          </section>
 
-        <CtaBand />
-      </main>
+          <section id="demo" className="hm-section hm-dark">
+            <div className="hm-wrap hm-split">
+              <div>
+                <p className="hm-kicker">-A4 · LIVE-DEMO · PRÜFSTAND</p>
+                <h2 className="hm-h2">Nicht glauben. Ausprobieren.</h2>
+                <p className="hm-lede">
+                  stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan. Mit
+                  Demo-Daten, ohne Anmeldung.
+                </p>
+                <div className="hm-actions">
+                  <a href={k3.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                    Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </a>
+                </div>
+              </div>
+              <div className="hm-chat" role="group" aria-label="Beispiel-Dialog">
+                <p className="hm-mono hm-chat-tag">Beispiel</p>
+                <p className="hm-bubble hm-bubble-q">Welche Sicherung versorgt den Hydraulikmotor -M3?</p>
+                <div className="hm-bubble hm-bubble-a">
+                  <p>-M3 wird über den Motorschutzschalter -Q3 versorgt, vorgeschaltet ist -F12 (16 A, Kurve C).</p>
+                  <p className="hm-mono">Pfad: L1 → -F12 → -Q3 → -K3 → -M3</p>
+                  <p className="hm-source hm-mono">Stromlaufplan_Presse3.pdf · Blatt 14 · Pfad 3</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="ablauf" className="hm-section">
+            <div className="hm-wrap">
+              <p className="hm-kicker">-A5 · SO STARTEN WIR</p>
+              <h2 className="hm-h2">Klein anfangen. Erst messen, dann bauen.</h2>
+              <p className="hm-lede">Festpreise, kein Risiko, Sie entscheiden nach jeder Stufe neu.</p>
+              <ol className="hm-steps">
+                {STEPS.map((s) => (
+                  <li key={s.id}>
+                    <span className="hm-mono">{s.id}</span>
+                    <h3>{s.title}</h3>
+                    <p className="hm-price">{s.price}</p>
+                    <p>{s.text}</p>
+                  </li>
+                ))}
+                <li>
+                  <span className="hm-lamp" aria-hidden="true" />
+                  <span className="hm-mono">-H5</span>
+                </li>
+              </ol>
+              <div className="hm-actions">
+                <a href={CTA_HREF} className="hm-btn hm-btn-primary" data-umami-event="doku-check" data-umami-event-ort="ablauf">{CTA_LABEL}</a>
+              </div>
+              <p className="hm-small">Preise zzgl. MwSt.</p>
+            </div>
+          </section>
+
+          <section id="ueber-mich" className="hm-section">
+            <div className="hm-wrap hm-split">
+              <div>
+                <p className="hm-kicker">-A6 · WER DAS BAUT</p>
+                <h2 className="hm-h2">Erst Schaltschrank, dann Code.</h2>
+                <p className="hm-lede">
+                  Ich bin Sinan Kahraman, Elektroniker für Betriebstechnik. {PROOF.yearsIndustry} Jahre
+                  Instandhaltung, Störungssuche und SPS – danach 1.600 Stunden AI Engineering. Ich weiß, wie es
+                  ist, mit einem Plan vor einer stehenden Anlage zu stehen. Genau dafür baue ich die Werkzeuge.
+                </p>
+                <p className="hm-small">Euskirchen · Köln / Bonn / Aachen · remote</p>
+              </div>
+              <table className="hm-plate">
+                <caption className="sr-only">Typenschild</caption>
+                <tbody>
+                  {PLATE.map(([k, v]) => (
+                    <tr key={k}>
+                      <th scope="row">{k}</th>
+                      <td>{v}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="kontakt" className="hm-section hm-dark">
+            <div className="hm-wrap hm-center">
+              <p className="hm-kicker">-A7 · KONTAKT</p>
+              <h2 className="hm-h2">Stromkreis schließen.</h2>
+              <p className="hm-lede">
+                30 Minuten, ein Handbuch von Ihnen, zehn echte Fragen. Danach wissen Sie, ob sich KI für Ihre
+                Instandhaltung lohnt.
+              </p>
+              <div className="hm-actions hm-actions-center">
+                <a href={CTA_HREF} className="hm-btn hm-btn-primary hm-btn-lg" data-umami-event="doku-check" data-umami-event-ort="abschluss">{CTA_LABEL}</a>
+              </div>
+              <p className="hm-small">
+                oder direkt: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
       <Footer />
-      <StickyCta />
       <CookieBanner />
     </>
   );
