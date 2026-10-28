@@ -3,9 +3,9 @@ import { notFound } from 'next/navigation';
 import { openGraph } from '@/lib/og';
 import { SITE } from '@/lib/site';
 import { SERVICES, getService, serviceRepo, serviceUrl } from '@/lib/services';
+import { STROMLAUF_DEMO_URL } from '@/lib/repos';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 /**
@@ -134,8 +134,18 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                   {s.repoIsDemo ? ' Mit Demo-Daten, ohne Anmeldung.' : ''}
                 </p>
                 <div className="hm-actions">
-                  <a href={repo.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
-                    {repo.name} auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  {s.repoIsDemo && (
+                    <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                      Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                    </a>
+                  )}
+                  <a
+                    href={repo.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={s.repoIsDemo ? 'hm-btn hm-btn-outline' : 'hm-btn hm-btn-primary'}
+                  >
+                    {repo.name} auf GitHub{repo.archived ? ' (Archiv)' : ''} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>
               </div>
@@ -211,7 +221,6 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         </main>
       </div>
       <Footer />
-      <CookieBanner />
     </>
   );
 }

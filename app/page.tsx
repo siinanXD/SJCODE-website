@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
-import { INDUSTRY_REPOS } from '@/lib/repos';
+import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL } from '@/lib/repos';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import ScrollScene from '@/components/home/ScrollScene';
 import ScrollCircuit from '@/components/home/ScrollCircuit';
 import { CabinetClosed, CabinetOpen, Schematic } from '@/components/home/Schematics';
@@ -196,7 +195,7 @@ export default function HomePage() {
                         Mehr zu {c.title} →
                       </a>
                       <a href={c.repo.href} target="_blank" rel="noopener noreferrer" className="hm-mono">
-                        Repo: {c.repo.name} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                        Repo: {c.repo.name}{c.repo.archived ? ' (Archiv)' : ''} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                       </a>
                     </article>
                   ))}
@@ -216,7 +215,10 @@ export default function HomePage() {
                   Demo-Daten, ohne Anmeldung.
                 </p>
                 <div className="hm-actions">
-                  <a href={k3.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                  <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                    Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                  </a>
+                  <a href={k3.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-outline">
                     Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>
@@ -304,7 +306,6 @@ export default function HomePage() {
         </main>
       </div>
       <Footer />
-      <CookieBanner />
     </>
   );
 }

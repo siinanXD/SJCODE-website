@@ -10,7 +10,7 @@
 
 - [Doku-Assistent](https://sjcode.de/leistungen/doku-assistent.html): Handbücher, Wartungsanleitungen und Störungsberichte fragen statt suchen. Antwort mit Dokument und Seite.
 - [Wartungs-Assistent](https://sjcode.de/leistungen/wartungs-assistent.html): Störung eingeben, bekannte Ursachen und Schritte aus der eigenen Historie bekommen, mit Quellen.
-- [Stromlaufplan-KI](https://sjcode.de/leistungen/stromlaufplan-ki.html): Fragen an Stromlaufpläne und STEP-7-Programme, Antwort mit Pfad und Blatt. Mit Live-Demo auf Demo-Daten.
+- [Stromlaufplan-KI](https://sjcode.de/leistungen/stromlaufplan-ki.html): Fragen an Stromlaufpläne und STEP-7-Programme, Antwort mit Pfad und Blatt. Live-Demo auf Demo-Daten: https://stromlauf-ai.vercel.app
 - [Qualitätsprüfung](https://sjcode.de/leistungen/qualitaetspruefung.html): Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist, vor dem Einsatz.
 
 ## Kostenlose Werkzeuge
@@ -24,7 +24,7 @@
 
 ## Referenz
 
-- [Booking Email Check](https://sjcode.de/referenz.html): Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation und Datenextraktion per LLM, Antwortentwürfe mit menschlicher Freigabe. Läuft produktiv, 276+ automatisierte Tests, 60+ Releases.
+- [Booking Email Check](https://sjcode.de/referenz.html): Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation und Datenextraktion per LLM, Antwortentwürfe mit menschlicher Freigabe. Abgeschlossenes Projekt, Code öffentlich (Repository archiviert), 276+ automatisierte Tests, 60+ Releases.
 
 ## Über
 

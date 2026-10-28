@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -49,7 +48,6 @@ export default function ImpressumPage() {
       </main>
 
       <Footer active="impressum" />
-      <CookieBanner />
     </>
   );
 }

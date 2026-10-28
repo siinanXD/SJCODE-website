@@ -3,7 +3,6 @@ import { openGraph } from '@/lib/og';
 import { SITE } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import AutomationCheck from '@/components/AutomationCheck';
 import FaqList from '@/components/FaqList';
 import { REVIEW_STATS } from '@/components/reviewsData';
@@ -94,7 +93,6 @@ export default function AutomatisierungsCheckPage() {
         <FaqList faqs={FAQS} title="Fragen zum Check" />
       </main>
       <Footer />
-      <CookieBanner />
     </>
   );
 }
