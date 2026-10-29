@@ -32,22 +32,20 @@ export default function ScrollCircuit({ href, label }: { href: string; label: st
       gsap.registerPlugin(ScrollTrigger);
       const mm = gsap.matchMedia();
       const q = (s: string) => gsap.utils.toArray<SVGElement>(s, el);
-      const animated = () => [...q('.cx-draw'), ...q('.cx-flow'), ...q('.cx-fade'), '.cx-h5', '.cx-cta'];
+      const animated = () => [...q('.cx-draw'), ...q('.cx-flow'), ...q('.cx-fade'), '.cx-h5'];
 
       const build = (tl: gsap.core.Timeline, scale: number) => {
         gsap.set([...q('.cx-draw'), ...q('.cx-flow')], { strokeDashoffset: 1 });
         gsap.set(q('.cx-fade'), { opacity: 0 });
         gsap.set('.cx-h5', { opacity: 0.2 });
-        gsap.set('.cx-cta', { opacity: 0.35 });
         // Szene 3: Sammelschiene, dann die Zweige oben und unten
         tl.to('.cx-bus', { strokeDashoffset: 0, duration: 1.2 * scale, ease: 'none' })
           .to(q('.cx-up'), { strokeDashoffset: 0, duration: 0.6 * scale, stagger: 0.25 * scale, ease: 'none' })
           .to(q('.cx-low'), { strokeDashoffset: 0, duration: 0.6 * scale, stagger: 0.25 * scale, ease: 'none' }, '<0.3')
           .to(q('.cx-fade'), { opacity: 1, duration: 0.5 * scale, stagger: 0.05 })
-          // Szene 4: Strom fließt über -S1 → -S4 zur Lampe -H5 und zum Termin-Button
+          // Szene 4: Strom fließt über -S1 → -S4 zur Lampe -H5 (der Termin-Button bleibt immer voll deckend)
           .to(q('.cx-flow'), { strokeDashoffset: 0, duration: 2.4 * scale, ease: 'none' })
-          .to('.cx-h5', { opacity: 1, duration: 0.4 * scale })
-          .to('.cx-cta', { opacity: 1, duration: 0.4 * scale }, '<');
+          .to('.cx-h5', { opacity: 1, duration: 0.4 * scale });
       };
 
       mm.add('(min-width: 768px)', () => {
