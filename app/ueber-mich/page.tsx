@@ -3,7 +3,6 @@ import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import StickyCta from '@/components/StickyCta';
 import Reviews from '@/components/Reviews';
 import CtaBand from '@/components/CtaBand';
@@ -64,7 +63,7 @@ const TIMELINE = [
   {
     when: '2024–2025',
     title: 'AI Engineering',
-    text: 'LLM-Anwendungen, RAG-Systeme, LangGraph, Evaluierung und Absicherung. Referenzprojekte öffentlich auf GitHub, darunter Booking Email Check – produktiv im Einsatz.',
+    text: 'LLM-Anwendungen, RAG-Systeme, LangGraph, Evaluierung und Absicherung. Referenzprojekte öffentlich auf GitHub, darunter Booking Email Check (abgeschlossen, Repository archiviert).',
   },
   {
     when: 'seit 2025',
@@ -229,7 +228,6 @@ export default function UeberMichPage() {
       </main>
       <Footer />
       <StickyCta />
-      <CookieBanner />
     </>
   );
 }

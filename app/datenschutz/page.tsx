@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
   title: 'Datenschutzerklärung – SJCODE',
@@ -64,18 +63,18 @@ export default function DatenschutzPage() {
             Wenn Sie das nicht möchten, nutzen Sie bitte E-Mail oder das Anfrageformular.
           </p>
           <p>
-            <strong>4b. Live-Demo „E-Mail-Check“</strong>
+            <strong>4b. Automatisierungs-Check</strong>
             <br />
-            Wenn Sie in der Demo einen eigenen Text auswerten lassen, wird dieser Text einmalig an
-            OpenAI (OpenAI Ireland Ltd., Irland; Verarbeitung ggf. in den USA auf Grundlage der
-            EU-Standardvertragsklauseln) übermittelt, um Kategorie, Daten und einen Antwortentwurf
-            zu erzeugen. Der Text wird von mir nicht gespeichert; OpenAI nutzt API-Daten nach
-            eigenen Angaben nicht zum Training. Bitte fügen Sie keine echten personenbezogenen
-            Daten Dritter ein. Zur Begrenzung der Nutzung speichere ich einen gesalzenen Hash Ihrer
-            IP-Adresse mit einem Zähler; diese Einträge werden durch eine tägliche automatische
-            Bereinigung spätestens nach 72 Stunden gelöscht, und die IP-Adresse ist daraus nicht
-            wiederherstellbar. Rechtsgrundlage ist Ihre Einwilligung durch die aktive Nutzung
-            der Demo (Art. 6 Abs. 1 lit. a DSGVO); die Beispiele funktionieren ohne Übermittlung.
+            Das Ergebnis des Automatisierungs-Checks wird in Ihrem Browser berechnet; Ihre Antworten
+            werden dabei nicht übertragen. Nur wenn Sie das Ergebnis per E-Mail anfordern, werden
+            Ihre E-Mail-Adresse, Ihre Antworten auf die sechs Fragen und das berechnete Ergebnis
+            über den Formulardienst Formspree (Formspree Inc., USA; es gelten dessen
+            Datenschutzhinweise) an mich übermittelt. Ich verwende diese Angaben, um Ihnen das
+            Ergebnis zukommen zu lassen und mich zu Ihrer Anfrage bei Ihnen zu melden (Art. 6
+            Abs. 1 lit. a und b DSGVO). Die Daten werden gelöscht, sobald die Anfrage erledigt
+            ist, sofern keine gesetzlichen Aufbewahrungspflichten bestehen. An die
+            Reichweitenmessung (Abschnitt 5) werden nur anonyme Ereignisse wie „Check gestartet“
+            und die Ergebnis-Kategorie gemeldet, nie Ihre E-Mail-Adresse oder einzelne Antworten.
           </p>
           <p>
             <strong>5. Reichweitenmessung (Umami)</strong>
@@ -103,7 +102,6 @@ export default function DatenschutzPage() {
       </main>
 
       <Footer active="datenschutz" />
-      <CookieBanner />
     </>
   );
 }

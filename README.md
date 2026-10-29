@@ -31,7 +31,7 @@ Preise, Über mich, Kontakt). Die CSS-Tokens in `app/globals.css` entsprechen de
 | Leistungen (Texte, FAQ der 4 Detailseiten) | `lib/services.ts` |
 | Google-Bewertungen | `components/reviewsData.ts` |
 | Automatisierungs-Check (Fragen, Rechenlogik) | `lib/automationCheck.ts` |
-| Live-Demo (Beispiele, Limits, Prompt) | `lib/emailCheck.ts` |
+| Live-Demo-Link, Referenz-Repos (Archiv-Kennzeichnung) | `lib/repos.ts` |
 | Werdegang, Arbeitsweise | `app/ueber-mich/page.tsx` |
 
 ## Entwicklung
@@ -41,25 +41,6 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build    # statischer Export nach ./out
 ```
-
-## Live-Demo „E-Mail-Check“ (Netlify Function)
-
-`netlify/functions/email-check.mts` ruft OpenAI (`gpt-4o-mini`) auf und ist unter
-`/api/email-check` erreichbar. Kostenschutz: 2 Auswertungen pro IP und Tag, 150 pro Tag
-insgesamt, Zähler in Netlify Blobs (Store `email-demo`), Grenzen in `lib/emailCheck.ts`.
-
-Umgebungsvariablen in Netlify (Site configuration → Environment variables):
-
-| Variable | Zweck |
-|---|---|
-| `OPENAI_API_KEY` | API-Schlüssel. Im OpenAI-Konto zusätzlich ein monatliches Spending-Limit setzen. |
-| `DEMO_SALT` | Zufällige Zeichenkette als Salz für den IP-Hash. |
-
-Ohne Schlüssel antwortet die Demo mit „nicht verfügbar“; die Beispiele funktionieren immer.
-`netlify/functions/email-demo-cleanup.mts` läuft täglich um 03:00 UTC (Scheduled Function) und
-löscht Zähler, die älter als gestern sind – so gilt die Löschfrist aus der Datenschutzerklärung
-auch ohne weitere Demo-Aufrufe.
-Lokal testen: `npx netlify dev` (nutzt `.env` für die Variablen, niemals committen).
 
 ## Pull Requests
 
@@ -77,7 +58,7 @@ app/              Routen (page.tsx je Seite) + globals.css + layout.tsx
   leistungen/     [slug]/ Detailseiten -K1 bis -K4 (aus lib/services.ts erzeugt)
   ueber-mich/     Person, Werdegang, Arbeitsweise
 components/       Header, Footer (mit Schriftfeld), StickyCta, TrustBar, FaqList, CtaBand,
-                  Reviews(+Carousel), InboxMock, KontaktForm, CookieBanner
+                  Reviews(+Carousel), InboxMock, KontaktForm
 lib/              site.ts (Stammdaten), services.ts, repos.ts, og.ts
 public/           Fonts, Bilder, robots.txt, llms.txt, Favicon, OG-Bild
 ```

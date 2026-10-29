@@ -4,7 +4,6 @@ import { SITE, PROOF } from '@/lib/site';
 import { INDUSTRY_REPOS } from '@/lib/repos';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 import StickyCta from '@/components/StickyCta';
 import InboxMock from '@/components/InboxMock';
 import Reviews from '@/components/Reviews';
@@ -12,14 +11,14 @@ import CtaBand from '@/components/CtaBand';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Referenz: Booking Email Check – KI-E-Mail-Automatisierung in Produktion | SJCODE',
+  title: 'Referenz: Booking Email Check – KI-E-Mail-Automatisierung | SJCODE',
   description:
-    'Case Study: Booking Email Check – Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation, Datenextraktion und Antwortentwürfe mit menschlicher Freigabe. 276+ Tests, 60+ Releases.',
+    'Abgeschlossenes Projekt: Booking Email Check – Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation, Datenextraktion und Antwortentwürfe mit menschlicher Freigabe. Code öffentlich (archiviert), 276+ Tests, 60+ Releases.',
   alternates: { canonical: `${SITE.url}/referenz.html` },
   openGraph: openGraph({
     title: 'Referenz: Booking Email Check – SJCODE',
     description:
-      'Plattform zur automatischen Verarbeitung von Buchungs-E-Mails – mit menschlicher Freigabe, läuft produktiv.',
+      'Plattform zur automatischen Verarbeitung von Buchungs-E-Mails – mit menschlicher Freigabe. Abgeschlossen, Code öffentlich (archiviert).',
     url: `${SITE.url}/referenz.html`,
   }),
 };
@@ -54,9 +53,9 @@ const TECH = [
 ];
 
 const RESULTS = [
-  { title: 'Ausgangslage', text: 'Ferienwohnungen und Dienstleister mit dutzenden Buchungs-Mails am Tag: sortieren, Daten abtippen, dieselben Antworten schreiben – jeden Tag, oft am Abend.' },
+  { title: 'Ausgangsproblem', text: 'Ferienwohnungen und Dienstleister mit dutzenden Buchungs-Mails am Tag: sortieren, Daten abtippen, dieselben Antworten schreiben – jeden Tag, oft am Abend.' },
   { title: 'Lösung', text: 'Eine Plattform liest eingehende Mails, klassifiziert sie (Buchung, Anfrage, Storno, Beleg), extrahiert Daten strukturiert und legt einen Antwortentwurf vor. Freigabe durch einen Menschen – ohne Ausnahme.' },
-  { title: 'Ergebnis', text: 'Postfach vorsortiert, Standardantworten in Sekunden, keine abgetippten Buchungsdaten mehr. Läuft seit Monaten produktiv, abgesichert durch über 276 automatisierte Tests.' },
+  { title: 'Ergebnis', text: 'Abgeschlossenes Projekt: Einordnung, Datenextraktion und Antwortentwurf laufen Ende zu Ende, abgesichert durch über 276 automatisierte Tests. Der Code ist öffentlich, das Repository archiviert; die Plattform wird nicht als Dienst betrieben.' },
 ];
 
 const JSON_LD = {
@@ -101,7 +100,10 @@ export default function ReferenzPage() {
                   rel="noopener noreferrer"
                   className="teaser-card"
                 >
-                  <h3>{r.name}</h3>
+                  <h3>
+                    {r.name}
+                    {r.archived && <span className="tag"> Archiv</span>}
+                  </h3>
                   <p>{r.text}</p>
                   <span className="teaser-more">
                     Auf GitHub ansehen →<span className="sr-only"> (öffnet in neuem Tab)</span>
@@ -114,7 +116,7 @@ export default function ReferenzPage() {
 
         <section className="page-head container" style={{ paddingBottom: 50 }}>
           <Breadcrumb items={[{ name: 'Referenz' }]} />
-          <p className="eyebrow rise rise-1">Referenzprojekt · läuft produktiv</p>
+          <p className="eyebrow rise rise-1">Referenzprojekt · abgeschlossen, Code öffentlich (archiviert)</p>
           <h1 className="rise rise-2">Booking Email Check</h1>
           <p className="lede rise rise-3" style={{ maxWidth: 660 }}>
             Betriebe mit vielen Buchungs-E-Mails – Ferienwohnungen, Dienstleister – verlieren jeden
@@ -133,7 +135,7 @@ export default function ReferenzPage() {
               </div>
               <div>
                 <strong>{PROOF.releasesInReference}</strong>
-                <small>Releases in Produktion</small>
+                <small>Releases</small>
               </div>
               <div>
                 <strong>0</strong>
@@ -189,7 +191,6 @@ export default function ReferenzPage() {
       </main>
       <Footer />
       <StickyCta />
-      <CookieBanner />
     </>
   );
 }
