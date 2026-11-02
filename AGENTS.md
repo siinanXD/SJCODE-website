@@ -24,6 +24,17 @@ npm run build    # statischer Export nach ./out
 
 `TODO:` Kein Lint-Skript in `package.json` – ESLint/Prettier laut `CODING_STANDARDS.md` ergänzen?
 
+## Nutzerweg (SIN-1461)
+
+Playwright klickt die Website wie ein Mensch durch (Handy und Desktop):
+`LIVE_URL=https://sjcode.de npm run test:nutzerweg` (ohne `LIVE_URL`: Produktion).
+Einmalig `npx playwright install chromium`. Tests: `tests/nutzerweg/`.
+
+- Wege: Navigation zu allen Hauptseiten, Footer zu Leistungen, Impressum und
+  Datenschutz, Kontaktweg bis vor das Absenden (es wird nie gesendet), keine toten internen Links.
+- **Sichtbare Änderungen erweitern den Weg im selben PR** (neue Seite, neuer Link, geänderter Formularschritt).
+- Die Klickprobe im Leitstand ruft diesen Befehl auf. Keine Workflow-Dateien dafür ändern.
+
 ## Claude als Ersatz-Agent (SIN-205)
 
 - Cursor zuerst. Hat Cursor kein Guthaben, setze das Label `claude` auf das Issue oder kommentiere `@claude`.
