@@ -10,7 +10,7 @@ export type Crumb = { name: string; href?: string };
 export default function Breadcrumb({ items, animate = true }: { items: Crumb[]; animate?: boolean }) {
   return (
     <nav className={`breadcrumb${animate ? ' rise rise-1' : ''}`} aria-label="Brotkrumen">
-      <a href="/index.html">Start</a>
+      <a href="/">Start</a>
       {items.map((c, i) => {
         const last = i === items.length - 1;
         return (

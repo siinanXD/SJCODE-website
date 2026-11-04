@@ -16,7 +16,7 @@ export default function Footer({
       <div className="hm-wrap">
         <div className="hm-footer-grid">
           <div>
-            <a href="/index.html" className="hm-brand">
+            <a href="/" className="hm-brand">
               SJCODE
             </a>
             <p>KI für Instandhaltung und Anlagen.</p>

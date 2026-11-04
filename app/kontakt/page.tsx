@@ -8,7 +8,7 @@ import { REVIEW_STATS } from '@/components/reviewsData';
 import { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Kontakt – Projekt anfragen, Antwort in 24 Stunden | SJCODE',
+  title: 'Kontakt: KI-Projekt anfragen, Antwort in 24 h | SJCODE',
   description:
     'Projekt anfragen bei SJCODE: vier kurze Schritte in unter zwei Minuten, persönliche Antwort innerhalb von 24 Stunden – oder direkt ein kostenloses Erstgespräch buchen.',
   alternates: { canonical: `${SITE.url}/kontakt.html` },

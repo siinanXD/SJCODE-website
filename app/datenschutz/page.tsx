@@ -96,7 +96,7 @@ export default function DatenschutzPage() {
             Hinweis: Diese Erklärung wurde sorgfältig erstellt, ersetzt aber keine Rechtsberatung.
           </p>
         </div>
-        <a href="/index.html" className="link-accent back-home" style={{ fontSize: 15 }}>
+        <a href="/" className="link-accent back-home" style={{ fontSize: 15 }}>
           ← Zurück zur Startseite
         </a>
       </main>

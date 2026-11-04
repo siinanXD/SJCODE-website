@@ -1,6 +1,13 @@
 /** Live-Demo von stromlauf-ai (Vercel, Demo-Daten, ohne Anmeldung). */
 export const STROMLAUF_DEMO_URL = 'https://stromlauf-ai.vercel.app';
 
+/**
+ * Demo erreichbar? Solange das Backend nicht gehostet ist, zeigt der Link
+ * „Backend nicht erreichbar“ (SIN-1519). Auf `true` setzen, sobald das Hosting steht;
+ * dann erscheinen alle Demo-Links wieder.
+ */
+export const STROMLAUF_DEMO_ONLINE = false;
+
 /** Öffentliche Referenz-Repos für industrielle KI – Startseite und Referenzseite. `archived`: Repo ist auf GitHub archiviert. */
 export const INDUSTRY_REPOS = [
   {

@@ -19,7 +19,7 @@ export default function NotFound() {
             zur Startseite oder erzählen Sie mir direkt von Ihrem Projekt.
           </p>
           <div className="actions rise rise-4">
-            <a href="/index.html" className="btn btn-primary">
+            <a href="/" className="btn btn-primary">
               Zur Startseite
             </a>
             <a href="/kontakt.html" className="btn btn-outline">
