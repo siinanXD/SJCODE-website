@@ -25,7 +25,7 @@ export default function DankePage() {
             <div className="check" aria-hidden="true" style={{ margin: '0 0 20px' }}>
               ✓
             </div>
-            <h1 style={{ margin: '0 0 12px', fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em' }}>
+            <h1 style={{ margin: '0 0 12px', fontSize: 'var(--t-h1)', fontWeight: 700, letterSpacing: '-0.02em' }}>
               Danke, Ihre Anfrage ist angekommen.
             </h1>
             <p>
