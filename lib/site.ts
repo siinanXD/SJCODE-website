@@ -33,3 +33,6 @@ export const PROOF = {
   testsInReference: '276+',
   releasesInReference: '60+',
 } as const;
+
+/** Vollständige URL einer Unterseite für Canonical und Sitemap: Seitenschema mit `.html` (`output: 'export'`). */
+export const pageUrl = (path: string) => `${SITE.url}${path}.html`;

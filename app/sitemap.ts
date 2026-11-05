@@ -41,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...SERVICES.map((s) => ({ path: serviceUrl(s), files: ['app/leistungen/[slug]/page.tsx', 'lib/services.ts'] })),
     { path: '/automatisierungs-check.html', files: ['app/automatisierungs-check/page.tsx', 'lib/automationCheck.ts'] },
     { path: '/referenz.html', files: ['app/referenz/page.tsx'] },
+    { path: '/referenz/stromlauf-ai.html', files: ['app/referenz/stromlauf-ai/page.tsx', 'lib/stromlauf.ts'] },
     { path: '/ueber-mich.html', files: ['app/ueber-mich/page.tsx'] },
     { path: '/kontakt.html', files: ['app/kontakt/page.tsx'] },
   ];

@@ -2990,3 +2990,18 @@ body:has(.hm) { background: #f4efe7; }
 .page-head, .kontakt-grid, .legal, .about-hero { padding-top: 56px; }
 .btn-primary { background: #dd7348; color: #1a1816; }
 .eyebrow, .breadcrumb { font-family: 'Geist Mono', monospace; }
+
+/* Fließtext-Seiten (Fallstudie, Wissen): Lesespalte, Quellenzeile, Datentabelle (SIN-1563).
+   Nur Stufen der Skala (--fs-*, --t-*). */
+.prose { max-width: 760px; }
+.prose p { margin: 0 0 18px; font-size: var(--fs-sm); line-height: 1.75; color: var(--ink); }
+.prose code { font-family: 'Geist Mono', monospace; font-size: var(--fs-xs); background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; }
+.prose a, .source a { color: var(--accent); text-underline-offset: 3px; }
+.source { margin: 14px 0 0; font-size: var(--fs-xs); line-height: 1.6; color: var(--muted); }
+.section .section-title { margin: 0 0 24px; }
+.table-wrap { overflow-x: auto; margin: 8px 0 24px; }
+.data-table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: var(--fs-xs); }
+.data-table caption { text-align: left; padding-bottom: 10px; color: var(--muted); }
+.data-table th, .data-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line-soft); font-variant-numeric: tabular-nums; }
+.data-table thead th { color: var(--muted); font-weight: 600; vertical-align: bottom; }
+.data-table th[scope='row'], .data-table thead th:first-child { text-align: left; font-weight: 600; color: var(--ink); }
