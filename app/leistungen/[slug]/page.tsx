@@ -52,7 +52,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         description: s.metaDescription,
         url,
         provider: { '@id': SITE.businessId },
-        areaServed: ['Euskirchen', 'Köln', 'Bonn', 'DE'],
+        areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Aachen', 'DE'],
       },
       {
         '@type': 'FAQPage',
