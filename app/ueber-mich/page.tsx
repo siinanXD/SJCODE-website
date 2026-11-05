@@ -9,7 +9,7 @@ import CtaBand from '@/components/CtaBand';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Über mich – Sinan Kahraman, Softwareentwickler & AI Engineer aus Euskirchen | SJCODE',
+  title: 'Sinan Kahraman: AI Engineer aus Euskirchen | SJCODE',
   description:
     'Sinan Kahraman: Elektroniker für Betriebstechnik, heute AI Engineer. KI für Instandhaltung und Anlagen: Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, mit Quellenbeleg. Aus Euskirchen, remote deutschlandweit.',
   alternates: { canonical: `${SITE.url}/ueber-mich.html` },

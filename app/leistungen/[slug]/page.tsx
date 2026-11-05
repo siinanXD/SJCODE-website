@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { openGraph } from '@/lib/og';
 import { SITE } from '@/lib/site';
 import { SERVICES, getService, serviceRepo, serviceUrl } from '@/lib/services';
-import { STROMLAUF_DEMO_URL } from '@/lib/repos';
+import { STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
@@ -131,10 +131,10 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                 <h2 className="hm-h2">{s.repoIsDemo ? 'Nicht glauben. Ausprobieren.' : 'Der Code ist öffentlich.'}</h2>
                 <p className="hm-lede">
                   {repo.text}
-                  {s.repoIsDemo ? ' Mit Demo-Daten, ohne Anmeldung.' : ''}
+                  {s.repoIsDemo && STROMLAUF_DEMO_ONLINE ? ' Mit Demo-Daten, ohne Anmeldung.' : ''}
                 </p>
                 <div className="hm-actions">
-                  {s.repoIsDemo && (
+                  {s.repoIsDemo && STROMLAUF_DEMO_ONLINE && (
                     <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
                       Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                     </a>
@@ -143,7 +143,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                     href={repo.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={s.repoIsDemo ? 'hm-btn hm-btn-outline' : 'hm-btn hm-btn-primary'}
+                    className={s.repoIsDemo && STROMLAUF_DEMO_ONLINE ? 'hm-btn hm-btn-outline' : 'hm-btn hm-btn-primary'}
                   >
                     {repo.name} auf GitHub{repo.archived ? ' (Archiv)' : ''} ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>

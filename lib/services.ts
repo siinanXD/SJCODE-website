@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     id: '-K1',
     title: 'Doku-Assistent',
     serviceType: 'KI-Dokumentensuche',
-    seoTitle: 'Doku-Assistent: Handbücher und Wartungsanleitungen fragen statt suchen',
+    seoTitle: 'Doku-Assistent: Handbücher per KI durchsuchen',
     metaDescription:
       'KI für technische Dokumentation: Handbücher, Wartungsanleitungen und Störungsberichte durchsuchen und beantworten – jede Antwort mit Dokument und Seite. Für Maschinenbauer und Instandhaltung.',
     teaser:
@@ -89,7 +89,7 @@ export const SERVICES: Service[] = [
     id: '-K2',
     title: 'Wartungs-Assistent',
     serviceType: 'KI für Instandhaltung',
-    seoTitle: 'Wartungs-Assistent: Störung eingeben, bekannte Ursachen und Schritte bekommen',
+    seoTitle: 'Wartungs-Assistent: Störungsursachen aus der Historie',
     metaDescription:
       'KI für die Instandhaltung: Störung eingeben und bekannte Ursachen und Schritte aus Ihrer Historie bekommen – mit Quellen. Für Anlagenbetreiber und Instandhaltungsteams.',
     teaser: 'Störung eingeben, bekannte Ursachen und Schritte aus Ihrer Historie bekommen.',
@@ -134,7 +134,7 @@ export const SERVICES: Service[] = [
     id: '-K3',
     title: 'Stromlaufplan-KI',
     serviceType: 'KI für Stromlaufpläne und SPS-Programme',
-    seoTitle: 'Stromlaufplan-KI: Fragen an Stromlaufpläne und STEP-7-Programme',
+    seoTitle: 'Stromlaufplan-KI: Stromlaufpläne und STEP 7 abfragen',
     metaDescription:
       'KI für Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt? Antwort mit Blatt und Pfad. Mit Live-Demo auf Demo-Daten.',
     teaser:
@@ -180,7 +180,7 @@ export const SERVICES: Service[] = [
     id: '-K4',
     title: 'Qualitätsprüfung',
     serviceType: 'Qualitätsprüfung für KI-Systeme',
-    seoTitle: 'Qualitätsprüfung für KI: Testfragen mit Soll-Antwort, Trefferquote vor dem Einsatz',
+    seoTitle: 'KI-Qualitätsprüfung: Testset mit Soll-Antwort',
     metaDescription:
       'Wie gut ist die KI wirklich? Testfragen mit Soll-Antwort messen die Trefferquote, bevor die KI im Betrieb eingesetzt wird. Regressionstests für KI-Agenten, Open Source.',
     teaser: 'Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist – vor dem Einsatz.',

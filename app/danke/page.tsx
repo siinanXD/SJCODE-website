@@ -40,7 +40,7 @@ export default function DankePage() {
               <a href={SITE.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                 WhatsApp ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
               </a>
-              <a href="/index.html" className="btn btn-primary">
+              <a href="/" className="btn btn-primary">
                 Zur Startseite
               </a>
             </div>

@@ -11,7 +11,7 @@ import CtaBand from '@/components/CtaBand';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Referenz: Booking Email Check – KI-E-Mail-Automatisierung | SJCODE',
+  title: 'Referenz: LLM-Plattform für Buchungs-E-Mails | SJCODE',
   description:
     'Abgeschlossenes Projekt: Booking Email Check – Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation, Datenextraktion und Antwortentwürfe mit menschlicher Freigabe. Code öffentlich (archiviert), 276+ Tests, 60+ Releases.',
   alternates: { canonical: `${SITE.url}/referenz.html` },

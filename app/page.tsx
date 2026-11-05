@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
-import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL } from '@/lib/repos';
+import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollScene from '@/components/home/ScrollScene';
@@ -10,9 +10,9 @@ import ScrollCircuit from '@/components/home/ScrollCircuit';
 import { CabinetClosed, CabinetOpen, Schematic } from '@/components/home/Schematics';
 
 export const metadata: Metadata = {
-  title: 'SJCODE – KI für Instandhaltung und Anlagen: Doku durchsuchen, Antworten mit Quelle',
+  title: 'KI für Instandhaltung: Doku, SPS und Stromlaufpläne | SJCODE',
   description:
-    'KI für Maschinenbauer, Anlagenbetreiber und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Vom Elektroniker für Betriebstechnik zum AI Engineer. Auch Websites und Automatisierung für kleine Betriebe.',
+    'KI für Maschinenbauer, Anlagenbetreiber und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Vom Elektroniker für Betriebstechnik zum AI Engineer.',
   alternates: { canonical: `${SITE.url}/` },
   openGraph: openGraph({
     title: 'SJCODE – KI für Instandhaltung und Anlagen',
@@ -43,7 +43,7 @@ const JSON_LD = {
       },
       geo: { '@type': 'GeoCoordinates', latitude: 50.66, longitude: 6.79 },
       description:
-        'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Außerdem Websites, KI-Automatisierung und E-Mail-Automatisierung für kleine Betriebe.',
+        'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber und Instandhaltung.',
       founder: { '@id': SITE.personId },
       areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Rheinland', 'DE'],
       knowsLanguage: 'de',
@@ -211,14 +211,23 @@ export default function HomePage() {
                 <p className="hm-kicker">-A4 · LIVE-DEMO · PRÜFSTAND</p>
                 <h2 className="hm-h2">Nicht glauben. Ausprobieren.</h2>
                 <p className="hm-lede">
-                  stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan. Mit
-                  Demo-Daten, ohne Anmeldung.
+                  stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan.
+                  {STROMLAUF_DEMO_ONLINE
+                    ? ' Mit Demo-Daten, ohne Anmeldung.'
+                    : ' Der Code ist öffentlich; die Live-Demo folgt, sobald das Hosting steht.'}
                 </p>
                 <div className="hm-actions">
-                  <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
-                    Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-                  </a>
-                  <a href={k3.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-outline">
+                  {STROMLAUF_DEMO_ONLINE && (
+                    <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                      Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                    </a>
+                  )}
+                  <a
+                    href={k3.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={STROMLAUF_DEMO_ONLINE ? 'hm-btn hm-btn-outline' : 'hm-btn hm-btn-primary'}
+                  >
                     Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>
