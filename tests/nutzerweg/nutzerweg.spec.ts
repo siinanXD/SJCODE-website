@@ -159,6 +159,18 @@ test.describe('Nutzerweg', () => {
     await expect(page).toHaveURL(/leistungen\/doku-assistent/);
   });
 
+  test('Weg 11: Wissen → Artikel zum Testen von KI-Assistenten, Link auf Qualitätsprüfung', async ({ page }) => {
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await klick(page, 'main', /KI-Assistenten vor dem Einsatz testen/);
+    await expect(page).toHaveURL(/wissen\/ki-assistenten-testen-testset-trefferquote/);
+    for (const h of [/Warum Stichproben/, /Testset für KI-Assistenten bauen/, /Trefferquote lesen und ihre Grenzen/, /Regressionstests/, 'Quellen']) {
+      await expect(page.getByRole('heading', { level: 2, name: h })).toBeVisible();
+    }
+    await klick(page, 'main', /Qualitätsprüfung/);
+    await expect(page).toHaveURL(/leistungen\/qualitaetspruefung/);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];
