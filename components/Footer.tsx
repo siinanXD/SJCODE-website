@@ -38,6 +38,7 @@ export default function Footer({
             <h2>Unternehmen</h2>
             <a href="/ueber-mich.html">Über mich</a>
             <a href="/referenz.html">Referenz</a>
+            <a href="/wissen.html">Wissen</a>
             <a href="/kontakt.html">Kontakt</a>
             <a href="/automatisierungs-check.html">Automatisierungs-Check</a>
           </nav>
