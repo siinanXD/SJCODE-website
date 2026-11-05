@@ -14,10 +14,11 @@ export function CabinetClosed() {
       <circle cx="155" cy="65" r="4" fill="#8FE0A8" />
       <rect x="248" y="180" width="14" height="70" rx="7" fill="#7C7F79" />
       <rect x="64" y="250" width="170" height="86" rx="3" fill="#F5F5F2" stroke="#8A8D87" />
-      <text x="76" y="278" fontFamily="'Geist Mono', monospace" fontSize="12" fontWeight="700" fill="#211E19">
+      {/* Schriftgröße 13 = Stufe der Skala; scale() hält die gezeichnete Größe (12 bzw. 10) */}
+      <text transform="translate(76 278) scale(0.923)" fontFamily="'Geist Mono', monospace" fontSize="13" fontWeight="700" fill="#211E19">
         =A1 +SJ1 SCHALTSCHRANK
       </text>
-      <text x="76" y="302" fontFamily="'Geist Mono', monospace" fontSize="10" fill="#211E19">
+      <text transform="translate(76 302) scale(0.769)" fontFamily="'Geist Mono', monospace" fontSize="13" fill="#211E19">
         Doku · Wartung · Pläne · Prüfung
       </text>
       <circle cx="72" cy="322" r="3" fill="#8A8D87" />
@@ -67,12 +68,12 @@ export function Schematic() {
           </g>
         ))}
       </g>
-      <g fontFamily="'Geist Mono', monospace" fontSize="14" fill={BLUE}>
-        <text x="44" y="30">L1</text>
-        <text x="86" y="125">-K1</text>
-        <text x="286" y="125">-K2</text>
-        <text x="486" y="125">-K3</text>
-        <text x="686" y="125">-K4</text>
+      <g fontFamily="'Geist Mono', monospace" fontSize="13" fill={BLUE}>
+        <text transform="translate(44 30) scale(1.077)">L1</text>
+        <text transform="translate(86 125) scale(1.077)">-K1</text>
+        <text transform="translate(286 125) scale(1.077)">-K2</text>
+        <text transform="translate(486 125) scale(1.077)">-K3</text>
+        <text transform="translate(686 125) scale(1.077)">-K4</text>
       </g>
     </svg>
   );

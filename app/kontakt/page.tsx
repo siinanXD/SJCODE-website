@@ -57,7 +57,7 @@ export default function KontaktPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-accent"
-                style={{ fontSize: 15.5 }}
+                style={{ fontSize: 'var(--fs-sm)' }}
               >
                 Termin buchen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
               </a>
