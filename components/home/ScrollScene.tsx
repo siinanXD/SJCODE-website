@@ -31,7 +31,7 @@ export default function ScrollScene() {
 
       mm.add('(min-width: 768px)', () => {
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: el, start: 'top top', end: '+=1800', pin: true, scrub: 0.6, anticipatePin: 1 },
+          scrollTrigger: { trigger: el, start: 'top top', end: '+=1000', pin: true, scrub: 0.6, anticipatePin: 1 },
         });
         gsap.set('.sc-door', { rotateY: 0 });
         gsap.set(q('.sc-k-lamp'), { opacity: 0.15 });

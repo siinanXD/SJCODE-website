@@ -111,6 +111,9 @@ export default function ReferenzPage() {
                 </a>
               ))}
             </div>
+            <p className="source reveal">
+              <a href="/referenz/stromlauf-ai.html">Fallstudie: KI für Stromlaufpläne und STEP-7-Programme (stromlauf-ai) mit Messwerten und Grenzen</a>
+            </p>
           </div>
         </section>
 

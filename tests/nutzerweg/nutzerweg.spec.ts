@@ -91,6 +91,101 @@ test.describe('Nutzerweg', () => {
     await expect(page.getByRole('link', { name: 'Datenschutzerklärung' })).toBeVisible();
   });
 
+  test('Weg 6: Referenz → Fallstudie stromlauf-ai, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, 'header nav[aria-label="Hauptnavigation"]', 'Referenz');
+    await klick(page, 'main', /Fallstudie: KI für Stromlaufpläne/);
+    await expect(page).toHaveURL(/referenz\/stromlauf-ai/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Stromlaufpläne');
+    await expect(page.getByRole('heading', { level: 2, name: /Messwerte/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: /Grenzen/ })).toBeVisible();
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
+  test('Weg 7: Automatisierungs-Check → Beispiel-Ergebnis als PDF', async ({ page, request }) => {
+    await page.goto('/');
+    await klick(page, 'footer', /Automatisierungs-Check/);
+    const link = page.getByRole('link', { name: /Beispiel-Ergebnis ansehen \(PDF, \d+ KB\)/ });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', /noopener/);
+    const antwort = await request.get(new URL((await link.getAttribute('href')) as string, page.url()).href);
+    expect(antwort.status()).toBe(200);
+    expect(antwort.headers()['content-type']).toContain('pdf');
+  });
+
+  test('Weg 8: Footer → Wissen → Artikel, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await expect(page).toHaveURL(/wissen/);
+    await heading(page);
+    await klick(page, 'main', /Stromlaufpläne mit KI auswerten/);
+    await expect(page).toHaveURL(/wissen\/stromlaufplaene-mit-ki-auswerten/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Stromlaufpläne mit KI auswerten');
+    await expect(page.getByRole('heading', { level: 2, name: /Grenzen/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Quellen' })).toBeVisible();
+    await klick(page, 'main', /Stromlaufplan-KI/);
+    await expect(page).toHaveURL(/leistungen\/stromlaufplan-ki/);
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
+  test('Weg 9: Footer → Regionalseite Euskirchen, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, 'footer', /KI für Industrie in Euskirchen/);
+    await expect(page).toHaveURL(/ki-fuer-industrie-euskirchen/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Euskirchen');
+    await expect(page.getByRole('cell', { name: 'Aachen' }).or(page.getByRole('rowheader', { name: 'Aachen' }))).toBeVisible();
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
+  test('Weg 10: Wissen → Artikel zu RAG und Handbüchern, Links auf Leistungen', async ({ page }) => {
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await klick(page, 'main', /KI für Handbücher in der Instandhaltung/);
+    await expect(page).toHaveURL(/wissen\/ki-fuer-handbuecher-instandhaltung/);
+    for (const h of [/Was RAG bei Handbüchern in der Instandhaltung leistet/, /Wo RAG bei technischen Handbüchern scheitert/, /Was man vor dem Einsatz/, 'Quellen']) {
+      await expect(page.getByRole('heading', { level: 2, name: h })).toBeVisible();
+    }
+    await klick(page, 'main', /Doku-Assistent/);
+    await expect(page).toHaveURL(/leistungen\/doku-assistent/);
+  });
+
+  test('Weg 11: Wissen → Artikel zum Testen von KI-Assistenten, Link auf Qualitätsprüfung', async ({ page }) => {
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await klick(page, 'main', /KI-Assistenten vor dem Einsatz testen/);
+    await expect(page).toHaveURL(/wissen\/ki-assistenten-testen-testset-trefferquote/);
+    for (const h of [/Warum Stichproben/, /Testset für KI-Assistenten bauen/, /Trefferquote lesen und ihre Grenzen/, /Regressionstests/, 'Quellen']) {
+      await expect(page.getByRole('heading', { level: 2, name: h })).toBeVisible();
+    }
+    await klick(page, 'main', /Qualitätsprüfung/);
+    await expect(page).toHaveURL(/leistungen\/qualitaetspruefung/);
+  });
+
+  test('Weg 12: Startseite → Fallstudie und neuester Artikel, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, '#demo', /Fallstudie: KI für Stromlaufpläne/);
+    await expect(page).toHaveURL(/referenz\/stromlauf-ai/);
+    await heading(page);
+    await page.goto('/');
+    await klick(page, '#demo', /KI-Assistenten vor dem Einsatz testen/);
+    await expect(page).toHaveURL(/wissen\//);
+    await heading(page);
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];
@@ -100,6 +195,7 @@ test.describe('Nutzerweg', () => {
     for (let i = 0; i < seiten.length && i < 60; i++) {
       const url = seiten[i];
       if (geladen.has(url)) continue;
+      if (/\.pdf($|\?)/.test(url)) continue; // PDF wird unten per Anfrage geprüft, kein Seitenaufruf
       geladen.add(url);
       const antwort = await page.goto(url);
       if (!antwort || antwort.status() >= 400) {

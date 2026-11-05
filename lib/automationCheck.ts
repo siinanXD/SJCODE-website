@@ -84,8 +84,8 @@ export const QUESTIONS: Question[] = [
 ];
 
 /** Anteil der Handarbeit, der sich erfahrungsgemäß automatisieren lässt – konservativ. */
-const AUTOMATABLE_SHARE = 0.6;
-const WORKDAYS_PER_MONTH = 21;
+export const AUTOMATABLE_SHARE = 0.6;
+export const WORKDAYS_PER_MONTH = 21;
 
 export type CheckResult = {
   hoursPerMonth: number;
@@ -133,7 +133,7 @@ export function evaluate(answers: Record<string, number>): CheckResult {
     potential === 'niedrig'
       ? 'Ehrlich gesagt: Bei Ihnen ist der Hebel klein. Eine Automatisierung lohnt sich erst, wenn das Aufkommen wächst – ich sage Ihnen das im Gespräch genauso.'
       : potential === 'mittel'
-        ? 'Das lohnt sich, wenn wir den Umfang klein halten: ein Ablauf, ein Postfach, vier Wochen. Genau dafür ist der Pilot ab 2.500 € gedacht.'
+        ? 'Das lohnt sich, wenn wir den Umfang klein halten: ein Ablauf, ein Postfach, vier Wochen. Genau dafür ist der Pilot für 2.500 € Festpreis gedacht.'
         : 'Das ist ein klarer Fall. Eine Automatisierung hat sich bei diesem Aufwand meist nach wenigen Monaten bezahlt gemacht.';
 
   return { hoursPerMonth, hoursSaved, euroSaved, potential, topic, topicReason: reasons[topic], summary };

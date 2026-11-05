@@ -3,6 +3,7 @@ import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
 import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
+import { ARTICLES_NEWEST_FIRST, articleUrl } from '@/lib/wissen';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollScene from '@/components/home/ScrollScene';
@@ -45,7 +46,7 @@ const JSON_LD = {
       description:
         'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber und Instandhaltung.',
       founder: { '@id': SITE.personId },
-      areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Rheinland', 'DE'],
+      areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Aachen', 'Rheinland', 'DE'],
       knowsLanguage: 'de',
       priceRange: '€€',
       sameAs: [SITE.github, SITE.linkedin, SITE.googleProfileUrl],
@@ -99,7 +100,7 @@ const STEPS = [
     : { id: '-S1', title: 'Beispiel', price: 'kostenlos', text: 'Beispiel-Dialog und öffentlicher Code, sofort einsehbar.' },
   { id: '-S2', title: 'Doku-Check', price: 'kostenlos · 30 Min', text: '10 echte Fragen an eines Ihrer Handbücher. Ergebnis als PDF.' },
   { id: '-S3', title: 'Potenzialcheck', price: '1.490 € Festpreis', text: '1–2 Tage: Doku-Bestand, Top-Fragen, Machbarkeit, Angebot.' },
-  { id: '-S4', title: 'Pilot', price: '9.900 € Festpreis', text: '8 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
+  { id: '-S4', title: 'Pilot', price: '2.500 € Festpreis', text: '4 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
 ];
 
 const PLATE = [
@@ -233,6 +234,10 @@ export default function HomePage() {
                     Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>
+                <p className="hm-small">
+                  <a href="/referenz/stromlauf-ai.html">Fallstudie: KI für Stromlaufpläne mit Messwerten</a> ·{' '}
+                  <a href={articleUrl(ARTICLES_NEWEST_FIRST[0])}>{ARTICLES_NEWEST_FIRST[0].title}</a>
+                </p>
               </div>
               <div className="hm-chat" role="group" aria-label="Beispiel-Dialog">
                 <p className="hm-mono hm-chat-tag">Beispiel</p>
