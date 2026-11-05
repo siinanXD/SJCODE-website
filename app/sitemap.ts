@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import type { MetadataRoute } from 'next';
 import { SERVICES, serviceUrl } from '@/lib/services';
 import { SITE } from '@/lib/site';
+import { ARTICLES, articleUrl } from '@/lib/wissen';
 
 /**
  * Sitemap zur Build-Zeit erzeugen.
@@ -42,6 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/automatisierungs-check.html', files: ['app/automatisierungs-check/page.tsx', 'lib/automationCheck.ts'] },
     { path: '/referenz.html', files: ['app/referenz/page.tsx'] },
     { path: '/referenz/stromlauf-ai.html', files: ['app/referenz/stromlauf-ai/page.tsx', 'lib/stromlauf.ts'] },
+    { path: '/wissen.html', files: ['app/wissen/page.tsx', 'lib/wissen.ts'] },
+    ...ARTICLES.map((a) => ({ path: articleUrl(a), files: ['app/wissen/[slug]/page.tsx', 'lib/wissen.ts'] })),
     { path: '/ueber-mich.html', files: ['app/ueber-mich/page.tsx'] },
     { path: '/kontakt.html', files: ['app/kontakt/page.tsx'] },
   ];

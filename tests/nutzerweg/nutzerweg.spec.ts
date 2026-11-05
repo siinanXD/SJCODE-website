@@ -117,6 +117,24 @@ test.describe('Nutzerweg', () => {
     expect(antwort.headers()['content-type']).toContain('pdf');
   });
 
+  test('Weg 8: Footer → Wissen → Artikel, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await expect(page).toHaveURL(/wissen/);
+    await heading(page);
+    await klick(page, 'main', /Stromlaufpläne mit KI auswerten/);
+    await expect(page).toHaveURL(/wissen\/stromlaufplaene-mit-ki-auswerten/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Stromlaufpläne mit KI auswerten');
+    await expect(page.getByRole('heading', { level: 2, name: /Grenzen/ })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Quellen' })).toBeVisible();
+    await klick(page, 'main', /Stromlaufplan-KI/);
+    await expect(page).toHaveURL(/leistungen\/stromlaufplan-ki/);
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];

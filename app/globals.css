@@ -3005,3 +3005,11 @@ body:has(.hm) { background: #f4efe7; }
 .data-table th, .data-table td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--line-soft); font-variant-numeric: tabular-nums; }
 .data-table thead th { color: var(--muted); font-weight: 600; vertical-align: bottom; }
 .data-table th[scope='row'], .data-table thead th:first-child { text-align: left; font-weight: 600; color: var(--ink); }
+.prose h2 { margin: 44px 0 16px; font-size: var(--t-h2); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }
+.prose h2:first-child { margin-top: 0; }
+.prose .case-list { margin-bottom: 22px; }
+.prose .case-list li { line-height: 1.7; }
+.article-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; max-width: 760px; }
+.article-list h2 { margin: 0 0 10px; font-size: var(--t-h3); line-height: 1.3; }
+.article-list h2 a { color: var(--ink); text-underline-offset: 3px; }
+.article-list p { margin: 0 0 8px; font-size: var(--fs-sm); line-height: 1.7; color: var(--muted); }
