@@ -55,6 +55,7 @@
   --fs-sm: 15px; /* Fließtext, Buttons, Links */
   --fs-md: 17px; /* Einleitung, Marke */
   --fs-lg: 24px; /* Kennzahlen */
+  --fs-glyph: 78px; /* nur das dekorative Anführungszeichen (aria-hidden) */
   /* Titelstufen (SIN-1502): höchstens 4 Größen für h1 bis h3 und Kicker/Label.
      h3 und Label teilen sich Stufen der Fließtext-Skala. */
   --t-h1: clamp(32px, 5vw, 52px); /* Seitentitel */
@@ -860,7 +861,7 @@ body:has(#mobilemenu[open]) {
   top: 6px;
   right: 20px;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 78px;
+  font-size: var(--fs-glyph);
   line-height: 1;
   color: var(--accent);
   opacity: 0.16;
@@ -1082,7 +1083,7 @@ body:has(#mobilemenu[open]) {
 }
 .stats strong {
   display: block;
-  font-size: 32px;
+  font-size: var(--fs-lg);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
