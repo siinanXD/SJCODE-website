@@ -121,6 +121,79 @@ export const ARTICLES: Article[] = [
       { label: 'Leistung: Stromlaufplan-KI', href: '/leistungen/stromlaufplan-ki.html' },
     ],
   },
+  {
+    slug: 'ki-fuer-handbuecher-instandhaltung',
+    title: 'KI für Handbücher in der Instandhaltung: was RAG leistet und wo es scheitert',
+    seoTitle: 'RAG für Handbücher: was es leistet, wo es scheitert',
+    description:
+      'Was RAG bei Handbüchern in der Instandhaltung leistet, wo es scheitert (Versionen, Scans, Tabellen) und was vor dem Einsatz geprüft werden sollte.',
+    date: '2026-11-05',
+    blocks: [
+      {
+        type: 'p',
+        text: 'Wenn die Anlage steht, sucht die Instandhaltung im Ordner, im Netzlaufwerk oder beim Kollegen, der es weiß. Ein KI-Assistent, der Handbücher durchsucht und beantwortet, soll diese Suche verkürzen. Technisch steckt dahinter meist Retrieval-Augmented Generation, kurz RAG: Ein Sprachmodell antwortet nicht aus dem Gedächtnis, sondern bekommt vorher passende Textstellen aus einem durchsuchbaren Bestand. Das Konzept stammt aus der Forschung ([Lewis et al., 2020](https://arxiv.org/abs/2005.11401)): Ein Modell wird mit einem Index aus Textpassagen gekoppelt, den ein Retriever beim Erzeugen der Antwort befragt. Dieser Artikel beschreibt, was das bei Handbüchern leistet, wo es scheitert und was man vor dem Einsatz prüft.',
+      },
+      { type: 'h2', text: 'Was RAG bei Handbüchern in der Instandhaltung leistet' },
+      {
+        type: 'ul',
+        items: [
+          '**Antworten mit Beleg.** In `document-intelligence-mvp` liefert jede Antwort die Quellen mit, die sie tatsächlich benutzt hat, und jede Quelle lässt sich auf Passage, Seite und Abschnitt auflösen. Quellen, die das Modell nennt, aber nie bekommen hat, werden verworfen.',
+          '**Ehrliches „steht nicht drin“.** Fehlt die Information in den Dokumenten, ist „die Dokumente sagen es nicht“ dort eine gültige Antwort und kein Fehler. Die Alternative wäre eine selbstsichere Vermutung.',
+          '**Widersprüche sichtbar machen.** Widersprechen sich zwei Passagen, kennzeichnet das System die Antwort als widersprüchlich und liefert beide Stellen, statt sie zu einer glatten Antwort zu verschmelzen.',
+          '**Wörtliche Suche für Kennungen.** Die Bedeutungssuche findet Passagen, die dasselbe meinen. Die wörtliche Suche findet Passagen, die den Text tatsächlich enthalten, etwa eine Rechnungsnummer oder einen Klauselverweis. Bei Handbüchern entspricht das einer Teilenummer oder einem Fehlercode, die man exakt treffen muss.',
+          '**Zerlegen nach Struktur.** Im `maintenance-ai-assistant` wird nach Überschriften, Abschnitten, Tabellen, Abläufen, Wartungsanleitungen und Einträgen eines Fehlerkatalogs zerlegt, die Gliederung bleibt als Metadaten erhalten.',
+          '**Rechte bleiben erhalten.** Dort bleibt die SQL-Datenbank die Instanz für Berechtigungen, Sichtbarkeit und Dokumentstatus. Ein Treffer aus dem Vektorindex allein entscheidet nicht, wer ein Dokument sehen darf.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Ohne Treffer entsteht keine Antwort ohne Quelle: Bei leerem Suchergebnis liefert der `maintenance-ai-assistant` eine lokale Antwort „Keine belastbare Quelle gefunden“ statt einer Vermutung des Modells.',
+      },
+      { type: 'h2', text: 'Wo RAG bei technischen Handbüchern scheitert' },
+      {
+        type: 'ul',
+        items: [
+          '**Mehrere Handbuchstände.** Liegen zwei Fassungen desselben Handbuchs im Bestand, erkennt `document-intelligence-mvp` sie als mögliche Versionen und markiert Widersprüche. Welche Fassung für die Anlage gilt, kann das System nicht wissen. Das muss der Betrieb festlegen, bevor die KI darauf antwortet.',
+          '**Schlechte Scans.** In `document-intelligence-mvp` ist die Texterkennung standardmäßig aus und gescannte Dokumente sind für das MVP ausdrücklich nicht vorgesehen. Auch mit Texterkennung sinkt die Genauigkeit: Im Projekt `stromlauf-ai` werden auf dem Beispiel-Scan 81 % der Klemmen gefunden, gegenüber 99 bis 100 % bei Geräten und SPS-Adressen.',
+          '**Tabellen und Spaltenlayouts.** Was im Dokument zusammengehört, steht im Text oft verstreut. Für `stromlauf-ai` musste die Ingestion Beschriftungen je Spalte ordnen, damit zusammengehörige Angaben zusammenbleiben. Als Lehre nennt das Projekt: Leseregeln pro Beispieldokument skalieren nicht, bei fremden Formaten greift unterhalb einer Konfidenzschwelle ein seitenweiser Rückfall auf ein Modell.',
+          '**Zu viel Kontext.** Mehr Textstellen an das Modell zu geben, hilft nicht automatisch. Die Studie „Lost in the Middle“ ([Liu et al., 2023](https://arxiv.org/abs/2307.03172)) zeigt, dass Modelle Informationen am Anfang und Ende einer langen Eingabe oft besser nutzen als in der Mitte.',
+          '**Erfundene Belege.** Nicht jedes Modell zitiert sauber. Im Modellvergleich von `stromlauf-ai` (20 Fragen je Modell) waren bei gpt-5.4-mini 72 % der Zitate gültig, bei einem lokalen 4-Milliarden-Parameter-Modell nur 35 %. Das Projekt hält fest, dass die Kurzantwort ohne Zitatprüfung nicht reicht.',
+          '**Anweisungen im Dokument.** Ein Handbuch ist Text, und Text kann Anweisungen enthalten. Darum gilt Dokumenttext im Prompt als Daten, nicht als Anweisung, und es gibt Testfragen mit eingebetteten Anweisungen.',
+          '**Modellwechsel.** Wer das Embedding-Modell oder den Vektorspeicher wechselt, muss den gesamten Wissensbestand neu indexieren.',
+        ],
+      },
+      { type: 'h2', text: 'Was man vor dem Einsatz von KI auf Handbüchern prüft' },
+      {
+        type: 'ul',
+        items: [
+          '**Bestand und Stand klären.** Welche Handbücher gehören zur Anlage, welche Fassung ist gültig, welche Dateien sind Scans?',
+          '**Testset aus dem Alltag.** Echte Fragen der Instandhaltung mit der Antwort, die das Team als richtig ansieht, und dazu Fallen: Fragen, deren Antwort in keinem Dokument steht. Erwartet wird „nicht vorhanden“, bestraft wird eine erfundene Zahl. So geht auch `stromlauf-ai` bei seinen Testfragen vor.',
+          '**Belege stichprobenweise im Original prüfen.** Jede Antwort muss Dokument und Seite nennen.',
+          '**Trefferquote messen, nicht schätzen.** Fakten, Quellen und Zitate lassen sich regelbasiert gegen eine Fragenliste prüfen. Das geht ohne KI als Richter und liefert bei gleichem Stand gleiche Zahlen.',
+          '**Nach jeder Änderung wiederholen.** Ein neues Modell, ein neuer Prompt oder ein neuer Handbuchstand kann die Qualität unbemerkt verschlechtern. Ein Regressionstest macht das sichtbar.',
+          '**Datenweg klären.** Auch wenn die eigenen Dienste in der EU laufen, bleibt ein externer Modellanbieter ein Auftragsverarbeiter, wie es `document-intelligence-mvp` in seiner README festhält. Das gehört in die Entscheidung.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Wer nicht selbst ein Testset aufbauen möchte: Im [Doku-Check](/kontakt.html?thema=Doku-Check) stelle ich zehn echte Fragen an eines Ihrer Handbücher. Wie der [Doku-Assistent](/leistungen/doku-assistent.html) arbeitet, steht auf der Leistungsseite, und wie sich die Trefferquote vor dem Einsatz messen lässt, auf der Seite zur [Qualitätsprüfung](/leistungen/qualitaetspruefung.html).',
+      },
+    ],
+    sources: [
+      { label: 'document-intelligence-mvp, README (Repository archiviert)', href: 'https://github.com/siinanXD/document-intelligence-mvp/blob/main/README.md' },
+      { label: 'maintenance-ai-assistant, AI_RAG_ARCHITECTURE.md (Repository archiviert)', href: 'https://github.com/siinanXD/maintenance-ai-assistant/blob/master/docs/AI_RAG_ARCHITECTURE.md' },
+      { label: 'stromlauf-ai, README', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/README.md' },
+      { label: 'stromlauf-ai, Modellvergleich vom 2026-10-02', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/eval/results/vergleich_2026-10-02.md' },
+      { label: 'stromlauf-ai, eval/README.md', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/eval/README.md' },
+      { label: 'Lewis et al. (2020): Retrieval-Augmented Generation', href: 'https://arxiv.org/abs/2005.11401' },
+      { label: 'Liu et al. (2023): Lost in the Middle', href: 'https://arxiv.org/abs/2307.03172' },
+    ],
+    related: [
+      { label: 'Leistung: Doku-Assistent', href: '/leistungen/doku-assistent.html' },
+      { label: 'Leistung: Qualitätsprüfung', href: '/leistungen/qualitaetspruefung.html' },
+      { label: 'Artikel: Stromlaufpläne mit KI auswerten', href: '/wissen/stromlaufplaene-mit-ki-auswerten.html' },
+    ],
+  },
 ];
 
 export const articleUrl = (a: Pick<Article, 'slug'>) => `/wissen/${a.slug}.html`;
