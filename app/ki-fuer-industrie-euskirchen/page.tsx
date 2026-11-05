@@ -88,7 +88,7 @@ export default function RegionPage() {
               Danach gibt es drei Schritte, jeweils mit festem Preis (zzgl. MwSt., wie auf der{' '}
               <a href="/#ablauf">Startseite</a>): den kostenlosen <a href={DOKU_CHECK_HREF}>Doku-Check</a> mit zehn
               echten Fragen an eines Ihrer Handbücher in 30 Minuten, den Potenzialcheck für 1.490 € (ein bis zwei Tage:
-              Doku-Bestand, wichtigste Fragen, Machbarkeit, Angebot) und, wenn es sich lohnt, einen Pilot für 9.900 € über
+              Doku-Bestand, wichtigste Fragen, Machbarkeit, Angebot) und, wenn es sich lohnt, einen Pilot für 2.500 € über
               acht Wochen an einer Maschinenfamilie. Danach entscheiden Sie über Ausbau oder Stopp.
             </p>
 
