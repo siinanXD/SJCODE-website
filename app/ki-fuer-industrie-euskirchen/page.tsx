@@ -89,7 +89,7 @@ export default function RegionPage() {
               <a href="/#ablauf">Startseite</a>): den kostenlosen <a href={DOKU_CHECK_HREF}>Doku-Check</a> mit zehn
               echten Fragen an eines Ihrer Handbücher in 30 Minuten, den Potenzialcheck für 1.490 € (ein bis zwei Tage:
               Doku-Bestand, wichtigste Fragen, Machbarkeit, Angebot) und, wenn es sich lohnt, einen Pilot für 2.500 € über
-              acht Wochen an einer Maschinenfamilie. Danach entscheiden Sie über Ausbau oder Stopp.
+              vier Wochen an einer Maschinenfamilie. Danach entscheiden Sie über Ausbau oder Stopp.
             </p>
 
             <h2>Wissen in der Anlage halten: was die IHK-Befragung für Euskirchen zeigt</h2>

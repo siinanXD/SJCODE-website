@@ -100,7 +100,7 @@ const STEPS = [
     : { id: '-S1', title: 'Beispiel', price: 'kostenlos', text: 'Beispiel-Dialog und öffentlicher Code, sofort einsehbar.' },
   { id: '-S2', title: 'Doku-Check', price: 'kostenlos · 30 Min', text: '10 echte Fragen an eines Ihrer Handbücher. Ergebnis als PDF.' },
   { id: '-S3', title: 'Potenzialcheck', price: '1.490 € Festpreis', text: '1–2 Tage: Doku-Bestand, Top-Fragen, Machbarkeit, Angebot.' },
-  { id: '-S4', title: 'Pilot', price: '2.500 € Festpreis', text: '8 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
+  { id: '-S4', title: 'Pilot', price: '2.500 € Festpreis', text: '4 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
 ];
 
 const PLATE = [
