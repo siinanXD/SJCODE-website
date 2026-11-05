@@ -194,6 +194,85 @@ export const ARTICLES: Article[] = [
       { label: 'Artikel: Stromlaufpläne mit KI auswerten', href: '/wissen/stromlaufplaene-mit-ki-auswerten.html' },
     ],
   },
+  {
+    slug: 'ki-assistenten-testen-testset-trefferquote',
+    title: 'KI-Assistenten vor dem Einsatz testen: Testset und Trefferquote',
+    seoTitle: 'KI-Assistent testen: Testset und Trefferquote',
+    description:
+      'KI-Assistenten vor dem Einsatz testen: warum Stichproben nicht reichen, wie ein Testset entsteht, was die Trefferquote sagt, Regressionstests.',
+    date: '2026-11-05',
+    blocks: [
+      {
+        type: 'p',
+        text: 'Ein KI-Assistent antwortet immer selbstsicher. Ob die Antwort stimmt, zeigt sich oft erst, wenn etwas schiefgeht. Dieser Artikel beschreibt das Vorgehen, mit dem sich ein Assistent vor dem Einsatz prüfen lässt: ein Testset aus echten Fragen, eine Trefferquote, die man lesen kann, und Regressionstests nach jeder Änderung. Er stützt sich auf zwei öffentliche Projekte, `agent-eval-harness` (archiviert) und `stromlauf-ai`. Beschrieben wird das Vorgehen, nicht das Repository als aktives Produkt.',
+      },
+      { type: 'h2', text: 'Warum Stichproben beim Testen von KI-Assistenten nicht reichen' },
+      {
+        type: 'p',
+        text: 'Agentensysteme ändern sich ständig. Eine Änderung am Prompt, ein neues Modell oder ein Wechsel des Anbieters kann einen Ablauf verschlechtern, ohne dass etwas abstürzt oder ein Test rot wird. Der Assistent wird still schlechter, und man erfährt es Wochen später von einem Nutzer. So beschreibt es das Projekt `agent-eval-harness`. Prompt ausprobieren und die Ausgabe ansehen hält außerdem keinen zweiten Bearbeiter aus und läuft nicht bei jeder Änderung.',
+      },
+      {
+        type: 'p',
+        text: 'Wie groß die Unterschiede sein können, zeigt der Modellvergleich von `stromlauf-ai`: Bei gleichen Dokumenten, gleichem Agenten und gleichem Prompt erreicht das beste Modell 0,988 bei den Fakten und besteht 18 von 20 Fragen voll, ein kleines lokales Modell 0,524 und 5 von 20. Ein Gefühl, das an einem Modell entstanden ist, sagt über ein anderes nichts.',
+      },
+      { type: 'h2', text: 'Ein Testset für KI-Assistenten bauen' },
+      {
+        type: 'ul',
+        items: [
+          '**Echte Fragen.** Die Fragen kommen aus dem Alltag des Teams, jeweils mit der Antwort, die das Team als richtig ansieht. Erfundene Fragen testen, was sich der Ersteller ausgedacht hat.',
+          '**Erwartete Quellen mitführen.** Gute Fälle nennen nicht nur die richtige Antwort, sondern auch das Dokument, aus dem sie stammen muss. Im `agent-eval-harness` trägt ein Fall dafür eine Liste erwarteter Dokumente, dazu Prüfungen wie „enthält“, „Muster passt“ oder „Pfad im JSON vorhanden“.',
+          '**Fallen einbauen.** Das Testset von `stromlauf-ai` enthält fünf Fragen, deren Antwort in keinem Dokument steht. Erwartet wird „nicht vorhanden“, bestraft wird eine erfundene Zahl. Fünf weitere Fragen enthalten Anweisungen im Dokumenttext.',
+          '**Ein Fall prüft etwas.** Der `agent-eval-harness` lädt eine Suite nicht, wenn sie doppelte Kennungen oder Fälle ohne Prüfung enthält. Ein stillschweigend übersprungener Fall würde einen Wert melden und weniger messen, als er behauptet.',
+          '**Ehrlich zählen.** Bei `stromlauf-ai` sind 54 von 71 Fragen verbindlich, weil nur deren Dokumente im Repository liegen. Die übrigen 17 laufen nur lokal und zählen nicht als bestanden, solange sie nicht gelaufen sind.',
+        ],
+      },
+      { type: 'h2', text: 'Trefferquote lesen und ihre Grenzen' },
+      {
+        type: 'p',
+        text: 'Eine einzige Zahl verbirgt, was schiefgeht. Darum trennt `stromlauf-ai` Fakten, Quellen und gültige Zitate. Das Modell gpt-5.4-mini erreicht 0,820 bei den Fakten, aber nur 0,721 bei den gültigen Zitaten: Die Antworten sind überwiegend richtig, die Belege oft nicht. Aus der Gesamtquote wäre das nicht zu sehen. Der `agent-eval-harness` trennt aus demselben Grund Erzeugung und Suche: Ein System kann jedes richtige Dokument finden und trotzdem schlecht antworten.',
+      },
+      {
+        type: 'p',
+        text: 'Für die Grenzen gilt:',
+      },
+      {
+        type: 'ul',
+        items: [
+          'Es ist eine Stichprobe. Der Vergleich in `stromlauf-ai` nutzt 20 Fragen je Modell, die Zahlen stammen aus selbst erzeugten Beispieldokumenten, nicht aus Kundenunterlagen.',
+          'Der Durchschnitt versteckt Ausreißer. Drei Fragen zum Signalweg verfehlten im selben Lauf alle Modelle. Laut Vergleich lag das an den Daten, nicht am Modell. Die Zahl allein hätte das nicht verraten.',
+          'Regelbasierte Prüfung hat Grenzen. Der `agent-eval-harness` prüft nur eindeutig prüfbare Dinge. Freie Qualität („überzeugt der Text?“) liegt bewusst außerhalb. Dafür braucht es einen eigenen Prüfer, getrennt vom Gate.',
+          'Die Toleranz ist eine Annahme. Der voreingestellte Wert von 0,02 ist für die eigene Suite eine Schätzung und sollte gegen die eigene Streuung geprüft werden.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Der Vorteil regelbasierter Prüfung: Bei gleicher Ausgabe kommt derselbe Wert heraus. Bewegt sich die Zahl, hat sich der Assistent bewegt, nicht der Prüfer. Ein KI-Richter kostet bei jeder Änderung Geld und ersetzt eine Tatsache durch eine Meinung, die mit dem Richter driftet.',
+      },
+      { type: 'h2', text: 'Regressionstests: nach jeder Änderung prüfen' },
+      {
+        type: 'p',
+        text: 'Ein Testset nützt erst, wenn es bei jeder Änderung läuft. Der `agent-eval-harness` vergleicht einen neuen Lauf mit dem letzten guten und beendet den Prozess mit Fehlercode 1, wenn die Qualität sinkt. Das Gate ist bewusst unsymmetrisch: Es schlägt an, wenn ein Wert über die Toleranz hinaus fällt, wenn mehr Fälle abstürzen, wenn ein früher gemessener Wert nicht mehr gemessen wird oder wenn Fälle aus der Suite verschwunden sind. Verbesserungen laufen immer durch. Ein abgestürzter Fall zählt als Fehler und nicht als übersprungen, damit der Lauf nicht schrumpft, um grün zu bleiben.',
+      },
+      {
+        type: 'p',
+        text: 'Bei `stromlauf-ai` laufen die Prüfungen für das Einlesen und die Suche bei jeder Änderung und kosten keine Modell-Tokens. Den Lauf mit dem Agenten, der pro Frage Tokens kostet, startet das Projekt wöchentlich mit einem Kostendeckel. Ein Lauf über die 54 verbindlichen Fragen kostete laut Projekt etwa 1,75 US-Dollar.',
+      },
+      {
+        type: 'p',
+        text: 'Wie ein solches Testset für Ihren Assistenten aussehen kann, zeigt die [Qualitätsprüfung](/leistungen/qualitaetspruefung.html), die auch im Pilot enthalten ist. Wie die Zahlen eines echten Laufs aussehen, steht in der [Fallstudie](/referenz/stromlauf-ai.html).',
+      },
+    ],
+    sources: [
+      { label: 'agent-eval-harness, README (Repository archiviert)', href: 'https://github.com/siinanXD/agent-eval-harness/blob/main/README.md' },
+      { label: 'stromlauf-ai, eval/README.md', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/eval/README.md' },
+      { label: 'stromlauf-ai, Modellvergleich vom 2026-10-02', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/eval/results/vergleich_2026-10-02.md' },
+      { label: 'stromlauf-ai, README: Eval-Zahlen', href: 'https://github.com/siinanXD/stromlauf-ai/blob/master/README.md' },
+    ],
+    related: [
+      { label: 'Leistung: Qualitätsprüfung', href: '/leistungen/qualitaetspruefung.html' },
+      { label: 'Artikel: KI für Handbücher in der Instandhaltung', href: '/wissen/ki-fuer-handbuecher-instandhaltung.html' },
+    ],
+  },
 ];
 
 export const articleUrl = (a: Pick<Article, 'slug'>) => `/wissen/${a.slug}.html`;
