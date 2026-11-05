@@ -77,7 +77,7 @@ export default function AutomatisierungsCheckPage() {
               <li>Konservative Schätzung aus echten Projekten</li>
               <li>Danach optional: kostenlose Prozess-Analyse, 30 Minuten</li>
             </ul>
-            <p className="subline" style={{ marginTop: 24, fontSize: 14, color: 'var(--faint)' }}>
+            <p className="subline" style={{ marginTop: 24, fontSize: 'var(--fs-xs)', color: 'var(--faint)' }}>
               <span className="stars-inline" aria-hidden="true">
                 ★★★★★
               </span>{' '}
