@@ -8,13 +8,13 @@
 
 ## Lighthouse mobil (SIN-1506)
 
-Stand 2026-11-05, Lighthouse 13.6.0 (Standard-Profil mobil, simuliertes 4G), Chromium aus Playwright, gegen den
+Stand 2026-11-05 (neue Seiten und Startseite nach SIN-1569 erneut gemessen), Lighthouse 13.6.0 (Standard-Profil mobil, simuliertes 4G), Chromium aus Playwright, gegen den
 lokalen Build `out/`. Wiederholen: `npm run build && node scripts/lighthouse.mjs` (Server und gzip wie Netlify:
 `scripts/serve-out.mjs`; `lighthouse` kommt per `npx`, nicht aus `package.json`).
 
 | Seite | Performance | Barrierefreiheit | SEO |
 | --- | --- | --- | --- |
-| `/` | 99 | 100 | 100 |
+| `/` | 100 | 100 | 100 |
 | `/ueber-mich` | 100 | 100 | 100 |
 | `/kontakt` | 100 | 100 | 100 |
 | `/referenz` | 99 | 98 | 100 |
@@ -23,6 +23,12 @@ lokalen Build `out/`. Wiederholen: `npm run build && node scripts/lighthouse.mjs
 | `/leistungen/wartungs-assistent` | 100 | 100 | 100 |
 | `/leistungen/stromlaufplan-ki` | 100 | 100 | 100 |
 | `/leistungen/qualitaetspruefung` | 100 | 100 | 100 |
+| `/referenz/stromlauf-ai` | 100 | 100 | 100 |
+| `/wissen` | 100 | 100 | 100 |
+| `/wissen/stromlaufplaene-mit-ki-auswerten` | 100 | 100 | 100 |
+| `/wissen/ki-fuer-handbuecher-instandhaltung` | 100 | 100 | 100 |
+| `/wissen/ki-assistenten-testen-testset-trefferquote` | 100 | 100 | 100 |
+| `/ki-fuer-industrie-euskirchen` | 100 | 100 | 100 |
 
 Grenzen der Messung: lokaler Server statt Netlify (kein CDN, keine echte Latenz), Messung auf einem ausgelasteten
 Entwicklerrechner. Ein erster Lauf ohne gzip im lokalen Server ergab 84 für `/ueber-mich` (Render-Blockade durch

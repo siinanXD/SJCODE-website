@@ -278,7 +278,8 @@ export const ARTICLES: Article[] = [
 export const articleUrl = (a: Pick<Article, 'slug'>) => `/wissen/${a.slug}.html`;
 export const getArticle = (slug: string) => ARTICLES.find((a) => a.slug === slug);
 /** Neueste zuerst */
-export const ARTICLES_NEWEST_FIRST = [...ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
+/** Neueste zuerst; bei gleichem Datum steht der zuletzt ergänzte Artikel vorn. */
+export const ARTICLES_NEWEST_FIRST = [...ARTICLES].reverse().sort((a, b) => b.date.localeCompare(a.date));
 
 /** „5. November 2026“, unabhängig von der Zeitzone des Build-Rechners. */
 export const formatDate = (iso: string) =>

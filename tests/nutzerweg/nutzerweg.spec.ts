@@ -171,6 +171,21 @@ test.describe('Nutzerweg', () => {
     await expect(page).toHaveURL(/leistungen\/qualitaetspruefung/);
   });
 
+  test('Weg 12: Startseite → Fallstudie und neuester Artikel, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, '#demo', /Fallstudie: KI für Stromlaufpläne/);
+    await expect(page).toHaveURL(/referenz\/stromlauf-ai/);
+    await heading(page);
+    await page.goto('/');
+    await klick(page, '#demo', /KI-Assistenten vor dem Einsatz testen/);
+    await expect(page).toHaveURL(/wissen\//);
+    await heading(page);
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];

@@ -18,6 +18,7 @@
 ## Kostenlose Werkzeuge
 
 - [Automatisierungs-Check](https://sjcode.de/automatisierungs-check.html): Sechs Fragen, eine Minute – geschätzte automatisierbare Stunden pro Monat und Empfehlung. Ohne Anmeldung.
+- [Beispiel-Ergebnis des Automatisierungs-Checks (PDF)](https://sjcode.de/beispiel-doku-check.pdf): zwei Seiten mit erfundenen Demo-Daten, zeigt, wie ein Ergebnis aufgebaut ist.
 - Doku-Check: 30 Minuten, zehn echte Fragen an eines Ihrer Handbücher, Ergebnis als PDF.
 
 ## Ablauf und Preise
@@ -27,6 +28,18 @@
 ## Referenz
 
 - [Booking Email Check](https://sjcode.de/referenz.html): Plattform zur automatischen Verarbeitung von Buchungs-E-Mails. Klassifikation und Datenextraktion per LLM, Antwortentwürfe mit menschlicher Freigabe. Abgeschlossenes Projekt, Code öffentlich (Repository archiviert), 276+ automatisierte Tests, 60+ Releases.
+- [Fallstudie stromlauf-ai](https://sjcode.de/referenz/stromlauf-ai.html): KI für Stromlaufpläne und STEP-7-Programme mit Quellenbeleg, Demo-Daten, Messwerte mit Quellenlinks und Grenzen.
+
+## Wissen
+
+- [Wissen](https://sjcode.de/wissen.html): Fachartikel zu KI in der Instandhaltung, jeweils mit Quellen und Grenzen.
+- [Stromlaufpläne mit KI auswerten: was geht, was nicht](https://sjcode.de/wissen/stromlaufplaene-mit-ki-auswerten.html): Was KI bei Stromlaufplänen leistet, welche Dateien sie liest und wo sie scheitert.
+- [KI für Handbücher in der Instandhaltung: was RAG leistet und wo es scheitert](https://sjcode.de/wissen/ki-fuer-handbuecher-instandhaltung.html): Suche in Handbüchern mit Beleg, Grenzen bei Versionen, Scans und Tabellen, Prüfliste vor dem Einsatz.
+- [KI-Assistenten vor dem Einsatz testen: Testset und Trefferquote](https://sjcode.de/wissen/ki-assistenten-testen-testset-trefferquote.html): Testset aus echten Fragen, Trefferquote lesen, Regressionstests.
+
+## Region
+
+- [KI für Industrie in Euskirchen und im Rheinland](https://sjcode.de/ki-fuer-industrie-euskirchen.html): Termin im Betrieb, Erstgespräch, Anfahrt von Euskirchen nach Köln, Bonn und Aachen.
 
 ## Über
 
