@@ -3,6 +3,7 @@ import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
 import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
+import { ARTICLES_NEWEST_FIRST, articleUrl } from '@/lib/wissen';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollScene from '@/components/home/ScrollScene';
@@ -231,6 +232,10 @@ export default function HomePage() {
                     Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>
+                <p className="hm-small">
+                  <a href="/referenz/stromlauf-ai.html">Fallstudie: KI für Stromlaufpläne mit Messwerten</a> ·{' '}
+                  <a href={articleUrl(ARTICLES_NEWEST_FIRST[0])}>{ARTICLES_NEWEST_FIRST[0].title}</a>
+                </p>
               </div>
               <div className="hm-chat" role="group" aria-label="Beispiel-Dialog">
                 <p className="hm-mono hm-chat-tag">Beispiel</p>
