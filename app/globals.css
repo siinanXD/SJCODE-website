@@ -55,6 +55,12 @@
   --fs-sm: 15px; /* Fließtext, Buttons, Links */
   --fs-md: 17px; /* Einleitung, Marke */
   --fs-lg: 24px; /* Kennzahlen */
+  /* Titelstufen (SIN-1502): höchstens 4 Größen für h1 bis h3 und Kicker/Label.
+     h3 und Label teilen sich Stufen der Fließtext-Skala. */
+  --t-h1: clamp(32px, 5vw, 52px); /* Seitentitel */
+  --t-h2: clamp(28px, 3.6vw, 40px); /* Abschnittstitel */
+  --t-h3: var(--fs-md); /* Untertitel */
+  --t-label: var(--fs-xs); /* Kicker, Label, kleine Überschrift */
   color-scheme: dark;
 }
 
@@ -536,7 +542,7 @@ body:has(#mobilemenu[open]) {
 }
 .hero h1 {
   margin: 0 auto 22px;
-  font-size: clamp(36px, 4.8vw, 56px);
+  font-size: var(--t-h1);
   line-height: 1.12;
   font-weight: 700;
   letter-spacing: -0.028em;
@@ -577,7 +583,7 @@ body:has(#mobilemenu[open]) {
 
 .section-title {
   margin: 0;
-  font-size: clamp(28px, 3.6vw, 40px);
+  font-size: var(--t-h2);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -606,7 +612,7 @@ body:has(#mobilemenu[open]) {
 }
 .page-head h1 {
   margin: 0 0 20px;
-  font-size: clamp(36px, 5vw, 58px);
+  font-size: var(--t-h1);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.1;
@@ -649,7 +655,7 @@ body:has(#mobilemenu[open]) {
 }
 .teaser-card h3 {
   margin: 0 0 10px;
-  font-size: 18.5px;
+  font-size: var(--t-h3);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -687,7 +693,7 @@ body:has(#mobilemenu[open]) {
 }
 .service-card h2 {
   margin: 0 0 12px;
-  font-size: 22px;
+  font-size: var(--t-h2);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -727,7 +733,7 @@ body:has(#mobilemenu[open]) {
 }
 .value-grid h3 {
   margin: 0 0 10px;
-  font-size: 18px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .value-grid p {
@@ -1106,7 +1112,7 @@ body:has(#mobilemenu[open]) {
 }
 .step h3 {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .step p {
@@ -1320,7 +1326,7 @@ body:has(#mobilemenu[open]) {
 }
 .kontakt-grid h1 {
   margin: 0 0 18px;
-  font-size: clamp(32px, 4.2vw, 48px);
+  font-size: var(--t-h1);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.12;
@@ -1340,7 +1346,7 @@ body:has(#mobilemenu[open]) {
 }
 .aside-card h2 {
   margin: 0 0 8px;
-  font-size: 16.5px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .aside-card p {
@@ -1395,7 +1401,7 @@ body:has(#mobilemenu[open]) {
 
 .wizard h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .wizard .field-hint {
@@ -1602,7 +1608,7 @@ body:has(#mobilemenu[open]) {
 }
 .success-card h2 {
   margin: 0 0 10px;
-  font-size: 21px;
+  font-size: var(--t-h2);
   font-weight: 600;
 }
 .success-card p {
@@ -1636,7 +1642,7 @@ body:has(#mobilemenu[open]) {
 }
 .legal h1 {
   margin: 0 0 30px;
-  font-size: clamp(30px, 4vw, 42px);
+  font-size: var(--t-h1);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -1737,7 +1743,7 @@ body:has(#mobilemenu[open]) {
 }
 .example-card h3 {
   margin: 0 0 14px;
-  font-size: 18.5px;
+  font-size: var(--t-h3);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -1933,7 +1939,7 @@ body:has(#mobilemenu[open]) {
 }
 .hero-split h1 {
   margin: 0 0 22px;
-  font-size: clamp(36px, 4.6vw, 54px);
+  font-size: var(--t-h1);
   line-height: 1.1;
   font-weight: 700;
   letter-spacing: -0.028em;
@@ -2029,7 +2035,7 @@ body:has(#mobilemenu[open]) {
 }
 .audience-card h3 {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .audience-card p {
@@ -2094,7 +2100,7 @@ body:has(#mobilemenu[open]) {
 }
 .value-item h3 {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .value-item p {
@@ -2163,7 +2169,7 @@ body:has(#mobilemenu[open]) {
 }
 .price-card h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .price-card .price {
@@ -2227,7 +2233,7 @@ body:has(#mobilemenu[open]) {
 }
 .care-box h2 {
   margin: 0 0 8px;
-  font-size: 22px;
+  font-size: var(--t-h2);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -2303,7 +2309,7 @@ body:has(#mobilemenu[open]) {
 }
 .service-hero h1 {
   margin: 0 0 20px;
-  font-size: clamp(34px, 4.4vw, 50px);
+  font-size: var(--t-h1);
   font-weight: 700;
   letter-spacing: -0.028em;
   line-height: 1.1;
@@ -2329,7 +2335,7 @@ body:has(#mobilemenu[open]) {
 }
 .facts-card h2 {
   margin: 0 0 16px;
-  font-size: 14px;
+  font-size: var(--t-h3);
   font-weight: 600;
   color: var(--muted);
 }
@@ -2382,7 +2388,7 @@ body:has(#mobilemenu[open]) {
 }
 .include-card h3 {
   margin: 0 0 6px;
-  font-size: 16.5px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .include-card p {
@@ -2428,7 +2434,7 @@ a.example-card {
 }
 .about-hero h1 {
   margin: 0 0 20px;
-  font-size: clamp(34px, 4.6vw, 52px);
+  font-size: var(--t-h1);
   font-weight: 700;
   letter-spacing: -0.028em;
   line-height: 1.1;
@@ -2488,7 +2494,7 @@ a.example-card {
 }
 .timeline h3 {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: var(--t-h3);
   font-weight: 600;
 }
 .timeline p {
@@ -2533,7 +2539,7 @@ a.example-card {
 }
 .cta-card h2 {
   margin: 0 0 14px;
-  font-size: clamp(26px, 3.4vw, 38px);
+  font-size: var(--t-h2);
   font-weight: 700;
   letter-spacing: -0.02em;
   max-width: 640px;
@@ -2580,7 +2586,7 @@ a.example-card {
 }
 .footer-grid nav h2 {
   margin: 0 0 2px;
-  font-size: 13.5px;
+  font-size: var(--t-label);
   font-weight: 600;
   color: var(--faint);
 }
@@ -2700,7 +2706,7 @@ a.example-card {
 }
 .check-teaser h2 {
   margin: 0 0 10px;
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: var(--t-h2);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -2833,8 +2839,8 @@ a.example-card {
 .hm-center .hm-lede { margin-left: auto; margin-right: auto; }
 .hm-kicker { font-family: 'Geist Mono', monospace; font-size: var(--fs-xs); letter-spacing: 0.04em; color: #66615a; margin: 0 0 16px; }
 .hm-dark .hm-kicker { color: #b8b0a2; }
-.hm-h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 20px; }
-.hm-h2 { font-size: clamp(28px, 3.6vw, 40px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 20px; }
+.hm-h1 { font-size: var(--t-h1); line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 20px; }
+.hm-h2 { font-size: var(--t-h2); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 20px; }
 .hm-accent { color: #b8532a; }
 .hm-lede { font-size: var(--fs-md); line-height: 1.55; color: #66615a; margin: 0 0 24px; max-width: 60ch; }
 .hm-dark .hm-lede { color: #cfc8ba; }
@@ -2859,7 +2865,7 @@ a.example-card {
 .hm-schematic { max-width: none; margin-bottom: 20px; }
 .hm-circuits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .hm-circuit { border: 1px solid #1a4099; padding: 16px; display: grid; gap: 8px; align-content: start; color: #1a4099; }
-.hm-circuit h3 { margin: 0; font-size: 18px; color: #211e19; }
+.hm-circuit h3 { margin: 0; font-size: var(--t-h3); color: #211e19; }
 .hm-circuit p { margin: 0; color: #211e19; font-size: var(--fs-sm); line-height: 1.5; }
 .hm-circuit.is-active { background: #eaf0fb; border-width: 2px; }
 .hm-titleblock { text-align: right; margin: 16px 0 0; color: #1a4099; }
@@ -2872,7 +2878,7 @@ a.example-card {
 .hm-source { border: 1px dashed rgba(244, 239, 231, 0.4); padding: 8px 10px; border-radius: 6px; margin-bottom: 0 !important; }
 .hm-steps { list-style: none; padding: 0; margin: 32px 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .hm-steps li { border-top: 3px solid #211e19; padding-top: 12px; display: grid; gap: 6px; align-content: start; }
-.hm-steps h3 { margin: 0; font-size: 20px; }
+.hm-steps h3 { margin: 0; font-size: var(--t-h3); }
 .hm-steps p { margin: 0; color: #66615a; font-size: var(--fs-sm); line-height: 1.5; }
 .hm-steps .hm-price { color: #211e19; font-weight: 600; }
 .hm-lamp { width: 28px; height: 28px; border-radius: 50%; background: #2e9e4f; box-shadow: 0 0 0 4px #1c6b33; }
@@ -2961,7 +2967,7 @@ body:has(.hm) { background: #f4efe7; }
 .hm-footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 32px; }
 .hm-footer-grid p, .hm-footer address { margin: 12px 0 0; font-style: normal; color: #cfc8ba; font-size: var(--fs-sm); line-height: 1.5; }
 .hm-footer nav { display: grid; gap: 8px; align-content: start; }
-.hm-footer h2 { margin: 0 0 4px; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.04em; font-weight: 500; color: #b8b0a2; text-transform: uppercase; }
+.hm-footer h2 { margin: 0 0 4px; font-family: 'Geist Mono', monospace; font-size: var(--t-label); letter-spacing: 0.04em; font-weight: 500; color: #b8b0a2; text-transform: uppercase; }
 .hm-footer nav a { color: #f4efe7; font-size: var(--fs-sm); }
 .hm-titleplate { width: 100%; margin-top: 40px; border-collapse: collapse; border: 2px solid #f4efe7; font-family: 'Geist Mono', monospace; font-size: var(--fs-xs); }
 .hm-titleplate th, .hm-titleplate td { padding: 10px 12px; text-align: left; border: 1px solid rgba(244, 239, 231, 0.4); }
