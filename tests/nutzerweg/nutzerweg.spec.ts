@@ -105,6 +105,18 @@ test.describe('Nutzerweg', () => {
     expect(fehler, 'Konsolenfehler').toEqual([]);
   });
 
+  test('Weg 7: Automatisierungs-Check → Beispiel-Ergebnis als PDF', async ({ page, request }) => {
+    await page.goto('/');
+    await klick(page, 'footer', /Automatisierungs-Check/);
+    const link = page.getByRole('link', { name: /Beispiel-Ergebnis ansehen \(PDF, \d+ KB\)/ });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', /noopener/);
+    const antwort = await request.get(new URL((await link.getAttribute('href')) as string, page.url()).href);
+    expect(antwort.status()).toBe(200);
+    expect(antwort.headers()['content-type']).toContain('pdf');
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];
@@ -114,6 +126,7 @@ test.describe('Nutzerweg', () => {
     for (let i = 0; i < seiten.length && i < 60; i++) {
       const url = seiten[i];
       if (geladen.has(url)) continue;
+      if (/\.pdf($|\?)/.test(url)) continue; // PDF wird unten per Anfrage geprüft, kein Seitenaufruf
       geladen.add(url);
       const antwort = await page.goto(url);
       if (!antwort || antwort.status() >= 400) {
