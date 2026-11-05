@@ -1,6 +1,8 @@
 # SJCODE
 
-> Softwareentwicklung und AI Engineering für kleine und mittlere Betriebe.
+> KI für Instandhaltung und Anlagen: technische Doku, SPS-Exporte (STEP 7) und Stromlaufpläne
+> durchsuchen und beantworten, jede Antwort mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber
+> und Instandhaltung.
 > Inhaber: Sinan Kahraman, Euskirchen (Rheinland). 3,5 Jahre Ausbildung und fast 7 Jahre als
 > Elektroniker für Betriebstechnik, heute Software und KI-Lösungen.
 > Zusammenarbeit remote deutschlandweit, persönliche Treffen in der
@@ -10,7 +12,7 @@
 
 - [Doku-Assistent](https://sjcode.de/leistungen/doku-assistent.html): Handbücher, Wartungsanleitungen und Störungsberichte fragen statt suchen. Antwort mit Dokument und Seite.
 - [Wartungs-Assistent](https://sjcode.de/leistungen/wartungs-assistent.html): Störung eingeben, bekannte Ursachen und Schritte aus der eigenen Historie bekommen, mit Quellen.
-- [Stromlaufplan-KI](https://sjcode.de/leistungen/stromlaufplan-ki.html): Fragen an Stromlaufpläne und STEP-7-Programme, Antwort mit Pfad und Blatt. Live-Demo auf Demo-Daten: https://stromlauf-ai.vercel.app
+- [Stromlaufplan-KI](https://sjcode.de/leistungen/stromlaufplan-ki.html): Fragen an Stromlaufpläne und STEP-7-Programme, Antwort mit Pfad und Blatt. Code öffentlich: https://github.com/siinanXD/stromlauf-ai (Live-Demo folgt nach dem Hosting)
 - [Qualitätsprüfung](https://sjcode.de/leistungen/qualitaetspruefung.html): Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist, vor dem Einsatz.
 
 ## Kostenlose Werkzeuge
@@ -20,7 +22,7 @@
 
 ## Ablauf und Preise
 
-- [Ablauf](https://sjcode.de/#ablauf): Live-Demo (kostenlos), Doku-Check (kostenlos, 30 Min), Potenzialcheck (1.490 € Festpreis), Pilot (9.900 € Festpreis). Preise zzgl. MwSt.
+- [Ablauf](https://sjcode.de/#ablauf): Doku-Check (kostenlos, 30 Min), Potenzialcheck (1.490 € Festpreis), Pilot (9.900 € Festpreis). Preise zzgl. MwSt.
 
 ## Referenz
 

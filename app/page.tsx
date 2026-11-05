@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE, PROOF } from '@/lib/site';
 import { SERVICES, serviceUrl } from '@/lib/services';
-import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL } from '@/lib/repos';
+import { INDUSTRY_REPOS, STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
 import Header, { DOKU_CHECK_HREF } from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollScene from '@/components/home/ScrollScene';
@@ -10,9 +10,9 @@ import ScrollCircuit from '@/components/home/ScrollCircuit';
 import { CabinetClosed, CabinetOpen, Schematic } from '@/components/home/Schematics';
 
 export const metadata: Metadata = {
-  title: 'SJCODE – KI für Instandhaltung und Anlagen: Doku durchsuchen, Antworten mit Quelle',
+  title: 'KI für Instandhaltung: Doku, SPS und Stromlaufpläne | SJCODE',
   description:
-    'KI für Maschinenbauer, Anlagenbetreiber und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Vom Elektroniker für Betriebstechnik zum AI Engineer. Auch Websites und Automatisierung für kleine Betriebe.',
+    'KI für Maschinenbauer, Anlagenbetreiber und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchen und beantworten – mit Quellenbeleg. Vom Elektroniker für Betriebstechnik zum AI Engineer.',
   alternates: { canonical: `${SITE.url}/` },
   openGraph: openGraph({
     title: 'SJCODE – KI für Instandhaltung und Anlagen',
@@ -43,7 +43,7 @@ const JSON_LD = {
       },
       geo: { '@type': 'GeoCoordinates', latitude: 50.66, longitude: 6.79 },
       description:
-        'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Außerdem Websites, KI-Automatisierung und E-Mail-Automatisierung für kleine Betriebe.',
+        'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber und Instandhaltung.',
       founder: { '@id': SITE.personId },
       areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Rheinland', 'DE'],
       knowsLanguage: 'de',
@@ -94,7 +94,9 @@ const CIRCUITS = [
 ];
 
 const STEPS = [
-  { id: '-S1', title: 'Live-Demo', price: 'kostenlos', text: 'Selbst ausprobieren, sofort.' },
+  STROMLAUF_DEMO_ONLINE
+    ? { id: '-S1', title: 'Live-Demo', price: 'kostenlos', text: 'Selbst ausprobieren, sofort.' }
+    : { id: '-S1', title: 'Beispiel', price: 'kostenlos', text: 'Beispiel-Dialog und öffentlicher Code, sofort einsehbar.' },
   { id: '-S2', title: 'Doku-Check', price: 'kostenlos · 30 Min', text: '10 echte Fragen an eines Ihrer Handbücher. Ergebnis als PDF.' },
   { id: '-S3', title: 'Potenzialcheck', price: '1.490 € Festpreis', text: '1–2 Tage: Doku-Bestand, Top-Fragen, Machbarkeit, Angebot.' },
   { id: '-S4', title: 'Pilot', price: '9.900 € Festpreis', text: '8 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
@@ -138,7 +140,7 @@ export default function HomePage() {
                 </p>
                 <div className="hm-actions">
                   <a href={CTA_HREF} className="hm-btn hm-btn-primary" data-umami-event="doku-check" data-umami-event-ort="hero">{CTA_LABEL}</a>
-                  <a href="#demo" className="hm-btn hm-btn-outline">Live-Demo ansehen ↓</a>
+                  <a href="#demo" className="hm-btn hm-btn-outline">{STROMLAUF_DEMO_ONLINE ? 'Live-Demo ansehen' : 'Beispiel ansehen'} ↓</a>
                 </div>
                 <p className="hm-trust">
                   {PROOF.yearsIndustry} Jahre Betriebstechnik · Daten bleiben in der EU · Code öffentlich auf GitHub
@@ -208,17 +210,26 @@ export default function HomePage() {
           <section id="demo" className="hm-section hm-dark">
             <div className="hm-wrap hm-split">
               <div>
-                <p className="hm-kicker">-A4 · LIVE-DEMO · PRÜFSTAND</p>
-                <h2 className="hm-h2">Nicht glauben. Ausprobieren.</h2>
+                <p className="hm-kicker">-A4 · {STROMLAUF_DEMO_ONLINE ? 'LIVE-DEMO' : 'BEISPIEL'} · PRÜFSTAND</p>
+                <h2 className="hm-h2">{STROMLAUF_DEMO_ONLINE ? 'Nicht glauben. Ausprobieren.' : 'Nicht glauben. Nachlesen.'}</h2>
                 <p className="hm-lede">
-                  stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan. Mit
-                  Demo-Daten, ohne Anmeldung.
+                  stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan.
+                  {STROMLAUF_DEMO_ONLINE
+                    ? ' Mit Demo-Daten, ohne Anmeldung.'
+                    : ' Der Code ist öffentlich; die Live-Demo folgt, sobald das Hosting steht.'}
                 </p>
                 <div className="hm-actions">
-                  <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
-                    Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
-                  </a>
-                  <a href={k3.href} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-outline">
+                  {STROMLAUF_DEMO_ONLINE && (
+                    <a href={STROMLAUF_DEMO_URL} target="_blank" rel="noopener noreferrer" className="hm-btn hm-btn-primary">
+                      Live-Demo öffnen ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
+                    </a>
+                  )}
+                  <a
+                    href={k3.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={STROMLAUF_DEMO_ONLINE ? 'hm-btn hm-btn-outline' : 'hm-btn hm-btn-primary'}
+                  >
                     Projekt auf GitHub ↗<span className="sr-only"> (öffnet in neuem Tab)</span>
                   </a>
                 </div>

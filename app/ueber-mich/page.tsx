@@ -9,7 +9,7 @@ import CtaBand from '@/components/CtaBand';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Über mich – Sinan Kahraman, Softwareentwickler & AI Engineer aus Euskirchen | SJCODE',
+  title: 'Sinan Kahraman: AI Engineer aus Euskirchen | SJCODE',
   description:
     'Sinan Kahraman: Elektroniker für Betriebstechnik, heute AI Engineer. KI für Instandhaltung und Anlagen: Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, mit Quellenbeleg. Aus Euskirchen, remote deutschlandweit.',
   alternates: { canonical: `${SITE.url}/ueber-mich.html` },
@@ -31,16 +31,16 @@ const JSON_LD = {
         '@type': 'Person',
         '@id': SITE.personId,
         name: SITE.owner,
-        jobTitle: 'Softwareentwickler & AI Engineer',
+        jobTitle: 'AI Engineer für Instandhaltung und Anlagen',
         image: `${SITE.url}/images/sinan-kahraman.webp`,
         worksFor: { '@id': SITE.businessId },
         homeLocation: { '@type': 'Place', name: `${SITE.city}, Deutschland` },
         knowsAbout: [
-          'Softwareentwicklung',
+          'KI für Instandhaltung',
+          'Technische Dokumentation',
+          'Stromlaufpläne',
+          'SPS-Programme (STEP 7)',
           'AI Engineering',
-          'KI-Automatisierung',
-          'Webentwicklung mit React und Next.js',
-          'E-Mail-Automatisierung',
           'Betriebstechnik',
         ],
         sameAs: [SITE.github, SITE.linkedin],

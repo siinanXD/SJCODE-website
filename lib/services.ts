@@ -7,7 +7,7 @@
  * entstehen automatisch.
  */
 
-import { INDUSTRY_REPOS } from './repos';
+import { INDUSTRY_REPOS, STROMLAUF_DEMO_ONLINE } from './repos';
 
 export type Faq = { q: string; a: string };
 
@@ -43,7 +43,7 @@ export const SERVICES: Service[] = [
     id: '-K1',
     title: 'Doku-Assistent',
     serviceType: 'KI-Dokumentensuche',
-    seoTitle: 'Doku-Assistent: Handbücher und Wartungsanleitungen fragen statt suchen',
+    seoTitle: 'Doku-Assistent: Handbücher per KI durchsuchen',
     metaDescription:
       'KI für technische Dokumentation: Handbücher, Wartungsanleitungen und Störungsberichte durchsuchen und beantworten – jede Antwort mit Dokument und Seite. Für Maschinenbauer und Instandhaltung.',
     teaser:
@@ -89,7 +89,7 @@ export const SERVICES: Service[] = [
     id: '-K2',
     title: 'Wartungs-Assistent',
     serviceType: 'KI für Instandhaltung',
-    seoTitle: 'Wartungs-Assistent: Störung eingeben, bekannte Ursachen und Schritte bekommen',
+    seoTitle: 'Wartungs-Assistent: Störungsursachen aus der Historie',
     metaDescription:
       'KI für die Instandhaltung: Störung eingeben und bekannte Ursachen und Schritte aus Ihrer Historie bekommen – mit Quellen. Für Anlagenbetreiber und Instandhaltungsteams.',
     teaser: 'Störung eingeben, bekannte Ursachen und Schritte aus Ihrer Historie bekommen.',
@@ -134,9 +134,10 @@ export const SERVICES: Service[] = [
     id: '-K3',
     title: 'Stromlaufplan-KI',
     serviceType: 'KI für Stromlaufpläne und SPS-Programme',
-    seoTitle: 'Stromlaufplan-KI: Fragen an Stromlaufpläne und STEP-7-Programme',
+    seoTitle: 'Stromlaufplan-KI: Stromlaufpläne und STEP 7 abfragen',
     metaDescription:
-      'KI für Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt? Antwort mit Blatt und Pfad. Mit Live-Demo auf Demo-Daten.',
+      'KI für Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt? Antwort mit Blatt und Pfad.' +
+      (STROMLAUF_DEMO_ONLINE ? ' Mit Live-Demo auf Demo-Daten.' : ' Code öffentlich auf GitHub.'),
     teaser:
       'Fragen an Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt?',
     headline: 'Welche Sicherung versorgt den Motor? Fragen Sie den Plan.',
@@ -151,7 +152,10 @@ export const SERVICES: Service[] = [
       ],
     },
     solution: {
-      text: 'Sie fragen in normaler Sprache, die KI antwortet mit Pfad und Fundstelle. Das können Sie selbst ausprobieren, mit Demo-Daten und ohne Anmeldung.',
+      text: 'Sie fragen in normaler Sprache, die KI antwortet mit Pfad und Fundstelle. ' +
+        (STROMLAUF_DEMO_ONLINE
+          ? 'Das können Sie selbst ausprobieren, mit Demo-Daten und ohne Anmeldung.'
+          : 'Der Code ist öffentlich auf GitHub.'),
       points: [
         'Antwort mit Pfad und Blatt, zum Beispiel: L1 → -F12 → -Q3 → -K3 → -M3.',
         'Projekt öffentlich auf GitHub, mit Demo-Daten.',
@@ -162,8 +166,8 @@ export const SERVICES: Service[] = [
     repoIsDemo: true,
     faqs: [
       {
-        q: 'Kann ich die Demo mit eigenen Plänen testen?',
-        a: 'Die öffentliche Demo nutzt Demo-Daten. Mit Ihren eigenen Plänen testen wir im Doku-Check oder im Potenzialcheck.',
+        q: STROMLAUF_DEMO_ONLINE ? 'Kann ich die Demo mit eigenen Plänen testen?' : 'Kann ich das mit eigenen Plänen testen?',
+        a: (STROMLAUF_DEMO_ONLINE ? 'Die öffentliche Demo nutzt Demo-Daten. ' : '') + 'Mit Ihren eigenen Plänen testen wir im Doku-Check oder im Potenzialcheck.',
       },
       {
         q: 'Welche Formate werden unterstützt?',
@@ -180,7 +184,7 @@ export const SERVICES: Service[] = [
     id: '-K4',
     title: 'Qualitätsprüfung',
     serviceType: 'Qualitätsprüfung für KI-Systeme',
-    seoTitle: 'Qualitätsprüfung für KI: Testfragen mit Soll-Antwort, Trefferquote vor dem Einsatz',
+    seoTitle: 'KI-Qualitätsprüfung: Testset mit Soll-Antwort',
     metaDescription:
       'Wie gut ist die KI wirklich? Testfragen mit Soll-Antwort messen die Trefferquote, bevor die KI im Betrieb eingesetzt wird. Regressionstests für KI-Agenten, Open Source.',
     teaser: 'Testfragen mit Soll-Antwort messen, wie gut die KI wirklich ist – vor dem Einsatz.',

@@ -9,7 +9,7 @@ import { REVIEW_STATS } from '@/components/reviewsData';
 import Breadcrumb, { breadcrumbJsonLd } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Automatisierungs-Check – Wie viel Zeit steckt in Ihrer Handarbeit? | SJCODE',
+  title: 'Automatisierungs-Check: Prozesse und Zeitersparnis | SJCODE',
   description:
     'Kostenloser Automatisierungs-Check: sechs Fragen, eine Minute. Sie erfahren, wie viele Stunden im Monat sich in Ihrem Betrieb automatisieren lassen und was sich zuerst lohnt. Ohne Anmeldung.',
   alternates: { canonical: `${SITE.url}/automatisierungs-check.html` },
