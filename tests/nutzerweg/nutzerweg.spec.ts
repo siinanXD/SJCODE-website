@@ -147,6 +147,18 @@ test.describe('Nutzerweg', () => {
     expect(fehler, 'Konsolenfehler').toEqual([]);
   });
 
+  test('Weg 10: Wissen → Artikel zu RAG und Handbüchern, Links auf Leistungen', async ({ page }) => {
+    await page.goto('/');
+    await klick(page, 'footer', 'Wissen');
+    await klick(page, 'main', /KI für Handbücher in der Instandhaltung/);
+    await expect(page).toHaveURL(/wissen\/ki-fuer-handbuecher-instandhaltung/);
+    for (const h of [/Was RAG bei Handbüchern in der Instandhaltung leistet/, /Wo RAG bei technischen Handbüchern scheitert/, /Was man vor dem Einsatz/, 'Quellen']) {
+      await expect(page.getByRole('heading', { level: 2, name: h })).toBeVisible();
+    }
+    await klick(page, 'main', /Doku-Assistent/);
+    await expect(page).toHaveURL(/leistungen\/doku-assistent/);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];
