@@ -45,7 +45,7 @@ const JSON_LD = {
       description:
         'KI für industrielle Anlagen und Instandhaltung: technische Doku, SPS-Exporte und Wartungswissen durchsuchbar machen, Antworten mit Quellenbeleg. Für Maschinenbauer, Anlagenbetreiber und Instandhaltung.',
       founder: { '@id': SITE.personId },
-      areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Rheinland', 'DE'],
+      areaServed: ['Euskirchen', 'Köln', 'Bonn', 'Aachen', 'Rheinland', 'DE'],
       knowsLanguage: 'de',
       priceRange: '€€',
       sameAs: [SITE.github, SITE.linkedin, SITE.googleProfileUrl],

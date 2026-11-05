@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/automatisierungs-check.html', files: ['app/automatisierungs-check/page.tsx', 'lib/automationCheck.ts'] },
     { path: '/referenz.html', files: ['app/referenz/page.tsx'] },
     { path: '/referenz/stromlauf-ai.html', files: ['app/referenz/stromlauf-ai/page.tsx', 'lib/stromlauf.ts'] },
+    { path: '/ki-fuer-industrie-euskirchen.html', files: ['app/ki-fuer-industrie-euskirchen/page.tsx'] },
     { path: '/wissen.html', files: ['app/wissen/page.tsx', 'lib/wissen.ts'] },
     ...ARTICLES.map((a) => ({ path: articleUrl(a), files: ['app/wissen/[slug]/page.tsx', 'lib/wissen.ts'] })),
     { path: '/ueber-mich.html', files: ['app/ueber-mich/page.tsx'] },

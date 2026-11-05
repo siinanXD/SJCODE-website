@@ -135,6 +135,18 @@ test.describe('Nutzerweg', () => {
     expect(fehler, 'Konsolenfehler').toEqual([]);
   });
 
+  test('Weg 9: Footer → Regionalseite Euskirchen, ohne Konsolenfehler', async ({ page }) => {
+    const fehler: string[] = [];
+    page.on('pageerror', (e) => fehler.push(e.message));
+    page.on('console', (m) => m.type() === 'error' && !/favicon|umami/i.test(m.text()) && fehler.push(m.text()));
+    await page.goto('/');
+    await klick(page, 'footer', /KI für Industrie in Euskirchen/);
+    await expect(page).toHaveURL(/ki-fuer-industrie-euskirchen/);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Euskirchen');
+    await expect(page.getByRole('cell', { name: 'Aachen' }).or(page.getByRole('rowheader', { name: 'Aachen' }))).toBeVisible();
+    expect(fehler, 'Konsolenfehler').toEqual([]);
+  });
+
   test('Weg 5: keine toten internen Links', async ({ page, request, baseURL }) => {
     const origin = new URL(baseURL as string).origin;
     const seiten: string[] = ['/'];
