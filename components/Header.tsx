@@ -7,7 +7,7 @@ import { STROMLAUF_DEMO_URL, STROMLAUF_DEMO_ONLINE } from '@/lib/repos';
  */
 const NAV_ITEMS = [
   { href: '/#leistungen', label: 'Leistungen', key: 'leistungen' },
-  { href: STROMLAUF_DEMO_ONLINE ? STROMLAUF_DEMO_URL : '/#demo', label: 'Live-Demo', key: 'demo' },
+  { href: STROMLAUF_DEMO_ONLINE ? STROMLAUF_DEMO_URL : '/#demo', label: STROMLAUF_DEMO_ONLINE ? 'Live-Demo' : 'Beispiel', key: 'demo' },
   { href: '/#ablauf', label: 'Ablauf', key: 'ablauf' },
   { href: '/referenz.html', label: 'Referenz', key: 'referenz' },
   { href: '/ueber-mich.html', label: 'Über mich', key: 'ueber-mich' },

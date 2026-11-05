@@ -7,7 +7,7 @@
  * entstehen automatisch.
  */
 
-import { INDUSTRY_REPOS } from './repos';
+import { INDUSTRY_REPOS, STROMLAUF_DEMO_ONLINE } from './repos';
 
 export type Faq = { q: string; a: string };
 
@@ -136,7 +136,8 @@ export const SERVICES: Service[] = [
     serviceType: 'KI für Stromlaufpläne und SPS-Programme',
     seoTitle: 'Stromlaufplan-KI: Stromlaufpläne und STEP 7 abfragen',
     metaDescription:
-      'KI für Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt? Antwort mit Blatt und Pfad. Mit Live-Demo auf Demo-Daten.',
+      'KI für Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt? Antwort mit Blatt und Pfad.' +
+      (STROMLAUF_DEMO_ONLINE ? ' Mit Live-Demo auf Demo-Daten.' : ' Code öffentlich auf GitHub.'),
     teaser:
       'Fragen an Stromlaufpläne und STEP-7-Programme: Welche Sicherung, welcher Pfad, welches Blatt?',
     headline: 'Welche Sicherung versorgt den Motor? Fragen Sie den Plan.',
@@ -151,7 +152,10 @@ export const SERVICES: Service[] = [
       ],
     },
     solution: {
-      text: 'Sie fragen in normaler Sprache, die KI antwortet mit Pfad und Fundstelle. Das können Sie selbst ausprobieren, mit Demo-Daten und ohne Anmeldung.',
+      text: 'Sie fragen in normaler Sprache, die KI antwortet mit Pfad und Fundstelle. ' +
+        (STROMLAUF_DEMO_ONLINE
+          ? 'Das können Sie selbst ausprobieren, mit Demo-Daten und ohne Anmeldung.'
+          : 'Der Code ist öffentlich auf GitHub.'),
       points: [
         'Antwort mit Pfad und Blatt, zum Beispiel: L1 → -F12 → -Q3 → -K3 → -M3.',
         'Projekt öffentlich auf GitHub, mit Demo-Daten.',
@@ -162,8 +166,8 @@ export const SERVICES: Service[] = [
     repoIsDemo: true,
     faqs: [
       {
-        q: 'Kann ich die Demo mit eigenen Plänen testen?',
-        a: 'Die öffentliche Demo nutzt Demo-Daten. Mit Ihren eigenen Plänen testen wir im Doku-Check oder im Potenzialcheck.',
+        q: STROMLAUF_DEMO_ONLINE ? 'Kann ich die Demo mit eigenen Plänen testen?' : 'Kann ich das mit eigenen Plänen testen?',
+        a: (STROMLAUF_DEMO_ONLINE ? 'Die öffentliche Demo nutzt Demo-Daten. ' : '') + 'Mit Ihren eigenen Plänen testen wir im Doku-Check oder im Potenzialcheck.',
       },
       {
         q: 'Welche Formate werden unterstützt?',

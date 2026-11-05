@@ -127,8 +127,8 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           <section className="hm-section hm-dark">
             <div className="hm-wrap hm-split">
               <div>
-                <p className="hm-kicker">{s.id} · {s.repoIsDemo ? 'LIVE-DEMO' : 'REFERENZ'}</p>
-                <h2 className="hm-h2">{s.repoIsDemo ? 'Nicht glauben. Ausprobieren.' : 'Der Code ist öffentlich.'}</h2>
+                <p className="hm-kicker">{s.id} · {s.repoIsDemo && STROMLAUF_DEMO_ONLINE ? 'LIVE-DEMO' : 'REFERENZ'}</p>
+                <h2 className="hm-h2">{s.repoIsDemo && STROMLAUF_DEMO_ONLINE ? 'Nicht glauben. Ausprobieren.' : 'Der Code ist öffentlich.'}</h2>
                 <p className="hm-lede">
                   {repo.text}
                   {s.repoIsDemo && STROMLAUF_DEMO_ONLINE ? ' Mit Demo-Daten, ohne Anmeldung.' : ''}

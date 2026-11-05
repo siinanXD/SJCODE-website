@@ -94,7 +94,9 @@ const CIRCUITS = [
 ];
 
 const STEPS = [
-  { id: '-S1', title: 'Live-Demo', price: 'kostenlos', text: 'Selbst ausprobieren, sofort.' },
+  STROMLAUF_DEMO_ONLINE
+    ? { id: '-S1', title: 'Live-Demo', price: 'kostenlos', text: 'Selbst ausprobieren, sofort.' }
+    : { id: '-S1', title: 'Beispiel', price: 'kostenlos', text: 'Beispiel-Dialog und öffentlicher Code, sofort einsehbar.' },
   { id: '-S2', title: 'Doku-Check', price: 'kostenlos · 30 Min', text: '10 echte Fragen an eines Ihrer Handbücher. Ergebnis als PDF.' },
   { id: '-S3', title: 'Potenzialcheck', price: '1.490 € Festpreis', text: '1–2 Tage: Doku-Bestand, Top-Fragen, Machbarkeit, Angebot.' },
   { id: '-S4', title: 'Pilot', price: '9.900 € Festpreis', text: '8 Wochen, eine Maschinenfamilie, Testset mit Trefferquote. Danach Ausbau oder Stopp.' },
@@ -138,7 +140,7 @@ export default function HomePage() {
                 </p>
                 <div className="hm-actions">
                   <a href={CTA_HREF} className="hm-btn hm-btn-primary" data-umami-event="doku-check" data-umami-event-ort="hero">{CTA_LABEL}</a>
-                  <a href="#demo" className="hm-btn hm-btn-outline">Live-Demo ansehen ↓</a>
+                  <a href="#demo" className="hm-btn hm-btn-outline">{STROMLAUF_DEMO_ONLINE ? 'Live-Demo ansehen' : 'Beispiel ansehen'} ↓</a>
                 </div>
                 <p className="hm-trust">
                   {PROOF.yearsIndustry} Jahre Betriebstechnik · Daten bleiben in der EU · Code öffentlich auf GitHub
@@ -208,8 +210,8 @@ export default function HomePage() {
           <section id="demo" className="hm-section hm-dark">
             <div className="hm-wrap hm-split">
               <div>
-                <p className="hm-kicker">-A4 · LIVE-DEMO · PRÜFSTAND</p>
-                <h2 className="hm-h2">Nicht glauben. Ausprobieren.</h2>
+                <p className="hm-kicker">-A4 · {STROMLAUF_DEMO_ONLINE ? 'LIVE-DEMO' : 'BEISPIEL'} · PRÜFSTAND</p>
+                <h2 className="hm-h2">{STROMLAUF_DEMO_ONLINE ? 'Nicht glauben. Ausprobieren.' : 'Nicht glauben. Nachlesen.'}</h2>
                 <p className="hm-lede">
                   stromlauf-ai beantwortet Fragen zu einem Stromlaufplan und zeigt die Stelle im Plan.
                   {STROMLAUF_DEMO_ONLINE
