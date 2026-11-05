@@ -50,7 +50,7 @@ export default function ScrollCircuit({ href, label }: { href: string; label: st
 
       mm.add('(min-width: 768px)', () => {
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: el, start: 'top top', end: '+=2200', pin: true, scrub: 0.6, anticipatePin: 1 },
+          scrollTrigger: { trigger: el, start: 'top top', end: '+=1300', pin: true, scrub: 0.6, anticipatePin: 1 },
         });
         build(tl, 1);
         return () => gsap.set(animated(), { clearProps: 'all' });

@@ -2832,7 +2832,7 @@ a.example-card {
 .hm-nav-links { display: flex; gap: 20px; flex: 1; flex-wrap: wrap; }
 .hm-nav-links a { text-decoration: none; font-size: var(--fs-sm); }
 .hm-nav-links a:hover { text-decoration: underline; }
-.hm-section { padding: 88px 0; border-top: 1px solid rgba(33, 30, 25, 0.1); scroll-margin-top: 64px; }
+.hm-section { padding: 64px 0; border-top: 1px solid rgba(33, 30, 25, 0.1); scroll-margin-top: 64px; }
 .hm-hero { border-top: 0; }
 .hm-dark { background: #1a1816; color: #f4efe7; }
 .hm-split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
