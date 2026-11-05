@@ -31,6 +31,7 @@ Preise, Über mich, Kontakt). Die CSS-Tokens in `app/globals.css` entsprechen de
 | Leistungen (Texte, FAQ der 4 Detailseiten) | `lib/services.ts` |
 | Google-Bewertungen | `components/reviewsData.ts` |
 | Automatisierungs-Check (Fragen, Rechenlogik) | `lib/automationCheck.ts` |
+| Beispiel-PDF des Checks (Demo-Daten) | `node scripts/beispiel-pdf.mjs` neu erzeugen, wenn sich Fragen oder Rechenlogik ändern; Datei `public/beispiel-doku-check.pdf` einchecken |
 | Live-Demo-Link, Referenz-Repos (Archiv-Kennzeichnung) | `lib/repos.ts` |
 | Werdegang, Arbeitsweise | `app/ueber-mich/page.tsx` |
 

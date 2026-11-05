@@ -84,8 +84,8 @@ export const QUESTIONS: Question[] = [
 ];
 
 /** Anteil der Handarbeit, der sich erfahrungsgemäß automatisieren lässt – konservativ. */
-const AUTOMATABLE_SHARE = 0.6;
-const WORKDAYS_PER_MONTH = 21;
+export const AUTOMATABLE_SHARE = 0.6;
+export const WORKDAYS_PER_MONTH = 21;
 
 export type CheckResult = {
   hoursPerMonth: number;
