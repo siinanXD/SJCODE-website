@@ -2934,6 +2934,8 @@ a.example-card {
 }
 @media (prefers-reduced-motion: reduce) {
   .cx { display: none; }
+  /* Auch ausgeblendet ohne Übergang: bleibt ruhig, falls die Szene später statisch gezeigt wird (SIN-1505). */
+  .cx-blade, .cx-card { transition: none; }
 }
 
 /* Unterseiten im neuen Stil (SIN-786): gemeinsame Navigation und Footer,
