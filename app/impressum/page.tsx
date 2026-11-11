@@ -42,7 +42,7 @@ export default function ImpressumPage() {
             Sinan Kahraman, Anschrift wie oben
           </p>
         </div>
-        <a href="/" className="link-accent back-home" style={{ fontSize: 15 }}>
+        <a href="/" className="link-accent back-home" style={{ fontSize: 'var(--fs-sm)' }}>
           ← Zurück zur Startseite
         </a>
       </main>

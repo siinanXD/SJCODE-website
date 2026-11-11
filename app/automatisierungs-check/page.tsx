@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { Metadata } from 'next';
 import { openGraph } from '@/lib/og';
 import { SITE } from '@/lib/site';
@@ -38,6 +40,9 @@ const JSON_LD = {
   ],
 };
 
+/** Größe des Beispiel-PDFs für den Linktext (zur Build-Zeit gelesen, bleibt so immer richtig). */
+const BEISPIEL_PDF_KB = Math.round(fs.statSync(path.join(process.cwd(), 'public', 'beispiel-doku-check.pdf')).size / 1024);
+
 const FAQS = [
   {
     q: 'Wie genau ist die Schätzung?',
@@ -77,7 +82,22 @@ export default function AutomatisierungsCheckPage() {
               <li>Konservative Schätzung aus echten Projekten</li>
               <li>Danach optional: kostenlose Prozess-Analyse, 30 Minuten</li>
             </ul>
-            <p className="subline" style={{ marginTop: 24, fontSize: 14, color: 'var(--faint)' }}>
+            <p className="field-hint" style={{ marginTop: 16 }}>
+              Das Ergebnis erscheint direkt auf dem Bildschirm, auf Wunsch schicke ich es per E-Mail. So sieht es aus, mit
+              erfundenen Demo-Daten:{' '}
+              <a
+                href="/beispiel-doku-check.pdf"
+                target="_blank"
+                rel="noopener"
+                className="link-accent"
+                data-umami-event="beispiel-pdf"
+                data-umami-event-ort="check"
+              >
+                {`Beispiel-Ergebnis ansehen (PDF, ${BEISPIEL_PDF_KB} KB)`}
+                <span className="sr-only"> (öffnet in neuem Tab)</span>
+              </a>
+            </p>
+            <p className="subline" style={{ marginTop: 24, fontSize: 'var(--fs-xs)', color: 'var(--faint)' }}>
               <span className="stars-inline" aria-hidden="true">
                 ★★★★★
               </span>{' '}

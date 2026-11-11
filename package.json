@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test:nutzerweg": "playwright test"
+    "test:nutzerweg": "playwright test",
+    "messen:format": "node scripts/messen-format.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",
